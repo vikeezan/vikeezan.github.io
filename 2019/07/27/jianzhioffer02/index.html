@@ -96,25 +96,27 @@
 
 
 
-  <meta name="description" content="Markdown是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的HTML标记语言来说，Markdown可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。">
-<meta name="keywords" content="分享,导航">
+  <meta name="description" content="1.题目 请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。  2.思路分析&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;拿到字符串之后，很容易想到有两种方式完成替换。第一种：从头到尾遍历，在原字符串的基础上进行替换。这种方式的缺点在于靠后的字符串会多次移动，因此对于含有O（n）个空格字符的字">
+<meta name="keywords" content="算法,字符串">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常用的Markdown指令">
-<meta property="og:url" content="http://www.vikeezan.club/2019/03/26/markdown-daily-used/index.html">
+<meta property="og:title" content="剑指offer——2.替换空格">
+<meta property="og:url" content="http://www.vikeezan.club/2019/07/27/jianzhioffer02/index.html">
 <meta property="og:site_name" content="VIKEEZAN">
-<meta property="og:description" content="Markdown是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的HTML标记语言来说，Markdown可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。">
+<meta property="og:description" content="1.题目 请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。  2.思路分析&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;拿到字符串之后，很容易想到有两种方式完成替换。第一种：从头到尾遍历，在原字符串的基础上进行替换。这种方式的缺点在于靠后的字符串会多次移动，因此对于含有O（n）个空格字符的字">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-26T15:30:30.568Z">
+<meta property="og:image" content="http://www.vikeezan.club/2019/07/27/jianzhioffer02/字符串例子.jpg">
+<meta property="og:updated_time" content="2019-07-27T15:37:58.751Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="常用的Markdown指令">
-<meta name="twitter:description" content="Markdown是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的HTML标记语言来说，Markdown可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。">
+<meta name="twitter:title" content="剑指offer——2.替换空格">
+<meta name="twitter:description" content="1.题目 请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。  2.思路分析&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;拿到字符串之后，很容易想到有两种方式完成替换。第一种：从头到尾遍历，在原字符串的基础上进行替换。这种方式的缺点在于靠后的字符串会多次移动，因此对于含有O（n）个空格字符的字">
+<meta name="twitter:image" content="http://www.vikeezan.club/2019/07/27/jianzhioffer02/字符串例子.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://www.vikeezan.club/2019/03/26/markdown-daily-used/">
+  <link rel="canonical" href="http://www.vikeezan.club/2019/07/27/jianzhioffer02/">
 
 
 
@@ -124,7 +126,7 @@
   };
 </script>
 
-  <title>常用的Markdown指令 | VIKEEZAN</title>
+  <title>剑指offer——2.替换空格 | VIKEEZAN</title>
   
 
 
@@ -340,7 +342,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.vikeezan.club/2019/03/26/markdown-daily-used/">
+    <link itemprop="mainEntityOfPage" href="http://www.vikeezan.club/2019/07/27/jianzhioffer02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="vikeezan">
@@ -357,7 +359,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">常用的Markdown指令
+          <h1 class="post-title" itemprop="name headline">剑指offer——2.替换空格
 
               
             
@@ -383,24 +385,12 @@
                 
               
 
-              <time title="创建时间：2019-03-26 23:03:58" itemprop="dateCreated datePublished" datetime="2019-03-26T23:03:58+08:00">2019-03-26</time>
+              <time title="创建时间：2019-07-27 18:24:54 / 修改时间：23:37:58" itemprop="dateCreated datePublished" datetime="2019-07-27T18:24:54+08:00">2019-07-27</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-26 23:30:30" itemprop="dateModified" datetime="2019-07-26T23:30:30+08:00">2019-07-26</time>
               
             
           </span>
@@ -417,7 +407,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/markdown/" itemprop="url" rel="index"><span itemprop="name">markdown</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/剑指offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a></span>
 
                 
                 
@@ -459,47 +449,20 @@
       
 
       
-        <p>Markdown是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的HTML标记语言来说，Markdown可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。<br><a id="more"></a><br>markdown的优点：</p>
+        <h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><blockquote>
+<p>请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p>
+</blockquote>
+<h3 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;拿到字符串之后，很容易想到有两种方式完成替换。第一种：从头到尾遍历，在原字符串的基础上进行替换。这种方式的缺点在于靠后的字符串会多次移动，因此对于含有O（n）个<strong>空格字符</strong>的字符串而言时间复杂度是O（n2）。第二种：创建一个新的字符串，并在其上进行替换。这种方式需要我们自己分配足够的内存空间。<br>&nbsp;&nbsp;&nbsp;&nbsp;本文采用了一种使用<strong>从后向前遍历</strong>实现空格替换的方法，这种方法中所有的字符串只需要移动一次，因此这个算法的时间复杂度为O（n）。总体的算法步骤如下：<br><a id="more"></a></p>
 <ul>
-<li>语法简单</li>
-<li>更专注内容而非排版，排版只是为了更清楚的展现内容</li>
-<li>md轻松转换html及pdf，网络友好</li>
+<li>先遍历一次字符串，得到字符串中的空格个数，以及插入新字符之前的原字符串长度；</li>
+<li>根据第一步的结果，计算出替换完成后新字符串的长度。新字符串长度 = 原字符串长度 + 空格个数*2；</li>
+<li>给定两个指针a和b，a指向原字符串尾，b指向替换之后的字符串尾。向前移动指针a，逐个把它指向的字符复制到b指向的位置，直到碰到空格，a向前一格，b之前插入字符串”%20”，同时b向前移动3格。</li>
+<li>重复第三步，直到a和b指向同一个位置。</li>
 </ul>
-<h3 id="1-一级标题"><a href="#1-一级标题" class="headerlink" title="1.一级标题"></a>1.一级标题</h3><pre><code>使用一个井号键#开头，将文字跟在其后，即为一级标题。
-例子：#一级标题
-</code></pre><h3 id="2-二级标题"><a href="#2-二级标题" class="headerlink" title="2.二级标题"></a>2.二级标题</h3><pre><code>使用两个井号键##开头，将文字跟在其后，即为二级标题。
-例子：##二级标题
-</code></pre><h3 id="3-三级标题"><a href="#3-三级标题" class="headerlink" title="3.三级标题"></a>3.三级标题</h3><pre><code>使用三个井号键###开头，将文字跟在其后，即为三级标题。
-例子：###三级标题
-</code></pre><h3 id="4-列表"><a href="#4-列表" class="headerlink" title="4.列表"></a>4.列表</h3><pre><code>- 列表1
-- 列表2
-   a 这是第一个子列表
-   b 这是第二个子列表
-- 列表3
-</code></pre><h3 id="5-链接"><a href="#5-链接" class="headerlink" title="5.链接"></a>5.链接</h3><pre><code>[vikeezan首页](http://www.vikeezan.club/)
-其中[]内的是在页面上显示的文字，后面()内的则是该文字所连接到的网址。
-</code></pre><h3 id="6-图片"><a href="#6-图片" class="headerlink" title="6.图片"></a>6.图片</h3><pre><code>![vikeezan](https://tvax3.sinaimg.cn/crop.0.0.400.400.180/d713f9aely8frntmxyzwgj20b40b4abl.jpg)
-其中[]内存放的是图片的代称，()内的是图片的地址，文件可以是本地的，也可以是在线的。
-</code></pre><h3 id="7-斜体"><a href="#7-斜体" class="headerlink" title="7.斜体"></a>7.斜体</h3><pre><code>在一对星号**中间填入文字，文字即变为斜体。
-例子：*这里是斜体*
-</code></pre><h3 id="8-粗体"><a href="#8-粗体" class="headerlink" title="8.粗体"></a>8.粗体</h3><pre><code>将四个星号****分为两组，两两为一组，在两组中间填入文字，文字即变为粗体。
-例子：**这里是粗体**
-</code></pre><h3 id="9-单行代码"><a href="#9-单行代码" class="headerlink" title="9.单行代码"></a>9.单行代码</h3><pre><code>在``中输入代码，即可在网页上显示为代码块。
-例子： `&lt;html&gt;代码块&lt;/html&gt;`
-</code></pre><h3 id="10-多行代码"><a href="#10-多行代码" class="headerlink" title="10.多行代码"></a>10.多行代码</h3><pre><code>将六个<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例子：</span><br></pre></td></tr></table></figure>
+<h3 id="3-举例说明"><a href="#3-举例说明" class="headerlink" title="3.举例说明"></a>3.举例说明</h3><p>以”We are happy”为例，”We are happy”这个字符串的长度为14（包括结尾符号”\n”），里面有两个空格，因此替换之后字符串的长度是18。我们从字符串的尾部开始复制和替换。首先准备两个指针P1和P2，P1指向原始字符串的末尾，P2指向替换之后的字符串末尾。接下来向前移动指针P1，逐个把它指向的字符复制到P2指向的位置，直到碰到第一个空格。碰到第一个空格后，P1向前移动1格，P2位置开始向前插入字符串”%20”，同时P2向前移动3格。<br><img src="字符串例子.jpg" alt></p>
+<h3 id="4-代码实现"><a href="#4-代码实现" class="headerlink" title="4.代码实现"></a>4.代码实现</h3><p><strong>c++：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">class Solution&#123;</span><br><span class="line">public:</span><br><span class="line">	void replaceSpace(char *string,int length)&#123;</span><br><span class="line">    if(string == NULL || length &lt;= 0)</span><br><span class="line">    	return;</span><br><span class="line">    //循环遍历数组，得到字符串的总长，以及空格的个数</span><br><span class="line">    int originLength = 0;</span><br><span class="line">    int numSpace = 0;</span><br><span class="line">    int i = 0;</span><br><span class="line">    while(string[i] != &apos;\0&apos;)</span><br><span class="line">    	&#123;</span><br><span class="line">        ++originLength;</span><br><span class="line"></span><br><span class="line">        	if(string[i] == &apos; &apos;)</span><br><span class="line">            	++numSpace;</span><br><span class="line"></span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">    //得到新数组所需的字符串长度</span><br><span class="line">    int newLength = originLength + numSpace*2;//新字符串长度 = 原字符串长度 + 空格个数*2；</span><br><span class="line">    if(newLength &gt;length)</span><br><span class="line">    	return;</span><br><span class="line"></span><br><span class="line">	////检索到空格，就将空格替换为‘%’‘2’‘0’</span><br><span class="line">    int p1 = originLength;</span><br><span class="line">    int p2 = newLength;</span><br><span class="line">    while(p1 &gt;= 0 &amp;&amp; p2 &gt; p1 )&#123;</span><br><span class="line">    	if(string[p1] == &apos; &apos;)</span><br><span class="line">        &#123;</span><br><span class="line">        	string[p2--] = &apos;0&apos;;</span><br><span class="line">            string[p2--] = &apos;2&apos;;</span><br><span class="line">            string[p2--] = &apos;%&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            string[p2--] = string[p1];</span><br><span class="line">        &#125;</span><br><span class="line">        --p1;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><strong>python2.7:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line">class Solution:</span><br><span class="line">    # string指代 源字符串</span><br><span class="line">    def replaceSpace(self, string):</span><br><span class="line">        # write code here</span><br><span class="line">        return string.replace(&apos; &apos;, &apos;%20&apos;)</span><br></pre></td></tr></table></figure></p>
 
-    &lt;html&gt;
-       &lt;head&gt;
-      &lt;title&gt;我是标题&lt;/title&gt;
-      &lt;/head&gt;
-     &lt;body&gt;&lt;/body&gt;
-    &lt;/html&gt;//多行代码
-    ```
-</code></pre><h3 id="11-引用内容"><a href="#11-引用内容" class="headerlink" title="11.引用内容"></a>11.引用内容</h3><pre><code>在&gt;后加上文字，即可将文段表现为引用部分。
-例子： &gt;以下内容为引用：
-</code></pre><h3 id="12-上下分割线"><a href="#12-上下分割线" class="headerlink" title="12.上下分割线"></a>12.上下分割线</h3><pre><code>用---即可打印出分隔上下文的分割线。
-例子：---
-</code></pre>
       
     </div>
 
@@ -522,9 +485,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/分享/" rel="tag"><i class="fa fa-tag"></i>分享</a>
+            <a href="/tags/算法/" rel="tag"><i class="fa fa-tag"></i>算法</a>
           
-            <a href="/tags/导航/" rel="tag"><i class="fa fa-tag"></i>导航</a>
+            <a href="/tags/字符串/" rel="tag"><i class="fa fa-tag"></i>字符串</a>
           
         </div>
       
@@ -537,8 +500,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/26/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/07/27/jianzhioffer01/" rel="next" title="剑指offer——1.二维数组中的查找">
+                <i class="fa fa-chevron-left"></i> 剑指offer——1.二维数组中的查找
               </a>
             
           </div>
@@ -546,10 +509,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/27/busuanzi-error-solve/" rel="prev" title="Hexo博客next主题下不蒜子busuanzi访问量统计不显示">
-                Hexo博客next主题下不蒜子busuanzi访问量统计不显示 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -766,7 +725,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-一级标题"><span class="nav-number">1.</span> <span class="nav-text">1.一级标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-二级标题"><span class="nav-number">2.</span> <span class="nav-text">2.二级标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-三级标题"><span class="nav-number">3.</span> <span class="nav-text">3.三级标题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-列表"><span class="nav-number">4.</span> <span class="nav-text">4.列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-链接"><span class="nav-number">5.</span> <span class="nav-text">5.链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-图片"><span class="nav-number">6.</span> <span class="nav-text">6.图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-斜体"><span class="nav-number">7.</span> <span class="nav-text">7.斜体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-粗体"><span class="nav-number">8.</span> <span class="nav-text">8.粗体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-单行代码"><span class="nav-number">9.</span> <span class="nav-text">9.单行代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-多行代码"><span class="nav-number">10.</span> <span class="nav-text">10.多行代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-引用内容"><span class="nav-number">11.</span> <span class="nav-text">11.引用内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-上下分割线"><span class="nav-number">12.</span> <span class="nav-text">12.上下分割线</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-题目"><span class="nav-number">1.</span> <span class="nav-text">1.题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-思路分析"><span class="nav-number">2.</span> <span class="nav-text">2.思路分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-举例说明"><span class="nav-number">3.</span> <span class="nav-text">3.举例说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-代码实现"><span class="nav-number">4.</span> <span class="nav-text">4.代码实现</span></a></li></ol></div>
             
 
           </div>
