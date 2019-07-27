@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="f3d90243-5e63-46cb-92dd-6f29cdaf273a" name="Default Changelist" comment="">
+=======
+    <list default="true" id="1d9ec3c4-c95f-48a9-8301-aa1d4fbc3f0d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/jshint.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vikeezan.github.io.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/common-algorithm.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/common-algorithm.md" afterDir="false" />
+>>>>>>> e161ab4af770f614f60d34a6af20f6899c758a7d
       <change beforePath="$PROJECT_DIR$/themes/next" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/layout/_layout.swig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/layout/_layout.swig" afterDir="false" />
@@ -19,6 +32,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/themes/next/source/css/_custom/custom.styl">
@@ -27,13 +41,45 @@
       </file>
     </leaf>
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/themes/next" />
+=======
+    <leaf />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>post_ass</find>
+    </findStrings>
+  </component>
+>>>>>>> e161ab4af770f614f60d34a6af20f6899c758a7d
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-9" />
     <option name="width" value="1055" />
     <option name="height" value="1104" />
+=======
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/_config.yml" />
+        <option value="$PROJECT_DIR$/themes/next/source/css/_custom/custom.styl" />
+        <option value="$PROJECT_DIR$/style.css" />
+        <option value="$PROJECT_DIR$/footer.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1088" />
+    <option name="height" value="1407" />
+>>>>>>> e161ab4af770f614f60d34a6af20f6899c758a7d
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -46,6 +92,7 @@
         <subPane>
           <expand>
             <path>
+<<<<<<< HEAD
               <item name="blog" type="b2602c69:ProjectViewProjectNode" />
               <item name="blog" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -59,6 +106,10 @@
               <item name="blog" type="462c0819:PsiDirectoryNode" />
               <item name="source" type="462c0819:PsiDirectoryNode" />
               <item name="_posts" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="vikeezan.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vikeezan.github.io" type="462c0819:PsiDirectoryNode" />
+>>>>>>> e161ab4af770f614f60d34a6af20f6899c758a7d
             </path>
           </expand>
           <select />
@@ -67,6 +118,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -88,16 +140,29 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="f3d90243-5e63-46cb-92dd-6f29cdaf273a" name="Default Changelist" comment="" />
       <created>1564154068712</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1564154068712</updated>
       <workItem from="1564154103538" duration="349000" />
+=======
+      <changelist id="1d9ec3c4-c95f-48a9-8301-aa1d4fbc3f0d" name="Default Changelist" comment="" />
+      <created>1562158904608</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1562158904608</updated>
+      <workItem from="1562158907633" duration="61000" />
+      <workItem from="1564121907596" duration="1489000" />
+      <workItem from="1564145289834" duration="1955000" />
+      <workItem from="1564201754902" duration="599000" />
+>>>>>>> e161ab4af770f614f60d34a6af20f6899c758a7d
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="349000" />
   </component>
   <component name="ToolWindowManager">
@@ -105,6 +170,14 @@
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966975" />
+=======
+    <option name="totallyTimeSpent" value="4104000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1088" height="1407" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25333333" />
+>>>>>>> e161ab4af770f614f60d34a6af20f6899c758a7d
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
@@ -127,7 +200,27 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/themes/next/source/css/_custom/custom.styl">
+<<<<<<< HEAD
+      <provider selected="true" editor-type-id="text-editor" />
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="40" column="10" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
+        </state>
+      </provider>
+>>>>>>> e161ab4af770f614f60d34a6af20f6899c758a7d
+    </entry>
+    <entry file="file://$PROJECT_DIR$/footer.html" />
+    <entry file="file://$PROJECT_DIR$/style.css" />
   </component>
 </project>
