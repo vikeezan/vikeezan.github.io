@@ -49,6 +49,7 @@ public:
     if(newLength >length)
     	return;
 
+	////检索到空格，就将空格替换为‘%’‘2’‘0’
     int p1 = originLength;
     int p2 = newLength;
     while(p1 >= 0 && p2 > p1 ){
