@@ -1,5 +1,5 @@
 ---
-title: 10-algorithms
+title: 十大经典排序算法
 date: 2019-07-28 00:14:48
 tags:
     - 经典算法
