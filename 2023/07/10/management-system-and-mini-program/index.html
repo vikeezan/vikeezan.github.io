@@ -20,17 +20,21 @@
     var CONFIG = {"hostname":"www.vikeezan.club","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="业精于勤荒于嬉">
-<meta property="og:type" content="website">
-<meta property="og:title" content="VIKEEZAN">
-<meta property="og:url" content="https://www.vikeezan.club/archives/2019/index.html">
+  <meta name="description" content="整个六月都扑在一个政策搜索小程序项目上，项目包括网页管理系统和小程序两部分，网页管理系统用于上传现有政策，小程序端纯做展示和搜索功能。 网页管理系统包括前后端，使用行内脚手架开发，小程序使用百度低代码平台完成页面开发及接口交互。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网页管理系统&amp;小程序部署记录【开发&gt;&gt;&gt;生产】">
+<meta property="og:url" content="https://www.vikeezan.club/2023/07/10/management-system-and-mini-program/index.html">
 <meta property="og:site_name" content="VIKEEZAN">
-<meta property="og:description" content="业精于勤荒于嬉">
+<meta property="og:description" content="整个六月都扑在一个政策搜索小程序项目上，项目包括网页管理系统和小程序两部分，网页管理系统用于上传现有政策，小程序端纯做展示和搜索功能。 网页管理系统包括前后端，使用行内脚手架开发，小程序使用百度低代码平台完成页面开发及接口交互。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-10T04:32:18.000Z">
+<meta property="article:modified_time" content="2023-07-11T06:03:44.421Z">
 <meta property="article:author" content="vikeezan">
+<meta property="article:tag" content="网页管理系统">
+<meta property="article:tag" content="小程序">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://www.vikeezan.club/archives/2019/">
+<link rel="canonical" href="https://www.vikeezan.club/2023/07/10/management-system-and-mini-program/">
 
 
 <script id="page-configurations">
@@ -38,12 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | VIKEEZAN</title>
+  <title>网页管理系统&小程序部署记录【开发>>>生产】 | VIKEEZAN</title>
   
 
 
@@ -184,234 +188,145 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 14 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.vikeezan.club/2023/07/10/management-system-and-mini-program/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="vikeezan">
+      <meta itemprop="description" content="业精于勤荒于嬉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VIKEEZAN">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          网页管理系统&小程序部署记录【开发>>>生产】
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-07-10 12:32:18" itemprop="dateCreated datePublished" datetime="2023-07-10T12:32:18+08:00">2023-07-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-11 14:03:44" itemprop="dateModified" datetime="2023-07-11T14:03:44+08:00">2023-07-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">技术学习</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>507</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2019</span>
-    </div>
+        <p>整个六月都扑在一个政策搜索小程序项目上，项目包括网页管理系统和小程序两部分，网页管理系统用于上传现有政策，小程序端纯做展示和搜索功能。</p>
+<p>网页管理系统包括前后端，使用行内脚手架开发，小程序使用百度低代码平台完成页面开发及接口交互。</p>
+<span id="more"></span>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-08-10T21:59:32+08:00"
-              content="2019-08-10">
-          08-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/08/10/jianzhioffer07/" itemprop="url">
-            <span itemprop="name">剑指offer——7.裴波那契数列</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-08-04T20:23:52+08:00"
-              content="2019-08-04">
-          08-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/08/04/jianzhioffer06/" itemprop="url">
-            <span itemprop="name">剑指offer——6.旋转数组的最小数字</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-08-04T20:22:16+08:00"
-              content="2019-08-04">
-          08-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/08/04/jianzhioffer05/" itemprop="url">
-            <span itemprop="name">剑指offer——5.用两个栈实现队列</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-08-04T20:18:08+08:00"
-              content="2019-08-04">
-          08-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/08/04/jianzhioffer04/" itemprop="url">
-            <span itemprop="name">剑指offer——4.重建二叉树</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-08-04T19:28:56+08:00"
-              content="2019-08-04">
-          08-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/08/04/jianzhioffer03/" itemprop="url">
-            <span itemprop="name">剑指offer——3.从尾到头打印链表</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-08-01T03:26:07+08:00"
-              content="2019-08-01">
-          08-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/08/01/git-instructions/" itemprop="url">
-            <span itemprop="name">git分布式管理系统常用指令</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-07-28T00:14:48+08:00"
-              content="2019-07-28">
-          07-28
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/07/28/10-algorithms/" itemprop="url">
-            <span itemprop="name">十大经典排序算法</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-07-27T18:24:54+08:00"
-              content="2019-07-27">
-          07-27
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/07/27/jianzhioffer02/" itemprop="url">
-            <span itemprop="name">剑指offer——2.替换空格</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-07-27T15:40:05+08:00"
-              content="2019-07-27">
-          07-27
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/07/27/jianzhioffer01/" itemprop="url">
-            <span itemprop="name">剑指offer——1.二维数组中的查找</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-03-27T19:08:28+08:00"
-              content="2019-03-27">
-          03-27
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2019/03/27/Multi-terminal-management/" itemprop="url">
-            <span itemprop="name">Hexo多终端管理的搭建流程</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+<h2 id="一、网页管理系统"><a href="#一、网页管理系统" class="headerlink" title="一、网页管理系统"></a>一、网页管理系统</h2><hr>
+<h3 id="1-后端"><a href="#1-后端" class="headerlink" title="1.后端"></a>1.后端</h3><ol>
+<li>安装maven至本地，本次下载的是maven3.9.3；</li>
+<li>使用IDEA打开后端项目代码，在设置中将maven的home path、settings file、repository设置为本地文件和路径；</li>
+<li>在项目maven的lifecycle中双击install，将自动下载项目所依赖的包到本地repository；</li>
+<li>运行项目，查看报错模块，注释掉不起作用的函数；</li>
+</ol>
+<h3 id="2-前端"><a href="#2-前端" class="headerlink" title="2.前端"></a>2.前端</h3><ol>
+<li>使用VScode打开前端项目代码，使用node -v查看node版本，确保和开发环境使用的node大版本一致，因为每个版本拉取的依赖包不一致，会使项目存在版本差，导致项目报错；</li>
+<li>可使用npm -v再查看下npm的版本，理论上两者版本一致；</li>
+<li>使用npm install下载项目所依赖的外部包，会下载到项目的node_modules文件夹中；</li>
+<li>使用npm run local本地化运行项目，成功打开即可；</li>
+</ol>
+<h2 id="二、小程序"><a href="#二、小程序" class="headerlink" title="二、小程序"></a>二、小程序</h2><hr>
+<ol>
+<li>使用百度低代码平台画页面，导入API并测试，可在开发环境联动本地数据进行调试；</li>
+<li>待第一步完成，页面、功能、数据测试完毕后，同样的项目导出，重命名为发布版本进行调试，实际上本地开发环境和外网生产环境存在太多不一致；</li>
+<li>灵活使用postman测试后端接口，很多时候数据无法返回就是后端接口有问题需要改造；</li>
+<li>报错及时查看后端代码，调整相应的返回接口；</li>
+</ol>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px; padding-top: 10px;">--------------------------------------- <i class="fa fa-heart"></i> The End <i class="fa fa-heart"></i> ---------------------------------------  </div>
+    
+</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E9%A1%B5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/" rel="tag"><i class="fa fa-tag"></i>网页管理系统</a>
+              <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"><i class="fa fa-tag"></i>小程序</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/02/28/website-build-notes/" rel="prev" title="后端管理系统部署操作手册(阿里云服务器)">
+      <i class="fa fa-chevron-left"></i> 后端管理系统部署操作手册(阿里云服务器)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  
+  
 
 
 
@@ -463,6 +378,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%BD%91%E9%A1%B5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">一、网页管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%90%8E%E7%AB%AF"><span class="nav-number">1.1.</span> <span class="nav-text">1.后端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%89%8D%E7%AB%AF"><span class="nav-number">1.2.</span> <span class="nav-text">2.前端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%B0%8F%E7%A8%8B%E5%BA%8F"><span class="nav-number">2.</span> <span class="nav-text">二、小程序</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
