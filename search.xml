@@ -1,31 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo博客next主题下不蒜子busuanzi访问量统计不显示</title>
-    <url>/2019/03/27/busuanzi-error-solve/</url>
-    <content><![CDATA[<p>首先明确在hexo博客的主题配置时，有两个文件经常会用到。一个是blog根目录下的<code>_config.yml</code>文件，我们称其为<strong>站点配置文件</strong>，另一个则是<code>themes\next</code>下的<code>_config.yml</code>文件，我们称其为<strong>主题配置文件</strong>，在主题配置文件内next本身已自集成了一个统计算法，具体的用法如下:</p>
-<span id="more"></span>
-
-<p>打开<strong>主题配置文件</strong>，建议用Sublime Text打开，可以使用<code>ctrl+f</code>快捷键，输入<code>busuanzi</code>,你会看到以下代码:（V5版本)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  # count values only if the other configs are false</span><br><span class="line">  enable: false</span><br><span class="line">  # custom uv span for the whole site</span><br><span class="line">  site_uv: true</span><br><span class="line">  site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; </span><br><span class="line">  site_uv_footer: </span><br><span class="line">  # custom pv span for the whole site</span><br><span class="line">  site_pv: true</span><br><span class="line">  site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt;</span><br><span class="line">  site_pv_footer: </span><br><span class="line">  # custom pv span for one page only</span><br><span class="line">  page_pv: true</span><br><span class="line">  page_pv_header: &lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt;</span><br><span class="line">  page_pv_footer: ```</span><br><span class="line">（v7版本）</span><br></pre></td></tr></table></figure>
-<p>busuanzi_count:<br>  enable: false<br>  total_visitors: true<br>  total_visitors_icon: user<br>  total_views: true<br>  total_views_icon: eye<br>  post_views: true<br>  post_views_icon: eye&#96;&#96;&#96;<br>两个版本的算法虽然在具体细节上有所不同，但总的来说大同小异，使用方法都是将<code>enable: false</code>语句更改为<code>enable: true</code>，改完之后就可以在网站底部看到浏览量已经显示出来了。</p>
-<p>这时v5版本的用户可能会发现浏览量依旧显示不出来，打开控制台查看发现是因为<code>不蒜子</code>的js文件找不到所以出错了，据<code>不蒜子</code>的作者<a href="http://ibruce.info/2015/04/04/busuanzi/">不蒜子官方网站</a>介绍是原先的域名失效了，所以不得已更换了新的域名。所以现在我们要在js文件里重新引用一下，接下来是解决方法：</p>
-<p>简单来讲就是将<code>next</code>主题下<code>不蒜子</code>的js引用文件更改一下即可。我们首先进去blog根目录下的<code>themes</code>文件夹，找到我们在用的<code>next</code>主题文件夹，然后在<code>\layout\_third-party\analytics</code>下找到<code>busuanzi-counter.swig</code>文件，右击用sublime text打开，在该文件下找到如下语句：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script async src=&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>将这句话更改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>然后再刷新下页面，就大功告成啦~总的来说解决问题的方法不难，不过不清楚门道的话不知道怎么改，反正我折腾了很久就是了</p>
-<h3 id="祝大家建站快乐，少遇坑"><a href="#祝大家建站快乐，少遇坑" class="headerlink" title="祝大家建站快乐，少遇坑~"></a>祝大家建站快乐，少遇坑~</h3>]]></content>
-      <categories>
-        <category>建站填坑</category>
-      </categories>
-      <tags>
-        <tag>分享</tag>
-        <tag>hexo</tag>
-        <tag>next</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>十大经典排序算法</title>
     <url>/2019/07/28/10-algorithms/</url>
     <content><![CDATA[<h2 id="0-算法概述"><a href="#0-算法概述" class="headerlink" title="0.算法概述"></a><table><tr><td bgcolor=Gold><font size=5>0.算法概述</font></td></tr></table></h2><h3 id="0-1算法分类"><a href="#0-1算法分类" class="headerlink" title="0.1算法分类"></a>0.1算法分类</h3><p>十种常见的排序算法可以分为两大类：</p>
@@ -139,6 +114,31 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo博客next主题下不蒜子busuanzi访问量统计不显示</title>
+    <url>/2019/03/27/busuanzi-error-solve/</url>
+    <content><![CDATA[<p>首先明确在hexo博客的主题配置时，有两个文件经常会用到。一个是blog根目录下的<code>_config.yml</code>文件，我们称其为<strong>站点配置文件</strong>，另一个则是<code>themes\next</code>下的<code>_config.yml</code>文件，我们称其为<strong>主题配置文件</strong>，在主题配置文件内next本身已自集成了一个统计算法，具体的用法如下:</p>
+<span id="more"></span>
+
+<p>打开<strong>主题配置文件</strong>，建议用Sublime Text打开，可以使用<code>ctrl+f</code>快捷键，输入<code>busuanzi</code>,你会看到以下代码:（V5版本)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  # count values only if the other configs are false</span><br><span class="line">  enable: false</span><br><span class="line">  # custom uv span for the whole site</span><br><span class="line">  site_uv: true</span><br><span class="line">  site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; </span><br><span class="line">  site_uv_footer: </span><br><span class="line">  # custom pv span for the whole site</span><br><span class="line">  site_pv: true</span><br><span class="line">  site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt;</span><br><span class="line">  site_pv_footer: </span><br><span class="line">  # custom pv span for one page only</span><br><span class="line">  page_pv: true</span><br><span class="line">  page_pv_header: &lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt;</span><br><span class="line">  page_pv_footer: ```</span><br><span class="line">（v7版本）</span><br></pre></td></tr></table></figure>
+<p>busuanzi_count:<br>  enable: false<br>  total_visitors: true<br>  total_visitors_icon: user<br>  total_views: true<br>  total_views_icon: eye<br>  post_views: true<br>  post_views_icon: eye&#96;&#96;&#96;<br>两个版本的算法虽然在具体细节上有所不同，但总的来说大同小异，使用方法都是将<code>enable: false</code>语句更改为<code>enable: true</code>，改完之后就可以在网站底部看到浏览量已经显示出来了。</p>
+<p>这时v5版本的用户可能会发现浏览量依旧显示不出来，打开控制台查看发现是因为<code>不蒜子</code>的js文件找不到所以出错了，据<code>不蒜子</code>的作者<a href="http://ibruce.info/2015/04/04/busuanzi/">不蒜子官方网站</a>介绍是原先的域名失效了，所以不得已更换了新的域名。所以现在我们要在js文件里重新引用一下，接下来是解决方法：</p>
+<p>简单来讲就是将<code>next</code>主题下<code>不蒜子</code>的js引用文件更改一下即可。我们首先进去blog根目录下的<code>themes</code>文件夹，找到我们在用的<code>next</code>主题文件夹，然后在<code>\layout\_third-party\analytics</code>下找到<code>busuanzi-counter.swig</code>文件，右击用sublime text打开，在该文件下找到如下语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script async src=&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>将这句话更改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>然后再刷新下页面，就大功告成啦~总的来说解决问题的方法不难，不过不清楚门道的话不知道怎么改，反正我折腾了很久就是了</p>
+<h3 id="祝大家建站快乐，少遇坑"><a href="#祝大家建站快乐，少遇坑" class="headerlink" title="祝大家建站快乐，少遇坑~"></a>祝大家建站快乐，少遇坑~</h3>]]></content>
+      <categories>
+        <category>建站填坑</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
+        <tag>hexo</tag>
+        <tag>next</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo多终端管理的搭建流程</title>
     <url>/2019/03/27/Multi-terminal-management/</url>
     <content><![CDATA[<h2 id="1-原理介绍"><a href="#1-原理介绍" class="headerlink" title="1.原理介绍"></a>1.原理介绍</h2><p>多终端管理的基本思路是将博客在Github网站上分为两个分支来管理：</p>
@@ -147,7 +147,7 @@
 <li>另一个分支则是hexo副分支（自己起的名字，可以更改），这个分支的作用是保存博客的最新版本，在不同的电脑上pull并新建博客后，push到这个分支上，这样随时都可以找到博客的最新版本，该分支上的更改如果不经过<code>hexo deploy</code>，不会影响到master主分支上的内容。</li>
 </ul>
 <p><strong>PS：个人建议之前没有接触过git的同学可以先看一下有关git的基础教程，因为没接触过git的同学瞎用指令会把网站搞崩的，别问我为啥知道…这里推荐廖雪峰的课</strong><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">廖雪峰git教程</a></p>
-<h2 id="2-搭建流程"><a href="#2-搭建流程" class="headerlink" title="2.搭建流程"></a>2.搭建流程</h2><p>1.创建仓库，<a href="https://username.github.io/">https://username.github.io/</a>。其中的<strong>username</strong>要由你自己定义，要和你Github注册的用户名保持一致;<br>2.创建两个分支，master和hexo。这一步不用手动创建，后面有指令会自动创建hexo分支的；<br>3.设置hexo为默认分支。因为我们只需要手动管理这个分支上的网站文件，设置方法为项目右上角setting里的branch选项卡，将其中的默认分支更改为hexo即可；<br>4.在第二台电脑上使用git clone <a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#98;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#98;&#x2e;&#x63;&#x6f;&#x6d;</a>:username&#x2F;username.github.io.git拷贝仓库；<br>5.在本地的与Github相连的<a href="https://username.github.io/">https://username.github.io/</a>文件夹下右键使用Git Bash依次执行<code>npm install -g hexo-cli </code>安装hexo、<code>hexo init</code>初始化hexo、<code>npm install hexo-deployer-git --save</code>让hexo知道你要把blog部署在哪一个位置。这三条指令完成后当前分支应显示为hexo；<br>6.修改博客站点配置文件<code>_config.yml</code>中的deploy参数，将branch的参数改为master；<br>7.依次执行<code>git add .</code>添加所有文件到缓存区、<code>git commit -m “…”</code>提交缓存区的文件同时增添备注、<code>git push origin hexo</code>将更改的内容push到github的hexo分支进行备份；<br>8.执行<code>hexo g -d</code>生成网站并部署到Github上。<br>经过以上操作之后，我们的master分支用于存放网站的静态文件，hexo分支用于存放网站的原始文件，井水不犯河水，简直太完美了有没有！</p>
+<h2 id="2-搭建流程"><a href="#2-搭建流程" class="headerlink" title="2.搭建流程"></a>2.搭建流程</h2><p>1.创建仓库，<a href="https://username.github.io/">https://username.github.io/</a>。其中的<strong>username</strong>要由你自己定义，要和你Github注册的用户名保持一致;<br>2.创建两个分支，master和hexo。这一步不用手动创建，后面有指令会自动创建hexo分支的；<br>3.设置hexo为默认分支。因为我们只需要手动管理这个分支上的网站文件，设置方法为项目右上角setting里的branch选项卡，将其中的默认分支更改为hexo即可；<br>4.在第二台电脑上使用git clone <a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#x68;&#x75;&#98;&#x2e;&#99;&#111;&#109;">&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#x68;&#x75;&#98;&#x2e;&#99;&#111;&#109;</a>:username&#x2F;username.github.io.git拷贝仓库；<br>5.在本地的与Github相连的<a href="https://username.github.io/">https://username.github.io/</a>文件夹下右键使用Git Bash依次执行<code>npm install -g hexo-cli </code>安装hexo、<code>hexo init</code>初始化hexo、<code>npm install hexo-deployer-git --save</code>让hexo知道你要把blog部署在哪一个位置。这三条指令完成后当前分支应显示为hexo；<br>6.修改博客站点配置文件<code>_config.yml</code>中的deploy参数，将branch的参数改为master；<br>7.依次执行<code>git add .</code>添加所有文件到缓存区、<code>git commit -m “…”</code>提交缓存区的文件同时增添备注、<code>git push origin hexo</code>将更改的内容push到github的hexo分支进行备份；<br>8.执行<code>hexo g -d</code>生成网站并部署到Github上。<br>经过以上操作之后，我们的master分支用于存放网站的静态文件，hexo分支用于存放网站的原始文件，井水不犯河水，简直太完美了有没有！</p>
 <h3 id="2-1第一个终端的hexo分支"><a href="#2-1第一个终端的hexo分支" class="headerlink" title="2.1第一个终端的hexo分支"></a>2.1第一个终端的hexo分支</h3><p>在一开始创建博客的电脑上，将本地blog文件夹内必要的hexo文件push到username.github.io的hexo分支上，具体操作如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init  //初始化本地仓库</span><br><span class="line">git add source //将必要的文件依次添加，有些文件夹如npm install产生的node_modules由于路径过长不好处理，所以这里没有用`git add .`命令了，而是依次添加必要文件,例如source themes scaffolds _config.yml package.json package-lock.json等。</span><br><span class="line">git commit -m &quot;Blog Source Hexo&quot; //备注这是blog网站最原始的文件</span><br><span class="line">git branch hexo  //新建hexo分支</span><br><span class="line">git checkout hexo  //切换到hexo分支上</span><br><span class="line">git remote add origin git@github.com:yourname/yourname.github.io.git  //将本地与Github项目对接</span><br><span class="line">git push origin hexo  //push到Github项目的hexo分支上</span><br></pre></td></tr></table></figure>
 <h3 id="2-2另一终端完成clone复制以及push更新"><a href="#2-2另一终端完成clone复制以及push更新" class="headerlink" title="2.2另一终端完成clone复制以及push更新"></a>2.2另一终端完成clone复制以及push更新</h3><p>在另一个终端更新博客，只需要将Github的hexo分支上的内容克隆到本地，然后再对其进行更改和push更新，具体操作如下：</p>
@@ -523,11 +523,18 @@
 
 <h2 id="一、网页管理系统"><a href="#一、网页管理系统" class="headerlink" title="一、网页管理系统"></a>一、网页管理系统</h2><hr>
 <h3 id="1-后端"><a href="#1-后端" class="headerlink" title="1.后端"></a>1.后端</h3><ol>
-<li>安装maven至本地，本次下载的是maven3.9.3；</li>
-<li>使用IDEA打开后端项目代码，在设置中将maven的home path、settings file、repository设置为本地文件和路径；</li>
-<li>在项目maven的lifecycle中双击install，将自动下载项目所依赖的包到本地repository；</li>
-<li>运行项目，查看报错模块，注释掉不起作用的函数；</li>
-<li>点击maven的lifecycle中的package即可打包，路径为target文件夹下的jar包；</li>
+<li><p>安装maven至本地，本次下载的是maven3.9.3；</p>
+</li>
+<li><p>使用IDEA打开后端项目代码，在设置中将maven的home path、settings file、repository设置为本地文件和路径；</p>
+</li>
+<li><p>在项目maven的lifecycle中双击install，将自动下载项目所依赖的包到本地repository；</p>
+</li>
+<li><p>运行项目，查看报错模块，注释掉不起作用的函数；</p>
+</li>
+<li><p>点击maven的lifecycle中的package即可打包，路径为target文件夹下的jar包；</p>
+</li>
+<li><p>运行命令如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0.找到jar所在</span><br><span class="line">cd /home/cloud/qp</span><br><span class="line"></span><br><span class="line">1.查找目标进程值</span><br><span class="line">ps -ef|grep java</span><br><span class="line"></span><br><span class="line">2.杀掉java进程</span><br><span class="line">kill -9 目标进程值</span><br><span class="line"></span><br><span class="line">3.启动项目</span><br><span class="line">nohup java -jar XXXXXX-service-1.0.0.jar —server.port=9099 &gt;nohup.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line">4.查看日志</span><br><span class="line">tail -1000f nohup.out</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="2-前端"><a href="#2-前端" class="headerlink" title="2.前端"></a>2.前端</h3><ol>
 <li>使用VScode打开前端项目代码，使用node -v查看node版本，确保和开发环境使用的node大版本一致，因为每个版本拉取的依赖包不一致，会使项目存在版本差，导致项目报错；</li>
