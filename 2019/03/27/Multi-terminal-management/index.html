@@ -269,7 +269,7 @@
 <li>另一个分支则是hexo副分支（自己起的名字，可以更改），这个分支的作用是保存博客的最新版本，在不同的电脑上pull并新建博客后，push到这个分支上，这样随时都可以找到博客的最新版本，该分支上的更改如果不经过<code>hexo deploy</code>，不会影响到master主分支上的内容。</li>
 </ul>
 <p><strong>PS：个人建议之前没有接触过git的同学可以先看一下有关git的基础教程，因为没接触过git的同学瞎用指令会把网站搞崩的，别问我为啥知道…这里推荐廖雪峰的课</strong><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">廖雪峰git教程</a></p>
-<h2 id="2-搭建流程"><a href="#2-搭建流程" class="headerlink" title="2.搭建流程"></a>2.搭建流程</h2><p>1.创建仓库，<a target="_blank" rel="noopener" href="https://username.github.io/">https://username.github.io/</a>。其中的<strong>username</strong>要由你自己定义，要和你Github注册的用户名保持一致;<br>2.创建两个分支，master和hexo。这一步不用手动创建，后面有指令会自动创建hexo分支的；<br>3.设置hexo为默认分支。因为我们只需要手动管理这个分支上的网站文件，设置方法为项目右上角setting里的branch选项卡，将其中的默认分支更改为hexo即可；<br>4.在第二台电脑上使用git clone <a href="mailto:&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#99;&#x6f;&#109;">&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#99;&#x6f;&#109;</a>:username&#x2F;username.github.io.git拷贝仓库；<br>5.在本地的与Github相连的<a target="_blank" rel="noopener" href="https://username.github.io/">https://username.github.io/</a>文件夹下右键使用Git Bash依次执行<code>npm install -g hexo-cli </code>安装hexo、<code>hexo init</code>初始化hexo、<code>npm install hexo-deployer-git --save</code>让hexo知道你要把blog部署在哪一个位置。这三条指令完成后当前分支应显示为hexo；<br>6.修改博客站点配置文件<code>_config.yml</code>中的deploy参数，将branch的参数改为master；<br>7.依次执行<code>git add .</code>添加所有文件到缓存区、<code>git commit -m “…”</code>提交缓存区的文件同时增添备注、<code>git push origin hexo</code>将更改的内容push到github的hexo分支进行备份；<br>8.执行<code>hexo g -d</code>生成网站并部署到Github上。<br>经过以上操作之后，我们的master分支用于存放网站的静态文件，hexo分支用于存放网站的原始文件，井水不犯河水，简直太完美了有没有！</p>
+<h2 id="2-搭建流程"><a href="#2-搭建流程" class="headerlink" title="2.搭建流程"></a>2.搭建流程</h2><p>1.创建仓库，<a target="_blank" rel="noopener" href="https://username.github.io/">https://username.github.io/</a>。其中的<strong>username</strong>要由你自己定义，要和你Github注册的用户名保持一致;<br>2.创建两个分支，master和hexo。这一步不用手动创建，后面有指令会自动创建hexo分支的；<br>3.设置hexo为默认分支。因为我们只需要手动管理这个分支上的网站文件，设置方法为项目右上角setting里的branch选项卡，将其中的默认分支更改为hexo即可；<br>4.在第二台电脑上使用git clone <a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#98;&#x2e;&#99;&#111;&#109;">&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#98;&#x2e;&#99;&#111;&#109;</a>:username&#x2F;username.github.io.git拷贝仓库；<br>5.在本地的与Github相连的<a target="_blank" rel="noopener" href="https://username.github.io/">https://username.github.io/</a>文件夹下右键使用Git Bash依次执行<code>npm install -g hexo-cli </code>安装hexo、<code>hexo init</code>初始化hexo、<code>npm install hexo-deployer-git --save</code>让hexo知道你要把blog部署在哪一个位置。这三条指令完成后当前分支应显示为hexo；<br>6.修改博客站点配置文件<code>_config.yml</code>中的deploy参数，将branch的参数改为master；<br>7.依次执行<code>git add .</code>添加所有文件到缓存区、<code>git commit -m “…”</code>提交缓存区的文件同时增添备注、<code>git push origin hexo</code>将更改的内容push到github的hexo分支进行备份；<br>8.执行<code>hexo g -d</code>生成网站并部署到Github上。<br>经过以上操作之后，我们的master分支用于存放网站的静态文件，hexo分支用于存放网站的原始文件，井水不犯河水，简直太完美了有没有！</p>
 <h3 id="2-1第一个终端的hexo分支"><a href="#2-1第一个终端的hexo分支" class="headerlink" title="2.1第一个终端的hexo分支"></a>2.1第一个终端的hexo分支</h3><p>在一开始创建博客的电脑上，将本地blog文件夹内必要的hexo文件push到username.github.io的hexo分支上，具体操作如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git init  //初始化本地仓库</span><br><span class="line">git add source //将必要的文件依次添加，有些文件夹如npm install产生的node_modules由于路径过长不好处理，所以这里没有用`git add .`命令了，而是依次添加必要文件,例如source themes scaffolds _config.yml package.json package-lock.json等。</span><br><span class="line">git commit -m &quot;Blog Source Hexo&quot; //备注这是blog网站最原始的文件</span><br><span class="line">git branch hexo  //新建hexo分支</span><br><span class="line">git checkout hexo  //切换到hexo分支上</span><br><span class="line">git remote add origin git@github.com:yourname/yourname.github.io.git  //将本地与Github项目对接</span><br><span class="line">git push origin hexo  //push到Github项目的hexo分支上</span><br></pre></td></tr></table></figure>
 <h3 id="2-2另一终端完成clone复制以及push更新"><a href="#2-2另一终端完成clone复制以及push更新" class="headerlink" title="2.2另一终端完成clone复制以及push更新"></a>2.2另一终端完成clone复制以及push更新</h3><p>在另一个终端更新博客，只需要将Github的hexo分支上的内容克隆到本地，然后再对其进行更改和push更新，具体操作如下：</p>
@@ -382,7 +382,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -395,7 +395,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -450,7 +450,7 @@
 <div class="copyright">
   
   &copy; 2019 – 
-  <span itemprop="copyrightYear">2023</span>
+  <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -466,14 +466,14 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:08</span>
+    <span title="站点阅读时长">1:10</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共18.9k字</span>
+  <span class="post-count">博客全站共19.5k字</span>
 </div>
         
 <div class="busuanzi-count">
