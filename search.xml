@@ -760,7 +760,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>nginx的启动及测试：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#启动</span><br><span class="line">配置文件测试：/usr/local/nginx/sbin/nginx -t</span><br><span class="line">Nginx启动：/usr/local/nginx/sbin/nginx -s reload</span><br><span class="line">Nginx关闭：killall –s QUIT nginx</span><br><span class="line"></span><br><span class="line">#测试</span><br><span class="line">使用浏览器访问nginx默认网站</span><br><span class="line"> [root@zutuanxue ~]# http://服务器对应IP</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#配置文件测试</span><br><span class="line">/usr/local/nginx/sbin/nginx -t</span><br><span class="line">#启动</span><br><span class="line">/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</span><br><span class="line">#停止</span><br><span class="line">/usr/local/nginx/sbin/nginx -s stop</span><br><span class="line">#重载</span><br><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br><span class="line">#杀掉nginx</span><br><span class="line">/usr/local/nginx/sbin/nginx -s quit</span><br><span class="line"></span><br><span class="line">#测试</span><br><span class="line">使用浏览器访问nginx默认网站</span><br><span class="line"> [root@zutuanxue ~]# http://服务器对应IP</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改配置文件</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /usr/local/nginx/conf/nginx.conf</span><br></pre></td></tr></table></figure>
