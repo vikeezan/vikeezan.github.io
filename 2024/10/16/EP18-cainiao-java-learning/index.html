@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.vikeezan.club","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="此文档仅基于个人经验和感受出发，为菜鸟驿站-java教程的学习笔记。 课程参考链接：https:&#x2F;&#x2F;www.runoob.com&#x2F;java&#x2F;java-tutorial.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EP18-菜鸟教程-Java教程-学习笔记">
+<meta property="og:url" content="https://www.vikeezan.club/2024/10/16/EP18-cainiao-java-learning/index.html">
+<meta property="og:site_name" content="VIKEEZAN">
+<meta property="og:description" content="此文档仅基于个人经验和感受出发，为菜鸟驿站-java教程的学习笔记。 课程参考链接：https:&#x2F;&#x2F;www.runoob.com&#x2F;java&#x2F;java-tutorial.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.vikeezan.club/cainiao-java-learning/ZSSDMld.png">
+<meta property="og:image" content="https://www.vikeezan.club/cainiao-java-learning/20210105-java-object-1.png">
+<meta property="article:published_time" content="2024-10-16T10:45:10.000Z">
+<meta property="article:modified_time" content="2025-03-19T06:48:53.711Z">
+<meta property="article:author" content="vikeezan">
+<meta property="article:tag" content="Java学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vikeezan.club/cainiao-java-learning/ZSSDMld.png">
+
+<link rel="canonical" href="https://www.vikeezan.club/2024/10/16/EP18-cainiao-java-learning/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>EP18-菜鸟教程-Java教程-学习笔记 | VIKEEZAN</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">VIKEEZAN</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.vikeezan.club/2024/10/16/EP18-cainiao-java-learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="vikeezan">
+      <meta itemprop="description" content="业精于勤荒于嬉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VIKEEZAN">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          EP18-菜鸟教程-Java教程-学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-10-16 18:45:10" itemprop="dateCreated datePublished" datetime="2024-10-16T18:45:10+08:00">2024-10-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-03-19 14:48:53" itemprop="dateModified" datetime="2025-03-19T14:48:53+08:00">2025-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">技术学习</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>此文档仅基于个人经验和感受出发，为菜鸟驿站-java教程的学习笔记。</p>
+<p>课程参考链接：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-tutorial.html">https://www.runoob.com/java/java-tutorial.html</a></p>
+<span id="more"></span>
+
+<h2 id="一、Java基础语法-amp-Java注释"><a href="#一、Java基础语法-amp-Java注释" class="headerlink" title="一、Java基础语法&amp;Java注释"></a>一、Java基础语法&amp;Java注释</h2><h3 id="1、Java修饰符"><a href="#1、Java修饰符" class="headerlink" title="1、Java修饰符"></a>1、Java修饰符</h3><p>像其他语言一样，Java可以使用修饰符来修饰类中方法和属性。主要有两类修饰符：</p>
+<ul>
+<li>访问控制修饰符 : default, public , protected, private</li>
+<li>非访问控制修饰符 : final, abstract, static, synchronized</li>
+</ul>
+<h3 id="2、继承"><a href="#2、继承" class="headerlink" title="2、继承"></a>2、继承</h3><p>在 Java 中，一个类可以由其他类派生。如果你要创建一个类，而且已经存在一个类具有你所需要的属性或方法，那么你可以将新创建的类继承该类。</p>
+<p>利用继承的方法，可以重用已存在类的方法和属性，而不用重写这些代码。被继承的类称为超类（super class），派生类称为子类（sub class）。</p>
+<h3 id="3、接口"><a href="#3、接口" class="headerlink" title="3、接口"></a>3、接口</h3><p>在 Java 中，接口可理解为对象间相互通信的协议。接口在继承中扮演着很重要的角色。</p>
+<p>接口只定义派生要用到的方法，但是方法的具体实现完全取决于派生类。</p>
+<h3 id="4、Java-源程序与编译型运行区别"><a href="#4、Java-源程序与编译型运行区别" class="headerlink" title="4、Java 源程序与编译型运行区别"></a>4、Java 源程序与编译型运行区别</h3><p>如下图所示：</p>
+<p><img src="/cainiao-java-learning/ZSSDMld.png" alt="img"></p>
+<h3 id="5、文档注释"><a href="#5、文档注释" class="headerlink" title="5、文档注释"></a>5、文档注释</h3><p>文档注释以 <strong>&#x2F;*</strong>* 开始，以 ***&#x2F;** 结束，通常出现在类、方法、字段等的声明前面，用于生成代码文档，这种注释可以被工具提取并生成 API 文档，如 JavaDoc。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 这是一个文档注释示例</span><br><span class="line"> * 它通常包含有关类、方法或字段的详细信息</span><br><span class="line"> */</span><br><span class="line">public class MyClass &#123;</span><br><span class="line">    // 类的成员和方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>文档注释的格式通常包含一些特定的标签，如 <strong>@param</strong> 用于描述方法参数，**@return** 用于描述返回值，**@throws** 用于描述可能抛出的异常等等，这些标签有助于生成清晰的API文档，以便其他开发者能够更好地理解和使用你的代码。</p>
+<h2 id="二、Java对象和类"><a href="#二、Java对象和类" class="headerlink" title="二、Java对象和类"></a>二、Java对象和类</h2><p><strong>4、封装（Encapsulation）</strong>：</p>
+<ul>
+<li><p>将对象的状态（字段）私有化，通过公共方法访问。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">private String name; </span><br><span class="line">public String getName() &#123; return name; &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>5、多态（Polymorphism）</strong>：</p>
+<ul>
+<li><p>对象可以表现为多种形态，主要通过方法重载和方法重写实现。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 方法重载：`public int add(int a, int b) &#123; ... &#125;` 和 `public double add(double a, double b) &#123; ... &#125;`</span><br><span class="line"></span><br><span class="line">- 方法重写：`@Override public void makeSound() &#123; System.out.println(&quot;Meow&quot;); &#125;`</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>6、抽象（Abstraction）</strong>：</p>
+<ul>
+<li><p>使用抽象类和接口来定义必须实现的方法，不提供具体实现。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 抽象类：`public abstract class Shape &#123; abstract void draw(); &#125;`</span><br><span class="line"></span><br><span class="line">- 接口：`public interface Animal &#123; void eat(); &#125;`</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>9、方法重载（Method Overloading）</strong>：</p>
+<ul>
+<li><p>同一个类中可以有多个同名的方法，但参数不同。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class MathUtils &#123;</span><br><span class="line">    public int add(int a, int b) &#123;</span><br><span class="line">        return a + b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double add(double a, double b) &#123;</span><br><span class="line">        return a + b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>对象和类的概念。</p>
+<ul>
+<li><strong>对象</strong>：对象是类的一个实例，有状态和行为。例如，一条狗是一个对象，它的状态有：颜色、名字、品种；行为有：摇尾巴、叫、吃等。</li>
+<li><strong>类</strong>：类是一个模板，它描述一类对象的行为和状态。</li>
+</ul>
+<h3 id="Java-中的类"><a href="#Java-中的类" class="headerlink" title="Java 中的类"></a>Java 中的类</h3><p>类可以看成是创建 Java 对象的模板。</p>
+<p><img src="/cainiao-java-learning/20210105-java-object-1.png" alt="img"></p>
+<p>一个类可以包含以下类型变量：</p>
+<ul>
+<li><strong>局部变量</strong>：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</li>
+<li><strong>成员变量</strong>：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。</li>
+<li><strong>类变量</strong>：类变量也声明在类中，方法体之外，但必须声明为 static 类型。</li>
+</ul>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><p>每个类都有构造方法。如果没有显式地为类定义构造方法，Java 编译器将会<strong>为该类提供一个默认构造方法</strong>。</p>
+<p>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
+<p>下面是一个构造方法示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class Puppy&#123;</span><br><span class="line">    public Puppy()&#123;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public Puppy(String name)&#123;</span><br><span class="line">        // 这个构造器仅有一个参数：name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><p>对象是根据类创建的。在Java中，使用关键字 new 来创建一个新的对象。创建对象需要以下三步：</p>
+<ul>
+<li><strong>声明</strong>：声明一个对象，包括对象名称和对象类型。</li>
+<li><strong>实例化</strong>：使用关键字 new 来创建一个对象。</li>
+<li><strong>初始化</strong>：使用 new 创建对象时，会调用构造方法初始化对象。</li>
+</ul>
+<p>下面是一个创建对象的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Puppy&#123;</span><br><span class="line">   public Puppy(String name)&#123;</span><br><span class="line">      //这个构造器仅有一个参数：name</span><br><span class="line">      System.out.println(&quot;小狗的名字是 : &quot; + name ); </span><br><span class="line">   &#125;</span><br><span class="line">   public static void main(String[] args)&#123;</span><br><span class="line">      // 下面的语句将创建一个Puppy对象</span><br><span class="line">      Puppy myPuppy = new Puppy( &quot;tommy&quot; );</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、DO、BO、DTO、VO、AO、PO、UID等术语解释"><a href="#三、DO、BO、DTO、VO、AO、PO、UID等术语解释" class="headerlink" title="三、DO、BO、DTO、VO、AO、PO、UID等术语解释"></a>三、DO、BO、DTO、VO、AO、PO、UID等术语解释</h2><p>在Java开发中，DO、BO、DTO、VO、AO、PO、UID等术语通常用于表示不同的对象类型或概念。以下是它们的常见含义：</p>
+<ol>
+<li><strong>DO (Data Object &#x2F; Domain Object)</strong>:<ul>
+<li><strong>数据对象</strong>或<strong>领域对象</strong>，通常与数据库表直接对应，用于表示持久化数据。</li>
+<li>例如，一个<code>UserDO</code>可能对应数据库中的<code>user</code>表。</li>
+</ul>
+</li>
+<li><strong>BO (Business Object)</strong>:<ul>
+<li><strong>业务对象</strong>，封装了业务逻辑和操作，通常由多个DO或其他BO组合而成。</li>
+<li>例如，一个<code>OrderBO</code>可能包含订单信息、用户信息和商品信息。</li>
+</ul>
+</li>
+<li><strong>DTO (Data Transfer Object)</strong>:<ul>
+<li><strong>数据传输对象</strong>，用于在不同层（如服务层和表现层）之间传输数据。</li>
+<li>例如，<code>UserDTO</code>可能包含用户的基本信息，用于前端展示。</li>
+</ul>
+</li>
+<li><strong>VO (Value Object)</strong>:<ul>
+<li><strong>值对象</strong>，通常用于表示一个不可变的对象，包含一些属性但没有行为。</li>
+<li>例如，<code>AddressVO</code>可能包含地址的详细信息。</li>
+</ul>
+</li>
+<li><strong>AO (Application Object)</strong>:<ul>
+<li><strong>应用对象</strong>，用于表示应用程序中的某个实体或概念，通常包含业务逻辑。</li>
+<li>例如，<code>ReportAO</code>可能表示一个报表对象，包含生成报表的逻辑。</li>
+</ul>
+</li>
+<li><strong>PO (Persistent Object)</strong>:<ul>
+<li><strong>持久化对象</strong>，与DO类似，通常用于表示与数据库表直接对应的对象。</li>
+<li>例如，<code>UserPO</code>可能对应数据库中的<code>user</code>表。</li>
+</ul>
+</li>
+<li><strong>UID (Unique Identifier)</strong>:<ul>
+<li><strong>唯一标识符</strong>，用于唯一标识某个对象或实体。</li>
+<li>例如，<code>userId</code>可能是一个用户的唯一标识符。</li>
+</ul>
+</li>
+</ol>
+<p>这些术语的具体使用可能因项目或团队的不同而有所差异，但它们的核心概念通常是相似的。</p>
+
+    </div>
+
+    
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px; padding-top: 10px;">--------------------------------------- <i class="fa fa-heart"></i> The End <i class="fa fa-heart"></i> ---------------------------------------  </div>
+    
+</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i>Java学习</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/10/09/EP17-git-learning-record/" rel="prev" title="EP17-git踩坑记录">
+      <i class="fa fa-chevron-left"></i> EP17-git踩坑记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/03/19/EP19-regular-expressions-basic-knowledge/" rel="next" title="EP19-正则表达式基础知识点">
+      EP19-正则表达式基础知识点 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-amp-Java%E6%B3%A8%E9%87%8A"><span class="nav-number">1.</span> <span class="nav-text">一、Java基础语法&amp;Java注释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81Java%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">1.1.</span> <span class="nav-text">1、Java修饰符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E7%BB%A7%E6%89%BF"><span class="nav-number">1.2.</span> <span class="nav-text">2、继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.3.</span> <span class="nav-text">3、接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81Java-%E6%BA%90%E7%A8%8B%E5%BA%8F%E4%B8%8E%E7%BC%96%E8%AF%91%E5%9E%8B%E8%BF%90%E8%A1%8C%E5%8C%BA%E5%88%AB"><span class="nav-number">1.4.</span> <span class="nav-text">4、Java 源程序与编译型运行区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E6%96%87%E6%A1%A3%E6%B3%A8%E9%87%8A"><span class="nav-number">1.5.</span> <span class="nav-text">5、文档注释</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Java%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">二、Java对象和类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java-%E4%B8%AD%E7%9A%84%E7%B1%BB"><span class="nav-number">2.1.</span> <span class="nav-text">Java 中的类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.3.</span> <span class="nav-text">创建对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81DO%E3%80%81BO%E3%80%81DTO%E3%80%81VO%E3%80%81AO%E3%80%81PO%E3%80%81UID%E7%AD%89%E6%9C%AF%E8%AF%AD%E8%A7%A3%E9%87%8A"><span class="nav-number">3.</span> <span class="nav-text">三、DO、BO、DTO、VO、AO、PO、UID等术语解释</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="vikeezan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">vikeezan</p>
+  <div class="site-description" itemprop="description">业精于勤荒于嬉</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/vikeezan" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;vikeezan" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/VikeeZhang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;VikeeZhang" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.shuki.top/" title="http:&#x2F;&#x2F;www.shuki.top" rel="noopener" target="_blank">ShukiYan</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.rayshell.work/" title="http:&#x2F;&#x2F;www.rayshell.work" rel="noopener" target="_blank">RayShell</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://lililich.work/" title="https:&#x2F;&#x2F;lililich.work" rel="noopener" target="_blank">lililich</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vikeezan</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">23k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:24</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共23.5k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
+<script type="text/javascript" src="/js/clicklove.js"></script>

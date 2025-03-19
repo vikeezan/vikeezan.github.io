@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.vikeezan.club","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="参考资料：廖雪峰git教程) 1.git是什么？Git是目前世界上最先进的分布式版本控制系统（没有之一）。那什么是版本控制系统？  如果你用Microsoft Word写过长篇大论，那你一定有这样的经历：想删除一个段落，又怕将来想恢复找不回来怎么办？有办法，先把当前文件“另存为……”一个新的Word文件，再接着改，改到一定程度，再“另存为……”一个新文件，这样一直改下去，最后你的Word文档变成了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EP07-git分布式管理系统常用指令">
+<meta property="og:url" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/index.html">
+<meta property="og:site_name" content="VIKEEZAN">
+<meta property="og:description" content="参考资料：廖雪峰git教程) 1.git是什么？Git是目前世界上最先进的分布式版本控制系统（没有之一）。那什么是版本控制系统？  如果你用Microsoft Word写过长篇大论，那你一定有这样的经历：想删除一个段落，又怕将来想恢复找不回来怎么办？有办法，先把当前文件“另存为……”一个新的Word文件，再接着改，改到一定程度，再“另存为……”一个新文件，这样一直改下去，最后你的Word文档变成了">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/git%E4%BE%8B%E5%AD%90.jpg">
+<meta property="og:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.jpg">
+<meta property="og:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/%E5%88%86%E5%B8%83%E5%BC%8F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.jpg">
+<meta property="og:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/%E5%9C%B0%E5%9D%80%E6%9B%B4%E6%94%B9%E5%89%8D.png">
+<meta property="og:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/%E5%9C%B0%E5%9D%80%E6%9B%B4%E6%94%B9%E5%90%8E.png">
+<meta property="og:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/%E5%B7%A5%E4%BD%9C%E5%8C%BA.png">
+<meta property="og:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/%E7%89%88%E6%9C%AC%E5%BA%93.jpg">
+<meta property="og:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/%E5%88%86%E6%94%AF%E6%AD%A5%E9%AA%A41.png">
+<meta property="og:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/%E5%88%86%E6%94%AF%E6%AD%A5%E9%AA%A42.png">
+<meta property="og:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/%E5%88%86%E6%94%AF%E6%AD%A5%E9%AA%A43.png">
+<meta property="og:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/%E5%88%86%E6%94%AF%E6%AD%A5%E9%AA%A44.png">
+<meta property="og:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/%E5%88%86%E6%94%AF%E5%90%84%E6%9C%89%E4%BF%AE%E6%94%B9.png">
+<meta property="og:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/%E5%86%B2%E7%AA%81%E4%BF%AE%E6%94%B9%E4%B9%8B%E5%90%8E.png">
+<meta property="article:published_time" content="2019-07-31T19:26:07.000Z">
+<meta property="article:modified_time" content="2025-03-19T06:41:41.610Z">
+<meta property="article:author" content="vikeezan">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/git%E4%BE%8B%E5%AD%90.jpg">
+
+<link rel="canonical" href="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>EP07-git分布式管理系统常用指令 | VIKEEZAN</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">VIKEEZAN</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.vikeezan.club/2019/08/01/EP07-git-instructions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="vikeezan">
+      <meta itemprop="description" content="业精于勤荒于嬉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="VIKEEZAN">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          EP07-git分布式管理系统常用指令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-01 03:26:07" itemprop="dateCreated datePublished" datetime="2019-08-01T03:26:07+08:00">2019-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-03-19 14:41:41" itemprop="dateModified" datetime="2025-03-19T14:41:41+08:00">2025-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>17 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>参考资料：<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">廖雪峰git教程</a>)</p>
+<h2 id="1-git是什么？"><a href="#1-git是什么？" class="headerlink" title="1.git是什么？"></a>1.git是什么？</h2><p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。那什么是版本控制系统？</p>
+<blockquote>
+<p>如果你用Microsoft Word写过长篇大论，那你一定有这样的经历：<br>想删除一个段落，又怕将来想恢复找不回来怎么办？有办法，先把当前文件“另存为……”一个新的Word文件，再接着改，改到一定程度，再“另存为……”一个新文件，这样一直改下去，最后你的Word文档变成了这样：</p>
+</blockquote>
+<span id="more"></span>
+<img src="/2019/08/01/EP07-git-instructions/git%E4%BE%8B%E5%AD%90.jpg" class="" title="git例子">
+
+<p>于是你想，如果有一个软件，不但能自动帮我记录每次文件的改动，还可以让同事协作编辑，这样就不用自己管理一堆类似的文件了，也不需要把文件传来传去。如果想查看某次改动，只需要在软件里瞄一眼就可以，岂不是很方便？这个软件用起来就应该像这个样子，能记录每次文件的改动：这样，你就结束了手动管理多个“版本”的史前时代，进入到版本控制的20世纪。</p>
+<h2 id="2-集中式VS分布式"><a href="#2-集中式VS分布式" class="headerlink" title="2.集中式VS分布式"></a>2.集中式VS分布式</h2><p><strong>集中式：</strong><br>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;先说集中式版本控制系统，版本库是集中存放在中央服务器的，而干活的时候，用的都是自己的电脑，所以要先从中央服务器取得最新的版本，然后开始干活，干完活了，再把自己的活推送给中央服务器。中央服务器就好比是一个图书馆，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完了，再放回图书馆。</p>
+<img src="/2019/08/01/EP07-git-instructions/%E9%9B%86%E4%B8%AD%E5%BC%8F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.jpg" class="" title="集中式管理系统">
+<p>缺点：</p>
+<ul>
+<li>集中式版本控制系统最大的毛病就是必须联网才能工作，如果在局域网内还好，带宽够大，速度够快，可如果在互联网上，遇到网速慢的话，可能提交一个10M的文件就需要5分钟，这还不得把人给憋死啊。</li>
+<li>而且集中式版本控制系统的中央服务器要是出了问题，所有人都没法干活了。</li>
+</ul>
+<p><strong>分布式：</strong><br>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;分布式版本控制系统根本没有“中央服务器”，每个人的电脑上都是一个完整的版本库，这样，你工作的时候，就不需要联网了，因为版本库就在你自己的电脑上。既然每个人电脑上都有一个完整的版本库，那多个人如何协作呢？比方说你在自己电脑上改了文件A，你的同事也在他的电脑上改了文件A，这时，你们俩之间只需把各自的修改推送给对方，就可以互相看到对方的修改了。<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;在实际使用分布式版本控制系统的时候，其实很少在两人之间的电脑上推送版本库的修改，因为可能你们俩不在一个局域网内，两台电脑互相访问不了，也可能今天你的同事病了，他的电脑压根没有开机。因此，分布式版本控制系统通常也有一台充当“中央服务器”的电脑，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家也一样干活，只是交换修改不方便而已。</p>
+<img src="/2019/08/01/EP07-git-instructions/%E5%88%86%E5%B8%83%E5%BC%8F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.jpg" class="" title="分布式管理系统">
+<p>优点：<br>和集中式版本控制系统相比，分布式版本控制系统的安全性要高很多，因为每个人电脑里都有完整的版本库，某一个人的电脑坏掉了不要紧，随便从其他人那里复制一个就可以了。</p>
+<h2 id="3-创建版本库"><a href="#3-创建版本库" class="headerlink" title="3.创建版本库"></a>3.创建版本库</h2><h3 id="3-1创建版本库"><a href="#3-1创建版本库" class="headerlink" title="3.1创建版本库"></a>3.1创建版本库</h3><ul>
+<li>1.选择一个合适的地方，创建一个空目录。pwd命令用于显示当前目录。在下面例子中，这个仓库位于<code>/Users/vikee/learngit</code>。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir learngit</span><br><span class="line">cd learngit</span><br><span class="line">pwd</span><br></pre></td></tr></table></figure></li>
+<li>2.通过<code>git init</code>命令把这个目录变成Git可以管理的仓库：<code>git init</code>。瞬间Git就把仓库建好了，而且告诉你这里是一个空的仓库<code>empty Git repository</code>，细心的读者可以发现当前目录下多了一个<code>.git</code>的目录，这个目录是Git来跟踪管理版本库的，没事千万不要手动修改这个目录里面的文件，不然改乱了，就把Git仓库给破坏了。</li>
+</ul>
+<h3 id="3-2把文件添加到版本库"><a href="#3-2把文件添加到版本库" class="headerlink" title="3.2把文件添加到版本库"></a>3.2把文件添加到版本库</h3><p>首先这里再明确一下，所有的版本控制系统，其实只能跟踪文本文件的改动，比如TXT文件，网页，所有的程序代码等等，Git也不例外。版本控制系统可以告诉你每次的改动，比如在第5行加了一个单词“Linux”，在第8行删了一个单词“Windows”。而图片、视频这些二进制文件，虽然也能由版本控制系统管理，但没法跟踪文件的变化，只能把二进制文件每次改动串起来，也就是只知道图片从100KB改成了120KB，但到底改了啥，版本控制系统不知道，也没法知道。<br>假设我们在<code>learngit</code>目录下（子目录也行，因为这是一个Git仓库，放到其他地方Git再厉害也找不到这个文件）编写了一个readme.txt文件，现在我们要将其上传到版本库中。</p>
+<ul>
+<li>1.用命令<code>git add</code>告诉Git，把文件添加到仓库，若没有任何显示的话表明添加成功： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure></li>
+<li>2.用命令<code>git commit</code>告诉Git，把文件提交到仓库,其中<code>git commit</code>命令的<code>-m</code>后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。<code>git commit</code>命令执行成功后会告诉你，<code>1 file changed：</code>1个文件被改动（我们新添加的readme.txt文件）；<code>2 insertions：</code>插入了两行内容（readme.txt有两行内容）。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$git commit -m &quot;wrote a readme file&quot;</span><br><span class="line">[master (root-commit) eaadf4e] wrote a readme file</span><br><span class="line">1 file changed, 2 insertions(+)</span><br><span class="line">create mode 100644 readme.txt</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;为什么Git添加文件需要add，commit一共两步呢？因为commit可以一次提交很多文件，所以你可以多次add不同的文件，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add file1.txt</span><br><span class="line">git add file2.txt file3.txt</span><br><span class="line">git commit -m &quot;add 3 files.&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="4-版本管理"><a href="#4-版本管理" class="headerlink" title="4.版本管理"></a>4.版本管理</h2><h3 id="4-1版本回退"><a href="#4-1版本回退" class="headerlink" title="4.1版本回退"></a>4.1版本回退</h3><p>在你不断对文件进行修改，然后不断提交修改到版本库里，就好比玩RPG游戏时，每通过一关就会自动把游戏状态存盘，如果某一关没过去，你还可以选择读取前一关的状态。有些时候，在打Boss之前，你会手动存盘，以便万一打Boss失败了，可以从最近的地方重新开始。Git也是一样，每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为commit。一旦你把文件改乱了，或者误删了文件，还可以从最近的一个commit恢复，然后继续工作，而不是把几个月的工作成果全部丢失。</p>
+<ul>
+<li><p>1.<code>git log</code>:可以查看提交历史，命令显示从最近到最远的提交日志，以便确定要回退到哪个版本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">commit 1094adb7b9b3807259d8cb349e7df1d4d6477073 (HEAD -&gt; master)</span><br><span class="line">Author: Michael Liao &lt;askxuefeng@gmail.com&gt;</span><br><span class="line">Date:   Fri May 18 21:06:15 2018 +0800</span><br><span class="line">    append GPL</span><br><span class="line"></span><br><span class="line">commit e475afc93c209a690c39c13a46716e8fa000c366</span><br><span class="line">Author: Michael Liao &lt;askxuefeng@gmail.com&gt;</span><br><span class="line">Date:   Fri May 18 21:03:36 2018 +0800</span><br><span class="line">    add distributed</span><br></pre></td></tr></table></figure>
+<p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如果嫌输出信息太多，看得眼花缭乱的，可以试试加上<code>--pretty=oneline</code>参数，一大串类似<code>1094adb...</code>的是<code>commit id</code>（版本号）,这是一个SHA1计算出来的一个非常大的数字，用十六进制表示，而且你看到的<code>commit id</code>和我的肯定不一样，以你自己的为准。为什么commit id需要用这么一大串数字表示呢？因为Git是分布式的版本控制系统，后面我们还要研究多人在同一个版本库里工作，如果大家都用1，2，3……作为版本号，那肯定就冲突了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git log --pretty=oneline</span><br><span class="line">1094adb7b9b3807259d8cb349e7df1d4d6477073 (HEAD -&gt; master) append GPL</span><br><span class="line">e475afc93c209a690c39c13a46716e8fa000c366 add distributed</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.<code>git reset</code>:回退到之前的版本。在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交<code>1094adb...</code>（注意我的提交ID和你的肯定不一样），上一个版本就是<code>HEAD^</code>，上上一个版本就是<code>HEAD^^</code>，当然往上100个版本写100个^比较容易数不过来，所以写成<code>HEAD~100</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$git reset --hard HEAD^</span><br><span class="line">HEAD is now at e475afc add distributed</span><br></pre></td></tr></table></figure>
+<p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;想要再返回当前版本时，使用<code>git log</code>指令找到最新版本的提交ID，假设最新版本的提交ID是<code>1094adb...</code>可以使用如下命令返回,版本号没必要写全，前几位就可以了，Git会自动去找，至少前5位。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard 1094a</span><br><span class="line">HEAD is now at 83b0afe append GPL</span><br></pre></td></tr></table></figure>
+<p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Git的版本回退速度非常快，因为Git在内部有个指向当前版本的<code>HEAD</code>指针，当你回退版本的时候，Git仅仅是把<code>HEAD</code>从指向<code>append GPL</code>(最新版本)改为指向<code>add distributed</code>（上一版本）。然后顺便把工作区的文件更新了。所以你让HEAD指向哪个版本号，你就把当前版本定位在哪。</p>
+<img src="/2019/08/01/EP07-git-instructions/%E5%9C%B0%E5%9D%80%E6%9B%B4%E6%94%B9%E5%89%8D.png" class="" title="地址更改前">
+<img src="/2019/08/01/EP07-git-instructions/%E5%9C%B0%E5%9D%80%E6%9B%B4%E6%94%B9%E5%90%8E.png" class="" title="地址更改后">
+</li>
+<li><p>3.<code>git reflog</code>：查看命令历史，以便确定要回到未来的哪个版本。当你回退到上一版本退出命令行界面之后，找不到实际上文件最新版本的<code>commit id</code>时,就可以用<code>git reflog</code>找到之后的id。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">e475afc HEAD@&#123;1&#125;: reset: moving to HEAD^</span><br><span class="line">1094adb (HEAD -&gt; master) HEAD@&#123;2&#125;: commit: append GPL</span><br><span class="line">e475afc HEAD@&#123;3&#125;: commit: add distributed</span><br><span class="line">eaadf4e HEAD@&#123;4&#125;: commit (initial): wrote a readme file</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="4-2工作区和暂存区"><a href="#4-2工作区和暂存区" class="headerlink" title="4.2工作区和暂存区"></a>4.2工作区和暂存区</h3><p><strong>工作区（Working Directory）：</strong><br>在电脑里能看到的目录，比如下面的learngit文件夹就是一个工作区。</p>
+<img src="/2019/08/01/EP07-git-instructions/%E5%B7%A5%E4%BD%9C%E5%8C%BA.png" class="" title="工作区">
+
+<p><strong>版本库（Repository）：</strong><br>工作区有一个隐藏目录<code>.git</code>，这个不算工作区，而是Git的版本库。<br>Git的版本库里存了很多东西，其中最重要的就是称为<code>stage</code>（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支<code>master</code>，以及指向master的一个指针叫<code>HEAD</code>。</p>
+<img src="/2019/08/01/EP07-git-instructions/%E7%89%88%E6%9C%AC%E5%BA%93.jpg" class="" title="版本库">
+
+<p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
+<ul>
+<li>1.用<code>git add</code>文件添加进去，实际上就是把文件修改添加到<strong>暂存区</strong>；</li>
+<li>2.用<code>git commit</code>提交更改，实际上就是把暂存区的所有内容<strong>提交到当前分支</strong>。在创建Git版本库时，Git自动为我们创建了唯一一个<code>master</code>分支，所以，现在，<code>git commit</code>就是往<code>master</code>分支上提交更改。可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;使用<code>git status</code>查看一下工作区各个文件的状态。<code>modified</code>表明文件被修改了。<code>Untracked</code>则表明文件是新增的，还未被添加到暂存区中。
+</li>
+</ul>
+<h3 id="4-3管理修改"><a href="#4-3管理修改" class="headerlink" title="4.3管理修改"></a>4.3管理修改</h3><p>为什么Git比其他版本控制系统设计得优秀？因为Git跟踪并管理的是修改，而非文件。</p>
+<ul>
+<li>1.假设一个文件read.txt增加了一行内容。然后使用<code>git add</code>将文件添加到缓存区。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cat readme.txt</span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br><span class="line">Git tracks changes.//增加的内容</span><br></pre></td></tr></table></figure></li>
+<li>2.在上一步的基础上，我们又修改了文件的内容。然后使用<code>git commit</code>将文件提交到当前分支。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cat readme.txt </span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br><span class="line">Git tracks changes of files.</span><br></pre></td></tr></table></figure>
+提交后，再使用<code>git status</code>状态,发现第二次的修改没有更新，只有第一次的修改更新到了当前分支中。我们可以仔细分析一下以上文件修改和提交的过程：第一次修改 -&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git commit</code>。不难发现第二次修改之后并没有使用<code>git add</code>提交文件到缓存区，所以第一次的修改被提交了，第二次的文件并没有被提交。</li>
+<li>3.提交后，使用<code>git diff HEAD -- readme.txt</code>命令可以查看工作区和版本库里面最新版本的区别。</li>
+</ul>
+<h3 id="4-4撤销修改"><a href="#4-4撤销修改" class="headerlink" title="4.4撤销修改"></a>4.4撤销修改</h3><p>修改文件内容后想恢复到上一个版本时。使用<code>git checkout -- file</code>可以丢弃工作区的修改，该指令的意思是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况,总之就是让这个文件回到最近一次<code>git commit</code>或<code>git add</code>时的状态：</p>
+<ul>
+<li>1.<code>readme.txt</code>自修改后还<strong>没有被放到暂存区</strong>，现在，撤销修改就回到和版本库一模一样的状态；</li>
+<li>2.<code>readme.txt</code>已经<strong>添加到暂存区</strong>，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</li>
+</ul>
+<p><strong>注意：</strong><code>git checkout -- file</code>命令中的–很重要，没有<code>--</code>，就变成了“切换到另一个分支”的命令，</p>
+<p>当文件已经被添加到暂存区，还没有被提交。想要撤回修改可以使用以下两步：</p>
+<ul>
+<li>1.用命令<code>git reset HEAD &lt;file&gt;</code>可以把暂存区的修改撤销掉（unstage），重新放回工作区,<code>git reset</code>命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用<code>HEAD</code>时，表示最新的版本。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD readme.txt</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M	readme.txt</span><br></pre></td></tr></table></figure></li>
+<li>2.使用第一步的指令，再用<code>git status</code>查看当前状态，可以发现暂存区是干净的，工作区有修改。那丢弃工作区的修改，可以使用上面方法中的<code>git checkout -- file</code>指令。</li>
+</ul>
+<h3 id="4-5删除文件"><a href="#4-5删除文件" class="headerlink" title="4.5删除文件"></a>4.5删除文件</h3><ul>
+<li>1.一般情况下，通常直接在文件管理器中把没用的文件删了，或者用<code>rm</code>命令删除：<code>rm test.txt</code>;</li>
+<li>2.这时Git知道你删除了文件，因此，工作区和版本库不一致了，<code>git status</code>命令会立刻告诉你哪些文件被删除了;</li>
+<li>3.现在你有两个选择,一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code>：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git rm test.txt</span><br><span class="line">rm &#x27;test.txt&#x27;</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;remove test.txt&quot;</span><br><span class="line">[master d46f35e] remove test.txt</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 test.txt</span><br></pre></td></tr></table></figure>
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;另一种情况则是不小心删错了，因为版本库里还有最新的版本，所以可以很轻松地把误删的文件恢复到最新版本：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- test.txt</span><br></pre></td></tr></table></figure>
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;<strong>注意：</strong><code>git checkout</code>其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。<strong>但如果是从来没有被添加到版本库就被删除的文件，是无法恢复的！</strong></li>
+</ul>
+<h2 id="5-分支管理"><a href="#5-分支管理" class="headerlink" title="5.分支管理"></a>5.分支管理</h2><h3 id="5-1创建与合并分支"><a href="#5-1创建与合并分支" class="headerlink" title="5.1创建与合并分支"></a>5.1创建与合并分支</h3><p>在版本回退里，每次提交，Git都把它们串成一条时间线，这条时间线就是一个分支。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即<code>master</code>分支。<code>HEAD</code>严格来说不是指向提交，而是指向<code>master</code>，<code>master</code>才是指向提交的，所以，<code>HEAD</code>指向的是<strong>当前分支</strong>。</p>
+<ul>
+<li>1.开始的时候，<code>master</code>分支是一条线，Git用<code>master</code>指向最新的提交，再用<code>HEAD指</code>向<code>master</code>，就能确定当前分支，以及当前分支的提交点,每次提交，<code>master</code>支都会向前移动一步，这样随着你不断提交，<code>master</code>分支的线也越来越长。<img src="/2019/08/01/EP07-git-instructions/%E5%88%86%E6%94%AF%E6%AD%A5%E9%AA%A41.png" class="" title="分支步骤1"></li>
+<li>2.当我们创建新的分支，例如<code>dev</code>时，Git新建了一个指针叫<code>dev</code>，指向<code>master</code>相同的提交，再把<code>HEAD</code>指向<code>dev</code>，就表示当前分支在<code>dev</code>上,Git创建一个分支很快，因为除了增加一个dev指针，改改HEAD的指向，工作区的文件都没有任何变化！<img src="/2019/08/01/EP07-git-instructions/%E5%88%86%E6%94%AF%E6%AD%A5%E9%AA%A42.png" class="" title="分支步骤2"></li>
+<li>3.从现在开始，对工作区的修改和提交就是针对<code>dev</code>分支了，比如新提交一次后，<code>dev</code>指针往前移动一步，而<code>master</code>指针不变。<img src="/2019/08/01/EP07-git-instructions/%E5%88%86%E6%94%AF%E6%AD%A5%E9%AA%A43.png" class="" title="分支步骤3"></li>
+<li>4.假如我们在<code>dev</code>上的工作完成了，就可以把<code>dev</code>合并到<code>master</code>上。Git怎么合并呢？最简单的方法，就是直接把<code>master</code>指向<code>dev</code>的当前提交，就完成了合并。<img src="/2019/08/01/EP07-git-instructions/%E5%88%86%E6%94%AF%E6%AD%A5%E9%AA%A44.png" class="" title="分支步骤4"></li>
+<li>5.合并完分支后，甚至可以删除<code>dev</code>分支。删除<code>dev</code>分支就是把<code>dev</code>指针给删掉，之后就剩下了一条<code>master</code>分支。</li>
+</ul>
+<p><strong>具体的指令：</strong><br>查看分支：<code>git branch</code>。<code>git branch</code>命令会列出所有分支，当前分支前面会标一个*号</p>
+<p>创建分支：<code>git branch &lt;name&gt;</code></p>
+<p>切换分支：<code>git checkout &lt;name&gt;</code></p>
+<p>创建+切换分支：<code>git checkout -b &lt;name&gt;</code></p>
+<p>合并某分支到当前分支：<code>git merge &lt;name&gt;</code></p>
+<p>删除分支：<code>git branch -d &lt;name&gt;</code></p>
+<h3 id="5-2解决冲突"><a href="#5-2解决冲突" class="headerlink" title="5.2解决冲突"></a>5.2解决冲突</h3><p>当一个文件的不同分支，<code>master</code>分支和<code>feature1</code>分支各自都分别有新的提交，变成了这样：</p>
+<img src="/2019/08/01/EP07-git-instructions/%E5%88%86%E6%94%AF%E5%90%84%E6%9C%89%E4%BF%AE%E6%94%B9.png" class="" title="分支各有修改">
+<p>这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，Git告诉我们，当前的文件存在冲突，必须手动解决冲突后再提交。<code>git status</code>也可以告诉我们冲突的文件。解决冲突的方法如下：</p>
+<ul>
+<li>1.直接查看存在冲突文件的内容,Git用<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，<code>=======</code>，<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>标记出不同分支的内容。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br><span class="line">Git tracks changes of files.</span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">Creating a new branch is quick &amp; simple.</span><br><span class="line">=======</span><br><span class="line">Creating a new branch is quick AND simple.</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature1</span><br></pre></td></tr></table></figure></li>
+<li>2.我们修改文件之后如下后保存。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Creating a new branch is quick and simple.</span><br></pre></td></tr></table></figure></li>
+<li>3.再使用<code>git commit</code>指令将修改提交。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add readme.txt </span><br><span class="line">$ git commit -m &quot;conflict fixed&quot;</span><br><span class="line">[master cf810e4] conflict fixed</span><br></pre></td></tr></table></figure>
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;现在<code>master</code>分支和<code>feature1</code>分支变成了下图所示：<img src="/2019/08/01/EP07-git-instructions/%E5%86%B2%E7%AA%81%E4%BF%AE%E6%94%B9%E4%B9%8B%E5%90%8E.png" class="" title="冲突修改之后"></li>
+<li>4.最后，删除feature1分支：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d feature1</span><br><span class="line">Deleted branch feature1 (was 14096d0).</span><br></pre></td></tr></table></figure>
+<strong>注意:</strong><br>用<code>git log --graph</code>命令可以看到分支合并图。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">*   cf810e4 (HEAD -&gt; master) conflict fixed</span><br><span class="line">|\  </span><br><span class="line">| * 14096d0 (feature1) AND simple</span><br><span class="line">* | 5dc6824 &amp; simple</span><br><span class="line">|/  </span><br><span class="line">* b17d20e branch test</span><br><span class="line">* d46f35e (origin/master) remove test.txt</span><br><span class="line">* b84166e add test.txt</span><br><span class="line">* 519219b git tracks changes</span><br><span class="line">* e43a48b understand how stage works</span><br><span class="line">* 1094adb append GPL</span><br><span class="line">* e475afc add distributed</span><br><span class="line">* eaadf4e wrote a readme file</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+    
+    
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px; padding-top: 10px;">--------------------------------------- <i class="fa fa-heart"></i> The End <i class="fa fa-heart"></i> ---------------------------------------  </div>
+    
+</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i>git</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/07/28/EP06-10-algorithms/" rel="prev" title="EP06-十大经典排序算法">
+      <i class="fa fa-chevron-left"></i> EP06-十大经典排序算法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/08/04/EP08-jianzhioffer03/" rel="next" title="EP08-剑指offer——3.从尾到头打印链表">
+      EP08-剑指offer——3.从尾到头打印链表 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-git%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">1.git是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%9B%86%E4%B8%AD%E5%BC%8FVS%E5%88%86%E5%B8%83%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">2.集中式VS分布式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%88%9B%E5%BB%BA%E7%89%88%E6%9C%AC%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">3.创建版本库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1%E5%88%9B%E5%BB%BA%E7%89%88%E6%9C%AC%E5%BA%93"><span class="nav-number">3.1.</span> <span class="nav-text">3.1创建版本库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2%E6%8A%8A%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E7%89%88%E6%9C%AC%E5%BA%93"><span class="nav-number">3.2.</span> <span class="nav-text">3.2把文件添加到版本库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">4.版本管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80"><span class="nav-number">4.1.</span> <span class="nav-text">4.1版本回退</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2%E5%B7%A5%E4%BD%9C%E5%8C%BA%E5%92%8C%E6%9A%82%E5%AD%98%E5%8C%BA"><span class="nav-number">4.2.</span> <span class="nav-text">4.2工作区和暂存区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3%E7%AE%A1%E7%90%86%E4%BF%AE%E6%94%B9"><span class="nav-number">4.3.</span> <span class="nav-text">4.3管理修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9"><span class="nav-number">4.4.</span> <span class="nav-text">4.4撤销修改</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="nav-number">4.5.</span> <span class="nav-text">4.5删除文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">5.分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1%E5%88%9B%E5%BB%BA%E4%B8%8E%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF"><span class="nav-number">5.1.</span> <span class="nav-text">5.1创建与合并分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81"><span class="nav-number">5.2.</span> <span class="nav-text">5.2解决冲突</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="vikeezan"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">vikeezan</p>
+  <div class="site-description" itemprop="description">业精于勤荒于嬉</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/vikeezan" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;vikeezan" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/VikeeZhang" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;VikeeZhang" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://www.shuki.top/" title="http:&#x2F;&#x2F;www.shuki.top" rel="noopener" target="_blank">ShukiYan</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.rayshell.work/" title="http:&#x2F;&#x2F;www.rayshell.work" rel="noopener" target="_blank">RayShell</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://lililich.work/" title="https:&#x2F;&#x2F;lililich.work" rel="noopener" target="_blank">lililich</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">vikeezan</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">23k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:24</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共23.5k字</span>
+</div>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
+
+<script type="text/javascript" src="/js/clicklove.js"></script>
