@@ -1,2 +1,5 @@
 # vikeezan.github.io
-此项目为个人博客网站所需静态文件
+
+个人博客https://www.vikeezan.club/的代码仓库。
+
+master分支：所有的静态网页和一些配置文件
