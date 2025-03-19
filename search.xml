@@ -122,7 +122,7 @@
 <li>另一个分支则是hexo副分支（自己起的名字，可以更改），这个分支的作用是保存博客的最新版本，在不同的电脑上pull并新建博客后，push到这个分支上，这样随时都可以找到博客的最新版本，该分支上的更改如果不经过<code>hexo deploy</code>，不会影响到master主分支上的内容。</li>
 </ul>
 <p><strong>PS：个人建议之前没有接触过git的同学可以先看一下有关git的基础教程，因为没接触过git的同学瞎用指令会把网站搞崩的，别问我为啥知道…这里推荐廖雪峰的课</strong><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">廖雪峰git教程</a></p>
-<h2 id="2-搭建流程"><a href="#2-搭建流程" class="headerlink" title="2.搭建流程"></a>2.搭建流程</h2><p>1.创建仓库，<a href="https://username.github.io/">https://username.github.io/</a>。其中的<strong>username</strong>要由你自己定义，要和你Github注册的用户名保持一致;<br>2.创建两个分支，master和hexo。这一步不用手动创建，后面有指令会自动创建hexo分支的；<br>3.设置hexo为默认分支。因为我们只需要手动管理这个分支上的网站文件，设置方法为项目右上角setting里的branch选项卡，将其中的默认分支更改为hexo即可；<br>4.在第二台电脑上使用git clone <a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;</a>:username&#x2F;username.github.io.git拷贝仓库；<br>5.在本地的与Github相连的<a href="https://username.github.io/">https://username.github.io/</a>文件夹下右键使用Git Bash依次执行<code>npm install -g hexo-cli </code>安装hexo、<code>hexo init</code>初始化hexo、<code>npm install hexo-deployer-git --save</code>让hexo知道你要把blog部署在哪一个位置。这三条指令完成后当前分支应显示为hexo；<br>6.修改博客站点配置文件<code>_config.yml</code>中的deploy参数，将branch的参数改为master；<br>7.依次执行<code>git add .</code>添加所有文件到缓存区、<code>git commit -m “…”</code>提交缓存区的文件同时增添备注、<code>git push origin hexo</code>将更改的内容push到github的hexo分支进行备份；<br>8.执行<code>hexo g -d</code>生成网站并部署到Github上。<br>经过以上操作之后，我们的master分支用于存放网站的静态文件，hexo分支用于存放网站的原始文件，井水不犯河水，简直太完美了有没有！</p>
+<h2 id="2-搭建流程"><a href="#2-搭建流程" class="headerlink" title="2.搭建流程"></a>2.搭建流程</h2><p>1.创建仓库，<a href="https://username.github.io/">https://username.github.io/</a>。其中的<strong>username</strong>要由你自己定义，要和你Github注册的用户名保持一致;<br>2.创建两个分支，master和hexo。这一步不用手动创建，后面有指令会自动创建hexo分支的；<br>3.设置hexo为默认分支。因为我们只需要手动管理这个分支上的网站文件，设置方法为项目右上角setting里的branch选项卡，将其中的默认分支更改为hexo即可；<br>4.在第二台电脑上使用git clone <a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#x75;&#98;&#46;&#99;&#111;&#109;">&#x67;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#x75;&#98;&#46;&#99;&#111;&#109;</a>:username&#x2F;username.github.io.git拷贝仓库；<br>5.在本地的与Github相连的<a href="https://username.github.io/">https://username.github.io/</a>文件夹下右键使用Git Bash依次执行<code>npm install -g hexo-cli </code>安装hexo、<code>hexo init</code>初始化hexo、<code>npm install hexo-deployer-git --save</code>让hexo知道你要把blog部署在哪一个位置。这三条指令完成后当前分支应显示为hexo；<br>6.修改博客站点配置文件<code>_config.yml</code>中的deploy参数，将branch的参数改为master；<br>7.依次执行<code>git add .</code>添加所有文件到缓存区、<code>git commit -m “…”</code>提交缓存区的文件同时增添备注、<code>git push origin hexo</code>将更改的内容push到github的hexo分支进行备份；<br>8.执行<code>hexo g -d</code>生成网站并部署到Github上。<br>经过以上操作之后，我们的master分支用于存放网站的静态文件，hexo分支用于存放网站的原始文件，井水不犯河水，简直太完美了有没有！</p>
 <h3 id="2-1第一个终端的hexo分支"><a href="#2-1第一个终端的hexo分支" class="headerlink" title="2.1第一个终端的hexo分支"></a>2.1第一个终端的hexo分支</h3><p>在一开始创建博客的电脑上，将本地blog文件夹内必要的hexo文件push到username.github.io的hexo分支上，具体操作如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init  //初始化本地仓库</span><br><span class="line">git add source //将必要的文件依次添加，有些文件夹如npm install产生的node_modules由于路径过长不好处理，所以这里没有用`git add .`命令了，而是依次添加必要文件,例如source themes scaffolds _config.yml package.json package-lock.json等。</span><br><span class="line">git commit -m &quot;Blog Source Hexo&quot; //备注这是blog网站最原始的文件</span><br><span class="line">git branch hexo  //新建hexo分支</span><br><span class="line">git checkout hexo  //切换到hexo分支上</span><br><span class="line">git remote add origin git@github.com:yourname/yourname.github.io.git  //将本地与Github项目对接</span><br><span class="line">git push origin hexo  //push到Github项目的hexo分支上</span><br></pre></td></tr></table></figure>
 <h3 id="2-2另一终端完成clone复制以及push更新"><a href="#2-2另一终端完成clone复制以及push更新" class="headerlink" title="2.2另一终端完成clone复制以及push更新"></a>2.2另一终端完成clone复制以及push更新</h3><p>在另一个终端更新博客，只需要将Github的hexo分支上的内容克隆到本地，然后再对其进行更改和push更新，具体操作如下：</p>
@@ -138,6 +138,130 @@
       <tags>
         <tag>hexo</tag>
         <tag>多终端搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>菜鸟教程-Java教程-学习笔记</title>
+    <url>/2024/10/16/cainiao-java-learning/</url>
+    <content><![CDATA[<p>此文档仅基于个人经验和感受出发，为菜鸟驿站-java教程的学习笔记。</p>
+<p>课程参考链接：<a href="https://www.runoob.com/java/java-tutorial.html">https://www.runoob.com/java/java-tutorial.html</a></p>
+<span id="more"></span>
+
+<h2 id="一、Java基础语法-amp-Java注释"><a href="#一、Java基础语法-amp-Java注释" class="headerlink" title="一、Java基础语法&amp;Java注释"></a>一、Java基础语法&amp;Java注释</h2><h3 id="1、Java修饰符"><a href="#1、Java修饰符" class="headerlink" title="1、Java修饰符"></a>1、Java修饰符</h3><p>像其他语言一样，Java可以使用修饰符来修饰类中方法和属性。主要有两类修饰符：</p>
+<ul>
+<li>访问控制修饰符 : default, public , protected, private</li>
+<li>非访问控制修饰符 : final, abstract, static, synchronized</li>
+</ul>
+<h3 id="2、继承"><a href="#2、继承" class="headerlink" title="2、继承"></a>2、继承</h3><p>在 Java 中，一个类可以由其他类派生。如果你要创建一个类，而且已经存在一个类具有你所需要的属性或方法，那么你可以将新创建的类继承该类。</p>
+<p>利用继承的方法，可以重用已存在类的方法和属性，而不用重写这些代码。被继承的类称为超类（super class），派生类称为子类（sub class）。</p>
+<h3 id="3、接口"><a href="#3、接口" class="headerlink" title="3、接口"></a>3、接口</h3><p>在 Java 中，接口可理解为对象间相互通信的协议。接口在继承中扮演着很重要的角色。</p>
+<p>接口只定义派生要用到的方法，但是方法的具体实现完全取决于派生类。</p>
+<h3 id="4、Java-源程序与编译型运行区别"><a href="#4、Java-源程序与编译型运行区别" class="headerlink" title="4、Java 源程序与编译型运行区别"></a>4、Java 源程序与编译型运行区别</h3><p>如下图所示：</p>
+<p><img src="/cainiao-java-learning/ZSSDMld.png" alt="img"></p>
+<h3 id="5、文档注释"><a href="#5、文档注释" class="headerlink" title="5、文档注释"></a>5、文档注释</h3><p>文档注释以 <strong>&#x2F;*</strong>* 开始，以 ***&#x2F;** 结束，通常出现在类、方法、字段等的声明前面，用于生成代码文档，这种注释可以被工具提取并生成 API 文档，如 JavaDoc。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 这是一个文档注释示例</span><br><span class="line"> * 它通常包含有关类、方法或字段的详细信息</span><br><span class="line"> */</span><br><span class="line">public class MyClass &#123;</span><br><span class="line">    // 类的成员和方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>文档注释的格式通常包含一些特定的标签，如 <strong>@param</strong> 用于描述方法参数，**@return** 用于描述返回值，**@throws** 用于描述可能抛出的异常等等，这些标签有助于生成清晰的API文档，以便其他开发者能够更好地理解和使用你的代码。</p>
+<h2 id="二、Java对象和类"><a href="#二、Java对象和类" class="headerlink" title="二、Java对象和类"></a>二、Java对象和类</h2><p><strong>4、封装（Encapsulation）</strong>：</p>
+<ul>
+<li><p>将对象的状态（字段）私有化，通过公共方法访问。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private String name; </span><br><span class="line">public String getName() &#123; return name; &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>5、多态（Polymorphism）</strong>：</p>
+<ul>
+<li><p>对象可以表现为多种形态，主要通过方法重载和方法重写实现。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- 方法重载：`public int add(int a, int b) &#123; ... &#125;` 和 `public double add(double a, double b) &#123; ... &#125;`</span><br><span class="line"></span><br><span class="line">- 方法重写：`@Override public void makeSound() &#123; System.out.println(&quot;Meow&quot;); &#125;`</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>6、抽象（Abstraction）</strong>：</p>
+<ul>
+<li><p>使用抽象类和接口来定义必须实现的方法，不提供具体实现。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- 抽象类：`public abstract class Shape &#123; abstract void draw(); &#125;`</span><br><span class="line"></span><br><span class="line">- 接口：`public interface Animal &#123; void eat(); &#125;`</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>9、方法重载（Method Overloading）</strong>：</p>
+<ul>
+<li><p>同一个类中可以有多个同名的方法，但参数不同。</p>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class MathUtils &#123;</span><br><span class="line">    public int add(int a, int b) &#123;</span><br><span class="line">        return a + b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public double add(double a, double b) &#123;</span><br><span class="line">        return a + b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>对象和类的概念。</p>
+<ul>
+<li><strong>对象</strong>：对象是类的一个实例，有状态和行为。例如，一条狗是一个对象，它的状态有：颜色、名字、品种；行为有：摇尾巴、叫、吃等。</li>
+<li><strong>类</strong>：类是一个模板，它描述一类对象的行为和状态。</li>
+</ul>
+<h3 id="Java-中的类"><a href="#Java-中的类" class="headerlink" title="Java 中的类"></a>Java 中的类</h3><p>类可以看成是创建 Java 对象的模板。</p>
+<p><img src="/cainiao-java-learning/20210105-java-object-1.png" alt="img"></p>
+<p>一个类可以包含以下类型变量：</p>
+<ul>
+<li><strong>局部变量</strong>：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</li>
+<li><strong>成员变量</strong>：成员变量是定义在类中，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。</li>
+<li><strong>类变量</strong>：类变量也声明在类中，方法体之外，但必须声明为 static 类型。</li>
+</ul>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><p>每个类都有构造方法。如果没有显式地为类定义构造方法，Java 编译器将会<strong>为该类提供一个默认构造方法</strong>。</p>
+<p>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
+<p>下面是一个构造方法示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Puppy&#123;</span><br><span class="line">    public Puppy()&#123;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    public Puppy(String name)&#123;</span><br><span class="line">        // 这个构造器仅有一个参数：name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><p>对象是根据类创建的。在Java中，使用关键字 new 来创建一个新的对象。创建对象需要以下三步：</p>
+<ul>
+<li><strong>声明</strong>：声明一个对象，包括对象名称和对象类型。</li>
+<li><strong>实例化</strong>：使用关键字 new 来创建一个对象。</li>
+<li><strong>初始化</strong>：使用 new 创建对象时，会调用构造方法初始化对象。</li>
+</ul>
+<p>下面是一个创建对象的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class Puppy&#123;</span><br><span class="line">   public Puppy(String name)&#123;</span><br><span class="line">      //这个构造器仅有一个参数：name</span><br><span class="line">      System.out.println(&quot;小狗的名字是 : &quot; + name ); </span><br><span class="line">   &#125;</span><br><span class="line">   public static void main(String[] args)&#123;</span><br><span class="line">      // 下面的语句将创建一个Puppy对象</span><br><span class="line">      Puppy myPuppy = new Puppy( &quot;tommy&quot; );</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、DO、BO、DTO、VO、AO、PO、UID等术语解释"><a href="#三、DO、BO、DTO、VO、AO、PO、UID等术语解释" class="headerlink" title="三、DO、BO、DTO、VO、AO、PO、UID等术语解释"></a>三、DO、BO、DTO、VO、AO、PO、UID等术语解释</h2><p>在Java开发中，DO、BO、DTO、VO、AO、PO、UID等术语通常用于表示不同的对象类型或概念。以下是它们的常见含义：</p>
+<ol>
+<li><strong>DO (Data Object &#x2F; Domain Object)</strong>:<ul>
+<li><strong>数据对象</strong>或<strong>领域对象</strong>，通常与数据库表直接对应，用于表示持久化数据。</li>
+<li>例如，一个<code>UserDO</code>可能对应数据库中的<code>user</code>表。</li>
+</ul>
+</li>
+<li><strong>BO (Business Object)</strong>:<ul>
+<li><strong>业务对象</strong>，封装了业务逻辑和操作，通常由多个DO或其他BO组合而成。</li>
+<li>例如，一个<code>OrderBO</code>可能包含订单信息、用户信息和商品信息。</li>
+</ul>
+</li>
+<li><strong>DTO (Data Transfer Object)</strong>:<ul>
+<li><strong>数据传输对象</strong>，用于在不同层（如服务层和表现层）之间传输数据。</li>
+<li>例如，<code>UserDTO</code>可能包含用户的基本信息，用于前端展示。</li>
+</ul>
+</li>
+<li><strong>VO (Value Object)</strong>:<ul>
+<li><strong>值对象</strong>，通常用于表示一个不可变的对象，包含一些属性但没有行为。</li>
+<li>例如，<code>AddressVO</code>可能包含地址的详细信息。</li>
+</ul>
+</li>
+<li><strong>AO (Application Object)</strong>:<ul>
+<li><strong>应用对象</strong>，用于表示应用程序中的某个实体或概念，通常包含业务逻辑。</li>
+<li>例如，<code>ReportAO</code>可能表示一个报表对象，包含生成报表的逻辑。</li>
+</ul>
+</li>
+<li><strong>PO (Persistent Object)</strong>:<ul>
+<li><strong>持久化对象</strong>，与DO类似，通常用于表示与数据库表直接对应的对象。</li>
+<li>例如，<code>UserPO</code>可能对应数据库中的<code>user</code>表。</li>
+</ul>
+</li>
+<li><strong>UID (Unique Identifier)</strong>:<ul>
+<li><strong>唯一标识符</strong>，用于唯一标识某个对象或实体。</li>
+<li>例如，<code>userId</code>可能是一个用户的唯一标识符。</li>
+</ul>
+</li>
+</ol>
+<p>这些术语的具体使用可能因项目或团队的不同而有所差异，但它们的核心概念通常是相似的。</p>
+]]></content>
+      <categories>
+        <category>技术学习</category>
+      </categories>
+      <tags>
+        <tag>Java学习</tag>
       </tags>
   </entry>
   <entry>
@@ -163,6 +287,76 @@
         <tag>hexo</tag>
         <tag>分享</tag>
         <tag>next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>系统研发脚手架初始化SOP</title>
+    <url>/2024/07/11/environment-init-notes/</url>
+    <content><![CDATA[<p>拉取前后端脚手架之后的一些开发初始化操作及常见问题记录。</p>
+<span id="more"></span>
+
+<h2 id="一、后端"><a href="#一、后端" class="headerlink" title="一、后端"></a>一、后端</h2><ol>
+<li><p>脚手架生成中心填写信息，生成脚手架；</p>
+</li>
+<li><p>在数据库服务器上新建项目所属数据库；</p>
+</li>
+<li><p>更改application-local中的jdbc连接信息；（数据库服务器地址、用户名、用户密码、数据库名）</p>
+</li>
+<li><p>使用scripts&#x2F;sql中的MySQL建表语句在navicat中导入初始系统表；</p>
+</li>
+<li><p>打开File—Settings—Compiler—“Shared build process heap VM options”设置为以下值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-Djps.track.ap.dependencies=false</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>右上角添加“test“的application运行配置：Add New Configuration—Application—设置name—Build and run选择Application（com.XXXXX项目名称）</p>
+</li>
+<li><p>在项目数据库下根据前期表结构设计文档，新建业务表</p>
+</li>
+<li><p>使用postman跳过token校验，修改application-local中的shiro-auth后面的路径，即可跳过校验；</p>
+</li>
+<li><p>拆分业务代码架构需要在代码原始配置中增加扫描路径，autoconfiguration中添加相关代码路径；</p>
+</li>
+</ol>
+<h2 id="二、前端"><a href="#二、前端" class="headerlink" title="二、前端"></a>二、前端</h2><ol>
+<li><p>脚手架生成中心填写信息，生成脚手架；</p>
+</li>
+<li><p>package-lock.json是自动生成的文件，重新下载需要和node_modules文件夹一起删除，重新下载，建议使用yarn install命令安装；</p>
+</li>
+<li><p>npmrc文件需要把最后一行的注释解除，改为自己项目的路径；</p>
+</li>
+<li><p>在terminal终端窗口使用以下命令下载项目所需包：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yarn install</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="三、问题记录"><a href="#三、问题记录" class="headerlink" title="三、问题记录"></a>三、问题记录</h2><p>1、implement methods：实现基类或接口中的方法；</p>
+<p>2、@RestController注解：类中的方法返回的数据可以直接作为HTTP响应的内容，而不需要通过视图解析器进行渲染。</p>
+<p>3、@ComponentScan注解：将组件自动加载到容器，加了包扫描@ComponentScan注解后，只要标注了@Controller、@Service、@Repository、@Component注解中的任何一个，其组件都会被自动扫描，加入到容器中。</p>
+<p>4、热加载：如果是<strong>方法内部的修改或者静态资源的修改</strong>，在 IDEA 中是可以通过 <strong>Rebuild</strong>（Ctrl + Shift + F9）进行热加载的；</p>
+<p>5、遇到无法实例化的问题，到ComponentScan里面增加我们开发的项目路径；</p>
+<p>6、PO层设置了mybatis自动注入时间，但是@TableField(fill&#x3D;FieldFill.INSERT)注解无法正常写入时间，需要检查MetaObjectHandler的具体实现，搞清楚自动注入的规则，可能只有固定的字段能被注入；</p>
+<p>7、进入列模块编辑模式：SHIFT+ALT+INSERT</p>
+<p>8、idea删除未使用的包快捷键： Ctrl + Alt + O</p>
+<p>9、java: Can‘t generate mapping method with primitive return type.Mapper无法正常导入类：@Mapper导入的包出错了；</p>
+<p>10、ctrl+shift+f全局搜；shift+shift搜索类；ctrl+shift+r全局替换；</p>
+<p>11、mysql怎么批量杀死进程：<a href="https://blog.csdn.net/yanhang0610/article/details/52724009">https://blog.csdn.net/yanhang0610/article/details/52724009</a></p>
+<p>12、idea环境下使用git提交代码、push代码，需要先checkout到remote的master分支，此基础上修改再提交可以成功，否则直接提交会显示用户为appuser@localhost被remote的库拒绝提交，且任务编号应处于正常状态；</p>
+<p>13、Boolean和boolean的区别？</p>
+<ul>
+<li><code>Boolean</code> 是一个类，属于 <code>java.lang</code> 包，用于表示布尔值的封装类型。它提供了多个静态常量和方法，例如 <code>Boolean.TRUE</code> 和 <code>Boolean.FALSE</code>、valueOf（boolean b）。占用的内存更多，因为它是一个对象，包含了其他的信息，如哈希码等。</li>
+<li><code>boolean</code> 是一个原始数据类型，用于直接存储布尔值，只有两个值true和false。是一个8位的值，在物理存储上只占用一个字节。</li>
+</ul>
+<p>14、按照DDD标准新增一个模块的全生命周期，需要至少需要新增17个类，其中11个class，6个interface；</p>
+<p>15、MyBatis-Plus中LambdaQueryWrapper的使用详解：<a href="https://cloud.baidu.com/article/3314759">https://cloud.baidu.com/article/3314759</a></p>
+<p><strong>参考链接：</strong></p>
+<p>IDEA常用快捷键汇总：<a href="https://blog.csdn.net/weixin_45433031/article/details/106166961">https://blog.csdn.net/weixin_45433031/article/details/106166961</a></p>
+<p>热加载、热重启：<a href="https://www.jb51.net/program/304976b3l.htm">https://www.jb51.net/program/304976b3l.htm</a></p>
+<p>@TableField(fill&#x3D;FieldFill.INSERT)注解无法生效：<a href="https://blog.csdn.net/weixin_44892327/article/details/135935914">https://blog.csdn.net/weixin_44892327/article/details/135935914</a></p>
+<p>Mapper导入的包出错：<a href="https://blog.csdn.net/qq_44980517/article/details/136235957">https://blog.csdn.net/qq_44980517/article/details/136235957</a></p>
+<p>。</p>
+]]></content>
+      <categories>
+        <category>技术学习</category>
+      </categories>
+      <tags>
+        <tag>研发脚手架初始环境搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -278,6 +472,32 @@
 <li>4.最后，删除feature1分支：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git branch -d feature1</span><br><span class="line">Deleted branch feature1 (was 14096d0).</span><br></pre></td></tr></table></figure>
 <strong>注意:</strong><br>用<code>git log --graph</code>命令可以看到分支合并图。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git log --graph --pretty=oneline --abbrev-commit</span><br><span class="line">*   cf810e4 (HEAD -&gt; master) conflict fixed</span><br><span class="line">|\  </span><br><span class="line">| * 14096d0 (feature1) AND simple</span><br><span class="line">* | 5dc6824 &amp; simple</span><br><span class="line">|/  </span><br><span class="line">* b17d20e branch test</span><br><span class="line">* d46f35e (origin/master) remove test.txt</span><br><span class="line">* b84166e add test.txt</span><br><span class="line">* 519219b git tracks changes</span><br><span class="line">* e43a48b understand how stage works</span><br><span class="line">* 1094adb append GPL</span><br><span class="line">* e475afc add distributed</span><br><span class="line">* eaadf4e wrote a readme file</span><br></pre></td></tr></table></figure></li>
 </ul>
+]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git踩坑记录</title>
+    <url>/2024/10/09/git-learning-record/</url>
+    <content><![CDATA[<h2 id="1、-lt-lt-lt-lt-lt-lt-lt-HEAD-gt-gt-gt-gt-gt-gt-gt-dev什么意思？"><a href="#1、-lt-lt-lt-lt-lt-lt-lt-HEAD-gt-gt-gt-gt-gt-gt-gt-dev什么意思？" class="headerlink" title="1、&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD  &gt;&gt;&gt;&gt;&gt;&gt;&gt; dev什么意思？"></a>1、&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD  &gt;&gt;&gt;&gt;&gt;&gt;&gt; dev什么意思？</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">// 你的 &#x27;HEAD&#x27; 分支的代码</span><br><span class="line">=======</span><br><span class="line">// 你尝试合并的分支的代码</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; dev</span><br></pre></td></tr></table></figure>
+
+<p>这表示你遇到了一个合并冲突。Git 在尝试合并两个分支时，如果发现有相同的文件在两个分支中都有修改，但是修改的内容不一致，Git 就无法自动合并这些更改，这时候就需要你手动解决冲突。</p>
+<span id="more"></span>
+
+<p>这段标记的具体含义是：</p>
+<ul>
+<li><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code>：表示接下来的代码是你当前 <code>HEAD</code> 分支（即你正在合并到的分支）中的版本。</li>
+<li><code>=======</code>：这是分隔符，用来区分不同分支的代码。</li>
+<li><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; dev</code>：表示上面的代码是你尝试合并的分支（在这个例子中是 <code>dev</code> 分支）中的版本。</li>
+</ul>
+<p>你需要决定要保留哪个版本的代码，或者结合两个版本的代码。解决冲突后，你需要使用以下命令来标记冲突已解决：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;解决合并冲突&quot;</span><br></pre></td></tr></table></figure>
+
+<p>完成这些步骤后，合并冲突就会被视为已解决，你可以继续合并操作。</p>
 ]]></content>
       <categories>
         <category>git</category>
@@ -429,6 +649,35 @@
       </tags>
   </entry>
   <entry>
+    <title>剑指offer——6.旋转数组的最小数字</title>
+    <url>/2019/08/04/jianzhioffer06/</url>
+    <content><![CDATA[<h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><blockquote>
+<p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。 (NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。)</p>
+</blockquote>
+<h3 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;我们可以注意到旋转之后的数组其实可以划分为两个排序的子数组，并且该数组的特点是前面的子数组中的元素总是大于或者等于后面子数组的元素。其中最小的元素正好是这两个数组的分界线。本题给出的数组在一定范围内是排序的，因此我们可以用二分查找法来实现O（logn）的查找。具体的算法步骤如下：</p>
+<span id="more"></span>
+<ul>
+<li>以数组{3,4,5,1,2}为例，我们可以找到数组的中间元素，定义两个指针P1和P2，左指针P1指向数组的第一个元素，右指针P2指向最后一个元素。如果中间元素位于前面的递增子数组，那么它应该大于或者等于P1所指向的元素。此时最小元素应该位于该中间元素之后，然后把P1指向该中间元素，移动之后P1仍然处于前面的递增子数组中。</li>
+<li>同样，若中间元素位于后面的递增子数组，那么其应该小于P2所指向的元素。此时最小元素应该在该中间元素之前，然后我们把P2指向该中间元素。移动之后P2仍然位于后面的递增子数组中。</li>
+<li>P1总是指向前面递增子数组的元素，P2总是指向后面递增子数组的元素，最终P1和P2会指向两个相邻的元素，这就是循环结束的条件。<img src="/2019/08/04/jianzhioffer06/%E6%95%B0%E7%BB%84%E8%BE%93%E5%87%BA%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97.jpg" class="" title="数组输出最小数字"></li>
+</ul>
+<h3 id="3-特殊案例"><a href="#3-特殊案例" class="headerlink" title="3.特殊案例"></a>3.特殊案例</h3><ul>
+<li>如果把排序数组的0个元素搬到最后面，这仍然是旋转数组，我们的代码需要支持这种情况。如果发现数组中的第一个数字小于最后一个数字，表明该数组是排序的，就可以直接返回第一个数字了。</li>
+<li>下面这种情况，即第一个指针指向的数字、第二个指针指向的数字和中间的数字三者相等，我们无法判断中间的数字1属于前面的递增子数组还是后面的递增子数组。这样的话，我们只能进行顺序查找。<img src="/2019/08/04/jianzhioffer06/%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE.jpg" class="" title="数组顺序查找"></li>
+</ul>
+<h3 id="4-代码实现"><a href="#4-代码实现" class="headerlink" title="4.代码实现"></a>4.代码实现</h3><p><strong>C++：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minNumberInRotateArray(vector&lt;int&gt; rotateArray) &#123;</span><br><span class="line">        int size = rotateArray.size();                            //数组长度</span><br><span class="line">        if(size == 0)&#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        int left = 0;                                            //左指针P1</span><br><span class="line">        int right = size - 1;                                    //右指针P2</span><br><span class="line">        int mid = 0;                                            //中间指针</span><br><span class="line">        while(rotateArray[left] &gt;= rotateArray[right])&#123;            //确保旋转</span><br><span class="line">            if(right - left == 1)&#123;                                //左右指针相邻</span><br><span class="line">                mid = right;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            mid = left + (right - left) / 2;                    //计算中间指针位置</span><br><span class="line">            //特殊情况：如果无法确定中间元素是属于前面还是后面的递增子数组，只能顺序查找</span><br><span class="line">            if(rotateArray[left] == rotateArray[right] &amp;&amp; rotateArray[mid] == rotateArray[left])&#123;</span><br><span class="line">                return MinInOrder(rotateArray, left, right);</span><br><span class="line">            &#125;</span><br><span class="line">            //中间元素位于前面的递增子数组，此时最小元素位于中间元素的后面</span><br><span class="line">            if(rotateArray[mid] &gt;= rotateArray[left])&#123;</span><br><span class="line">                left = mid;</span><br><span class="line">            &#125;</span><br><span class="line">            //中间元素位于后面的递增子数组，此时最小元素位于中间元素的前面</span><br><span class="line">            else&#123;</span><br><span class="line">                right = mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return rotateArray[mid];</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    //顺序寻找最小值</span><br><span class="line">    int MinInOrder(vector&lt;int&gt; &amp;num, int left, int right)&#123;</span><br><span class="line">        int result = num[left];</span><br><span class="line">        for(int i = left + 1; i &lt; right; i++)&#123;</span><br><span class="line">            if(num[i] &lt; result)&#123;</span><br><span class="line">                result = num[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Python2.7：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">       def minNumberInRotateArray(self, rotateArray):</span><br><span class="line">           # write code here</span><br><span class="line">           if len(rotateArray) == 0:</span><br><span class="line">               return 0</span><br><span class="line">           left = 0</span><br><span class="line">           right = len(rotateArray) - 1</span><br><span class="line">           mid = 0</span><br><span class="line">           while rotateArray[left] &gt;= rotateArray[right]:</span><br><span class="line">               if right - left == 1:</span><br><span class="line">                   mid = right</span><br><span class="line">                   break</span><br><span class="line">               mid = left + (right - left) // 2</span><br><span class="line">               if rotateArray[left] == rotateArray[mid] and rotateArray[mid] == rotateArray[right]:</span><br><span class="line">                   return self.minInorder(rotateArray, left, right)</span><br><span class="line">               if rotateArray[mid] &gt;= rotateArray[left]:</span><br><span class="line">                   left = mid</span><br><span class="line">               else:</span><br><span class="line">                   right = mid</span><br><span class="line">           return rotateArray[mid]</span><br><span class="line">       </span><br><span class="line">       def minInorder(self, array, left, right):</span><br><span class="line">           result = array[left]</span><br><span class="line">           for i in range(left+1, right+1):</span><br><span class="line">               if array[i] &lt; result:</span><br><span class="line">                   result = array[i]</span><br><span class="line">           return result</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>剑指offer——5.用两个栈实现队列</title>
     <url>/2019/08/04/jianzhioffer05/</url>
     <content><![CDATA[<h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><blockquote>
@@ -458,35 +707,6 @@
       <tags>
         <tag>算法</tag>
         <tag>栈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>剑指offer——6.旋转数组的最小数字</title>
-    <url>/2019/08/04/jianzhioffer06/</url>
-    <content><![CDATA[<h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><blockquote>
-<p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。 (NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。)</p>
-</blockquote>
-<h3 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;我们可以注意到旋转之后的数组其实可以划分为两个排序的子数组，并且该数组的特点是前面的子数组中的元素总是大于或者等于后面子数组的元素。其中最小的元素正好是这两个数组的分界线。本题给出的数组在一定范围内是排序的，因此我们可以用二分查找法来实现O（logn）的查找。具体的算法步骤如下：</p>
-<span id="more"></span>
-<ul>
-<li>以数组{3,4,5,1,2}为例，我们可以找到数组的中间元素，定义两个指针P1和P2，左指针P1指向数组的第一个元素，右指针P2指向最后一个元素。如果中间元素位于前面的递增子数组，那么它应该大于或者等于P1所指向的元素。此时最小元素应该位于该中间元素之后，然后把P1指向该中间元素，移动之后P1仍然处于前面的递增子数组中。</li>
-<li>同样，若中间元素位于后面的递增子数组，那么其应该小于P2所指向的元素。此时最小元素应该在该中间元素之前，然后我们把P2指向该中间元素。移动之后P2仍然位于后面的递增子数组中。</li>
-<li>P1总是指向前面递增子数组的元素，P2总是指向后面递增子数组的元素，最终P1和P2会指向两个相邻的元素，这就是循环结束的条件。<img src="/2019/08/04/jianzhioffer06/%E6%95%B0%E7%BB%84%E8%BE%93%E5%87%BA%E6%9C%80%E5%B0%8F%E6%95%B0%E5%AD%97.jpg" class="" title="数组输出最小数字"></li>
-</ul>
-<h3 id="3-特殊案例"><a href="#3-特殊案例" class="headerlink" title="3.特殊案例"></a>3.特殊案例</h3><ul>
-<li>如果把排序数组的0个元素搬到最后面，这仍然是旋转数组，我们的代码需要支持这种情况。如果发现数组中的第一个数字小于最后一个数字，表明该数组是排序的，就可以直接返回第一个数字了。</li>
-<li>下面这种情况，即第一个指针指向的数字、第二个指针指向的数字和中间的数字三者相等，我们无法判断中间的数字1属于前面的递增子数组还是后面的递增子数组。这样的话，我们只能进行顺序查找。<img src="/2019/08/04/jianzhioffer06/%E6%95%B0%E7%BB%84%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE.jpg" class="" title="数组顺序查找"></li>
-</ul>
-<h3 id="4-代码实现"><a href="#4-代码实现" class="headerlink" title="4.代码实现"></a>4.代码实现</h3><p><strong>C++：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int minNumberInRotateArray(vector&lt;int&gt; rotateArray) &#123;</span><br><span class="line">        int size = rotateArray.size();                            //数组长度</span><br><span class="line">        if(size == 0)&#123;</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">        int left = 0;                                            //左指针P1</span><br><span class="line">        int right = size - 1;                                    //右指针P2</span><br><span class="line">        int mid = 0;                                            //中间指针</span><br><span class="line">        while(rotateArray[left] &gt;= rotateArray[right])&#123;            //确保旋转</span><br><span class="line">            if(right - left == 1)&#123;                                //左右指针相邻</span><br><span class="line">                mid = right;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            mid = left + (right - left) / 2;                    //计算中间指针位置</span><br><span class="line">            //特殊情况：如果无法确定中间元素是属于前面还是后面的递增子数组，只能顺序查找</span><br><span class="line">            if(rotateArray[left] == rotateArray[right] &amp;&amp; rotateArray[mid] == rotateArray[left])&#123;</span><br><span class="line">                return MinInOrder(rotateArray, left, right);</span><br><span class="line">            &#125;</span><br><span class="line">            //中间元素位于前面的递增子数组，此时最小元素位于中间元素的后面</span><br><span class="line">            if(rotateArray[mid] &gt;= rotateArray[left])&#123;</span><br><span class="line">                left = mid;</span><br><span class="line">            &#125;</span><br><span class="line">            //中间元素位于后面的递增子数组，此时最小元素位于中间元素的前面</span><br><span class="line">            else&#123;</span><br><span class="line">                right = mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return rotateArray[mid];</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    //顺序寻找最小值</span><br><span class="line">    int MinInOrder(vector&lt;int&gt; &amp;num, int left, int right)&#123;</span><br><span class="line">        int result = num[left];</span><br><span class="line">        for(int i = left + 1; i &lt; right; i++)&#123;</span><br><span class="line">            if(num[i] &lt; result)&#123;</span><br><span class="line">                result = num[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>Python2.7：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">       def minNumberInRotateArray(self, rotateArray):</span><br><span class="line">           # write code here</span><br><span class="line">           if len(rotateArray) == 0:</span><br><span class="line">               return 0</span><br><span class="line">           left = 0</span><br><span class="line">           right = len(rotateArray) - 1</span><br><span class="line">           mid = 0</span><br><span class="line">           while rotateArray[left] &gt;= rotateArray[right]:</span><br><span class="line">               if right - left == 1:</span><br><span class="line">                   mid = right</span><br><span class="line">                   break</span><br><span class="line">               mid = left + (right - left) // 2</span><br><span class="line">               if rotateArray[left] == rotateArray[mid] and rotateArray[mid] == rotateArray[right]:</span><br><span class="line">                   return self.minInorder(rotateArray, left, right)</span><br><span class="line">               if rotateArray[mid] &gt;= rotateArray[left]:</span><br><span class="line">                   left = mid</span><br><span class="line">               else:</span><br><span class="line">                   right = mid</span><br><span class="line">           return rotateArray[mid]</span><br><span class="line">       </span><br><span class="line">       def minInorder(self, array, left, right):</span><br><span class="line">           result = array[left]</span><br><span class="line">           for i in range(left+1, right+1):</span><br><span class="line">               if array[i] &lt; result:</span><br><span class="line">                   result = array[i]</span><br><span class="line">           return result</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>剑指offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>数组</tag>
       </tags>
   </entry>
   <entry>
@@ -661,6 +881,52 @@
       <tags>
         <tag>分享</tag>
         <tag>导航</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>正则表达式基础知识点</title>
+    <url>/2025/03/19/regular-expressions-basic-knowledge/</url>
+    <content><![CDATA[<p>正则表达式是用于匹配、查找和操作文本的强大工具，通过定义特定模式来描述文本规则。</p>
+<h2 id="一、基础语法"><a href="#一、基础语法" class="headerlink" title="一、基础语法"></a>一、基础语法</h2><h3 id="（一）字符匹配"><a href="#（一）字符匹配" class="headerlink" title="（一）字符匹配"></a>（一）字符匹配</h3><ol>
+<li><p><strong>普通字符</strong>：直接匹配对应字符本身。例如，正则表达式 <code>abc</code> 能匹配字符串 “abc”，因为它精确匹配了这三个连续的字符。</p>
+</li>
+<li><p><strong>元字符</strong>：具有特殊含义的字符。例如，<code>.</code> 匹配除换行符 <code>\n</code> 之外的任意单个字符。正则表达式 <code>a.c</code> 可以匹配 “abc”、“a1c”、“a c” 等，只要中间字符是单个任意字符（除 <code>\n</code> 外）。</p>
+<span id="more"></span></li>
+</ol>
+<h3 id="（二）字符类"><a href="#（二）字符类" class="headerlink" title="（二）字符类"></a>（二）字符类</h3><ol>
+<li>**方括号 <code>[]</code>**：定义一个字符集合，匹配其中任意一个字符。例如，<code>[abc]</code> 可以匹配 “a”、“b” 或 “c”。还能使用范围表示，如 <code>[a - z]</code> 匹配任意小写字母，<code>[0 - 9]</code> 匹配任意数字。</li>
+<li>**否定字符类 <code>[^]</code>**：匹配不在方括号内的任意一个字符。例如，<code>[^abc]</code> 可以匹配除 “a”、“b”、“c” 之外的任何字符。</li>
+</ol>
+<h3 id="（三）数量限定符"><a href="#（三）数量限定符" class="headerlink" title="（三）数量限定符"></a>（三）数量限定符</h3><ol>
+<li>**<code>\*</code>**：匹配前面的元素零次或多次。例如，<code>a*</code> 可以匹配空字符串，也可以匹配 “a”、“aa”、“aaa” 等任意多个 “a” 组成的字符串。</li>
+<li>**<code>+</code>**：匹配前面的元素一次或多次。例如，<code>a+</code> 至少匹配一个 “a”，能匹配 “a”、“aa”、“aaa” 等，但不能匹配空字符串。</li>
+<li>**<code>?</code>**：匹配前面的元素零次或一次。例如，<code>a?</code> 可以匹配空字符串或 “a”。</li>
+<li>**<code>&#123;n&#125;</code>**：匹配前面的元素恰好 <code>n</code> 次。例如，<code>a&#123;3&#125;</code> 只能匹配 “aaa”。</li>
+<li>**<code>&#123;n,&#125;</code>**：匹配前面的元素至少 <code>n</code> 次。例如，<code>a&#123;3,&#125;</code> 能匹配 “aaa”、“aaaa”、“aaaaa” 等。</li>
+<li>**<code>&#123;n,m&#125;</code>**：匹配前面的元素至少 <code>n</code> 次，最多 <code>m</code> 次。例如，<code>a&#123;2,4&#125;</code> 可以匹配 “aa”、“aaa”、“aaaa”。</li>
+</ol>
+<h2 id="二、边界匹配"><a href="#二、边界匹配" class="headerlink" title="二、边界匹配"></a>二、边界匹配</h2><ol>
+<li>**<code>^</code>**：匹配字符串的开头。例如，<code>^abc</code> 只会匹配以 “abc” 开头的字符串，如 “abcdef”，而不会匹配 “defabc”。</li>
+<li>**<code>$</code>**：匹配字符串的结尾。例如，<code>abc$</code> 只会匹配以 “abc” 结尾的字符串，如 “defabc”，而不会匹配 “abcdef”。</li>
+<li>**<code>\b</code>**：匹配单词边界，即单词和非单词字符的分界处。例如，<code>\bcat\b</code> 可以匹配 “the cat is here” 中的 “cat”，但不会匹配 “category” 中的 “cat”。</li>
+</ol>
+<h2 id="三、分组与捕获"><a href="#三、分组与捕获" class="headerlink" title="三、分组与捕获"></a>三、分组与捕获</h2><ol>
+<li>**分组 <code>()</code>**：将多个字符作为一个整体进行操作。例如，<code>(ab)+</code> 表示 “ab” 整体出现一次或多次，可以匹配 “ab”、“abab”、“ababab” 等。</li>
+<li><strong>捕获组</strong>：括号内的表达式会被捕获，可以在后续通过索引（从 1 开始）来引用。例如，对于正则表达式 <code>(a)(b)</code>，在匹配 “ab” 后，<code>group(1)</code> 会返回 “a”，<code>group(2)</code> 会返回 “b”。</li>
+</ol>
+<h2 id="四、示例分析"><a href="#四、示例分析" class="headerlink" title="四、示例分析"></a>四、示例分析</h2><p>假设要从字符串 “USD:352677,33.00” 中提取出 “USD” 和 “352677,33.00” 两部分，使用正则表达式 <code>([A-Z]&#123;3&#125;):(\\d&#123;1,3&#125;(,\\d&#123;3&#125;)*\\.\\d&#123;2&#125;)</code>。</p>
+<ol>
+<li>**<code>([A-Z]&#123;3&#125;)</code>**：这是第一个捕获组，<code>[A-Z]</code> 表示所有大写字母的字符类，<code>&#123;3&#125;</code> 限定前面的字符类要出现 3 次，所以它会匹配到 “USD” 这样的三位大写字母组合，通过 <code>group(1)</code> 可获取 “USD”。</li>
+<li>**<code>:</code>**：匹配字符串中的冒号。</li>
+<li>**<code>(\\d&#123;1,3&#125;(,\\d&#123;3&#125;)\*\\.\\d&#123;2&#125;)</code>**：这是第二个捕获组，<code>\\d&#123;1,3&#125;</code> 匹配金额整数部分开头的 1 到 3 位数字，<code>(,\\d&#123;3&#125;)*</code> 匹配可能存在的千分位分隔符及后续 3 位数字，<code>*</code> 表示可以有零个或多个这样的组合，<code>\\.\\d&#123;2&#125;</code> 匹配小数点及后面两位数字。整体匹配 “352677,33.00” 这样格式的金额，通过 <code>group(2)</code> 可获取该金额字符串。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术学习</category>
+      </categories>
+      <tags>
+        <tag>正则表达式</tag>
+        <tag>java开发</tag>
       </tags>
   </entry>
   <entry>
