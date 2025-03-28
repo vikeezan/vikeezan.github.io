@@ -20,30 +20,38 @@
     var CONFIG = {"hostname":"www.vikeezan.club","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="业精于勤荒于嬉">
-<meta property="og:type" content="website">
-<meta property="og:title" content="VIKEEZAN">
-<meta property="og:url" content="https://www.vikeezan.club/index.html">
+  <meta name="description" content="第1章　编程规约本章是传统意义上的代码规范，包括变量命名、代码风格、控制语句、代码注释、前后端规约等基本的编程习惯，以及从高并发场景中提炼出来的集合处理技巧与并发多线程的注意事项。 1.2 常量定义 不要使用一个常量类维护所有的常量，要按常量功能进行归类，分开维护。  12说明：大而全的常量类杂乱无章，必须使用查找功能才能定位到要修改的常量，既不利于理解，也不利于维护。正例：缓存相关常量放在类Ca">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EP20-《阿里巴巴Java开发手册》读书笔记">
+<meta property="og:url" content="https://www.vikeezan.club/2025/03/20/EP20-alibaba-java-readnote/index.html">
 <meta property="og:site_name" content="VIKEEZAN">
-<meta property="og:description" content="业精于勤荒于嬉">
+<meta property="og:description" content="第1章　编程规约本章是传统意义上的代码规范，包括变量命名、代码风格、控制语句、代码注释、前后端规约等基本的编程习惯，以及从高并发场景中提炼出来的集合处理技巧与并发多线程的注意事项。 1.2 常量定义 不要使用一个常量类维护所有的常量，要按常量功能进行归类，分开维护。  12说明：大而全的常量类杂乱无章，必须使用查找功能才能定位到要修改的常量，既不利于理解，也不利于维护。正例：缓存相关常量放在类Ca">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.vikeezan.club/2025/03/20/EP20-alibaba-java-readnote/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9B%B8%E5%87%8F%E4%BE%8B%E5%AD%90.png">
+<meta property="og:image" content="https://www.vikeezan.club/2025/03/20/EP20-alibaba-java-readnote/Map%E7%B1%BB%E9%9B%86%E5%90%88KV%E5%AD%98%E5%82%A8.jpg">
+<meta property="og:image" content="https://www.vikeezan.club/2025/03/20/EP20-alibaba-java-readnote/%E6%B3%A8%E9%87%8A%E4%BB%A3%E7%A0%81%E7%9A%84%E8%A7%84%E7%BA%A6.png">
+<meta property="og:image" content="https://www.vikeezan.club/2025/03/20/EP20-alibaba-java-readnote/%E6%8E%A8%E8%8D%90%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84.png">
+<meta property="article:published_time" content="2025-03-20T01:43:25.000Z">
+<meta property="article:modified_time" content="2025-03-28T12:16:02.168Z">
 <meta property="article:author" content="vikeezan">
+<meta property="article:tag" content="java开发">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.vikeezan.club/2025/03/20/EP20-alibaba-java-readnote/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9B%B8%E5%87%8F%E4%BE%8B%E5%AD%90.png">
 
-<link rel="canonical" href="https://www.vikeezan.club/">
+<link rel="canonical" href="https://www.vikeezan.club/2025/03/20/EP20-alibaba-java-readnote/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>VIKEEZAN</title>
+  <title>EP20-《阿里巴巴Java开发手册》读书笔记 | VIKEEZAN</title>
   
 
 
@@ -184,9 +192,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -202,10 +211,9 @@
       <meta itemprop="name" content="VIKEEZAN">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/03/20/EP20-alibaba-java-readnote/" class="post-title-link" itemprop="url">EP20-《阿里巴巴Java开发手册》读书笔记</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          EP20-《阿里巴巴Java开发手册》读书笔记
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -233,7 +241,14 @@
                 </span>
             </span>
 
-          <br>
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -258,7 +273,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="第1章-编程规约"><a href="#第1章-编程规约" class="headerlink" title="第1章　编程规约"></a>第1章　编程规约</h2><p>本章是传统意义上的代码规范，包括变量命名、代码风格、控制语句、代码注释、前后端规约等基本的编程习惯，以及从高并发场景中提炼出来的集合处理技巧与并发多线程的注意事项。</p>
+        <h2 id="第1章-编程规约"><a href="#第1章-编程规约" class="headerlink" title="第1章　编程规约"></a>第1章　编程规约</h2><p>本章是传统意义上的代码规范，包括变量命名、代码风格、控制语句、代码注释、前后端规约等基本的编程习惯，以及从高并发场景中提炼出来的集合处理技巧与并发多线程的注意事项。</p>
 <h3 id="1-2-常量定义"><a href="#1-2-常量定义" class="headerlink" title="1.2 常量定义"></a>1.2 常量定义</h3><ol>
 <li>不要使用一个常量类维护所有的常量，要按常量功能进行归类，分开维护。</li>
 </ol>
@@ -1049,894 +1064,38 @@
 <li></li>
 </ol>
 
-      
     </div>
 
     
     
+    <div>
     
+        <div style="text-align:center;color: #ccc;font-size:14px; padding-top: 10px;">--------------------------------------- <i class="fa fa-heart"></i> The End <i class="fa fa-heart"></i> ---------------------------------------  </div>
+    
+</div>
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/java%E5%BC%80%E5%8F%91/" rel="tag"><i class="fa fa-tag"></i>java开发</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.vikeezan.club/2025/03/19/EP19-regular-expressions-basic-knowledge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="vikeezan">
-      <meta itemprop="description" content="业精于勤荒于嬉">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VIKEEZAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/03/19/EP19-regular-expressions-basic-knowledge/" class="post-title-link" itemprop="url">EP19-正则表达式基础知识点</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-03-19 09:15:40 / 修改时间：14:49:47" itemprop="dateCreated datePublished" datetime="2025-03-19T09:15:40+08:00">2025-03-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">技术学习</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>896</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>正则表达式是用于匹配、查找和操作文本的强大工具，通过定义特定模式来描述文本规则。</p>
-<h2 id="一、基础语法"><a href="#一、基础语法" class="headerlink" title="一、基础语法"></a>一、基础语法</h2><h3 id="（一）字符匹配"><a href="#（一）字符匹配" class="headerlink" title="（一）字符匹配"></a>（一）字符匹配</h3><ol>
-<li><p><strong>普通字符</strong>：直接匹配对应字符本身。例如，正则表达式 <code>abc</code> 能匹配字符串 “abc”，因为它精确匹配了这三个连续的字符。</p>
-</li>
-<li><p><strong>元字符</strong>：具有特殊含义的字符。例如，<code>.</code> 匹配除换行符 <code>\n</code> 之外的任意单个字符。正则表达式 <code>a.c</code> 可以匹配 “abc”、“a1c”、“a c” 等，只要中间字符是单个任意字符（除 <code>\n</code> 外）。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/03/19/EP19-regular-expressions-basic-knowledge/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.vikeezan.club/2024/10/16/EP18-cainiao-java-learning/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="vikeezan">
-      <meta itemprop="description" content="业精于勤荒于嬉">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VIKEEZAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/10/16/EP18-cainiao-java-learning/" class="post-title-link" itemprop="url">EP18-菜鸟教程-Java教程-学习笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-10-16 18:45:10" itemprop="dateCreated datePublished" datetime="2024-10-16T18:45:10+08:00">2024-10-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-20 10:33:26" itemprop="dateModified" datetime="2025-03-20T10:33:26+08:00">2025-03-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">技术学习</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>此文档仅基于个人经验和感受出发，为菜鸟驿站-java教程的学习笔记。</p>
-<p>课程参考链接：<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java-tutorial.html">https://www.runoob.com/java/java-tutorial.html</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/10/16/EP18-cainiao-java-learning/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/03/19/EP19-regular-expressions-basic-knowledge/" rel="prev" title="EP19-正则表达式基础知识点">
+      <i class="fa fa-chevron-left"></i> EP19-正则表达式基础知识点
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.vikeezan.club/2024/10/09/EP17-git-learning-record/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="vikeezan">
-      <meta itemprop="description" content="业精于勤荒于嬉">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VIKEEZAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/10/09/EP17-git-learning-record/" class="post-title-link" itemprop="url">EP17-git踩坑记录</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-10-09 11:09:28" itemprop="dateCreated datePublished" datetime="2024-10-09T11:09:28+08:00">2024-10-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-19 14:48:16" itemprop="dateModified" datetime="2025-03-19T14:48:16+08:00">2025-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>316</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1、-lt-lt-lt-lt-lt-lt-lt-HEAD-gt-gt-gt-gt-gt-gt-gt-dev什么意思？"><a href="#1、-lt-lt-lt-lt-lt-lt-lt-HEAD-gt-gt-gt-gt-gt-gt-gt-dev什么意思？" class="headerlink" title="1、&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD  &gt;&gt;&gt;&gt;&gt;&gt;&gt; dev什么意思？"></a>1、&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD  &gt;&gt;&gt;&gt;&gt;&gt;&gt; dev什么意思？</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">// 你的 &#x27;HEAD&#x27; 分支的代码</span><br><span class="line">=======</span><br><span class="line">// 你尝试合并的分支的代码</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; dev</span><br></pre></td></tr></table></figure>
-
-<p>这表示你遇到了一个合并冲突。Git 在尝试合并两个分支时，如果发现有相同的文件在两个分支中都有修改，但是修改的内容不一致，Git 就无法自动合并这些更改，这时候就需要你手动解决冲突。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/10/09/EP17-git-learning-record/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.vikeezan.club/2024/07/11/EP16-environment-init-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="vikeezan">
-      <meta itemprop="description" content="业精于勤荒于嬉">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VIKEEZAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/07/11/EP16-environment-init-notes/" class="post-title-link" itemprop="url">EP16-系统研发脚手架初始化SOP</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-07-11 15:34:09" itemprop="dateCreated datePublished" datetime="2024-07-11T15:34:09+08:00">2024-07-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-19 14:47:40" itemprop="dateModified" datetime="2025-03-19T14:47:40+08:00">2025-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">技术学习</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>拉取前后端脚手架之后的一些开发初始化操作及常见问题记录。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/07/11/EP16-environment-init-notes/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.vikeezan.club/2024/02/04/EP15-kill-pc-port-task/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="vikeezan">
-      <meta itemprop="description" content="业精于勤荒于嬉">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VIKEEZAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/02/04/EP15-kill-pc-port-task/" class="post-title-link" itemprop="url">EP15-如何杀死目标端口号进程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-02-04 16:00:47" itemprop="dateCreated datePublished" datetime="2024-02-04T16:00:47+08:00">2024-02-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-19 14:47:05" itemprop="dateModified" datetime="2025-03-19T14:47:05+08:00">2025-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">技术学习</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>609</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一、查找占用端口号的进程"><a href="#一、查找占用端口号的进程" class="headerlink" title="一、查找占用端口号的进程"></a>一、查找占用端口号的进程</h3><p>在对端口号进行操作之前，需要先找到占用该端口号的进程，可以使用以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano | findstr :端口号</span><br></pre></td></tr></table></figure>
-
-<p>其中，“端口号”是需要杀死进程的端口号。</p>
-<p>执行该命令后，将会显示所有占用该端口号的进程，其中最后一列是该进程的PID（进程ID）。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/02/04/EP15-kill-pc-port-task/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.vikeezan.club/2023/07/10/EP14-management-system-and-mini-program/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="vikeezan">
-      <meta itemprop="description" content="业精于勤荒于嬉">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VIKEEZAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/10/EP14-management-system-and-mini-program/" class="post-title-link" itemprop="url">EP14-网页管理系统&小程序部署记录【开发>>>生产】</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-07-10 12:32:18" itemprop="dateCreated datePublished" datetime="2023-07-10T12:32:18+08:00">2023-07-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-19 14:46:32" itemprop="dateModified" datetime="2025-03-19T14:46:32+08:00">2025-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">技术学习</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>676</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>整个六月都扑在一个政策搜索小程序项目上，项目包括网页管理系统和小程序两部分，网页管理系统用于上传现有政策，小程序端纯做展示和搜索功能。</p>
-<p>网页管理系统包括前后端，使用行内脚手架开发，小程序使用百度低代码平台完成页面开发及接口交互。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/07/10/EP14-management-system-and-mini-program/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.vikeezan.club/2023/02/28/EP13-website-build-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="vikeezan">
-      <meta itemprop="description" content="业精于勤荒于嬉">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VIKEEZAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/02/28/EP13-website-build-notes/" class="post-title-link" itemprop="url">EP13-后端管理系统部署操作手册(Linux CentOS7.5)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-02-28 15:26:32" itemprop="dateCreated datePublished" datetime="2023-02-28T15:26:32+08:00">2023-02-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-19 14:45:46" itemprop="dateModified" datetime="2025-03-19T14:45:46+08:00">2025-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">技术学习</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>兄弟分行做了一个客户信息管理系统，架构是后台管理系统+小程序的配置。后台管理系统即一个网站的部署，小程序使用了低码平台开发，可以远程推送在手机上测试。本文档主要用于网站部署过程的记录。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/02/28/EP13-website-build-notes/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.vikeezan.club/2019/08/10/EP12-jianzhioffer07/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="vikeezan">
-      <meta itemprop="description" content="业精于勤荒于嬉">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VIKEEZAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/10/EP12-jianzhioffer07/" class="post-title-link" itemprop="url">EP12-剑指offer——7.裴波那契数列</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-10 21:59:32" itemprop="dateCreated datePublished" datetime="2019-08-10T21:59:32+08:00">2019-08-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-19 14:45:09" itemprop="dateModified" datetime="2025-03-19T14:45:09+08:00">2025-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%91%E6%8C%87offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>448</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><blockquote>
-<p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。（n&lt;&#x3D;39）<br>  斐波那契数列公式为：</p>
-</blockquote>
-<img src="/2019/08/10/EP12-jianzhioffer07/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E5%85%AC%E5%BC%8F.jpg" class="" title="斐波那契数列公式">
-
-<h3 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h3><p>我们可以以求解f（10）为例来分析递归的求解过程。想要求得f（10），我们要先知道f（9）和f（8）。同样的，要求得f（9），需要先知道f（8）和f（7）。。。我们可以使用树形结构来表示这种依赖关系，如下图所示。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/08/10/EP12-jianzhioffer07/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.vikeezan.club/2019/08/04/EP11-jianzhioffer06/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="vikeezan">
-      <meta itemprop="description" content="业精于勤荒于嬉">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="VIKEEZAN">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/04/EP11-jianzhioffer06/" class="post-title-link" itemprop="url">EP11-剑指offer——6.旋转数组的最小数字</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-04 20:23:52" itemprop="dateCreated datePublished" datetime="2019-08-04T20:23:52+08:00">2019-08-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-03-19 14:44:20" itemprop="dateModified" datetime="2025-03-19T14:44:20+08:00">2025-03-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%91%E6%8C%87offer/" itemprop="url" rel="index"><span itemprop="name">剑指offer</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><blockquote>
-<p>把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。 输入一个非递减排序的数组的一个旋转，输出旋转数组的最小元素。 例如数组{3,4,5,1,2}为{1,2,3,4,5}的一个旋转，该数组的最小值为1。 (NOTE：给出的所有元素都大于0，若数组大小为0，请返回0。)</p>
-</blockquote>
-<h3 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;我们可以注意到旋转之后的数组其实可以划分为两个排序的子数组，并且该数组的特点是前面的子数组中的元素总是大于或者等于后面子数组的元素。其中最小的元素正好是这两个数组的分界线。本题给出的数组在一定范围内是排序的，因此我们可以用二分查找法来实现O（logn）的查找。具体的算法步骤如下：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/08/04/EP11-jianzhioffer06/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
@@ -1988,6 +1147,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E7%BC%96%E7%A8%8B%E8%A7%84%E7%BA%A6"><span class="nav-number">1.</span> <span class="nav-text">第1章　编程规约</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%B8%B8%E9%87%8F%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">1.2 常量定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">1.3代码格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-OOP%E8%A7%84%E7%BA%A6%EF%BC%88object-oriented-programming-%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">1.4 OOP规约（object-oriented programming ）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4"><span class="nav-number">1.4.</span> <span class="nav-text">1.5　日期时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-%E9%9B%86%E5%90%88%E5%A4%84%E7%90%86"><span class="nav-number">1.5.</span> <span class="nav-text">1.6　集合处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86"><span class="nav-number">1.6.</span> <span class="nav-text">1.7　并发处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-8-%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.7.</span> <span class="nav-text">1.8  控制语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-9-%E6%B3%A8%E9%87%8A%E8%A7%84%E7%BA%A6"><span class="nav-number">1.8.</span> <span class="nav-text">1.9  注释规约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-10-%E5%89%8D%E5%90%8E%E7%AB%AF%E8%A7%84%E7%BA%A6"><span class="nav-number">1.9.</span> <span class="nav-text">1.10 前后端规约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-11-%E5%85%B6%E4%BB%96"><span class="nav-number">1.10.</span> <span class="nav-text">1.11　其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC2%E7%AB%A0-%E5%BC%82%E5%B8%B8%E6%97%A5%E5%BF%97"><span class="nav-number">2.</span> <span class="nav-text">第2章　异常日志</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%94%99%E8%AF%AF%E7%A0%81"><span class="nav-number">2.1.</span> <span class="nav-text">2.1　错误码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">2.2　异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%881%EF%BC%89%E7%A8%B3%E5%AE%9A%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">（1）稳定代码示例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%882%EF%BC%89%E9%9D%9E%E7%A8%B3%E5%AE%9A%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">（2）非稳定代码示例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%EF%BC%883%EF%BC%89%E4%B8%8D%E8%89%AF%E5%AE%9E%E8%B7%B5%E7%A4%BA%E4%BE%8B%EF%BC%88%E5%BA%94%E9%81%BF%E5%85%8D%EF%BC%89"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">（3）不良实践示例（应避免）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%97%A5%E5%BF%97%E8%A7%84%E7%BA%A6"><span class="nav-number">2.3.</span> <span class="nav-text">2.3　日志规约</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-Maven%E4%BE%9D%E8%B5%96%E9%85%8D%E7%BD%AE"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">1. Maven依赖配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Logback%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-logback-xml"><span class="nav-number">2.3.0.2.</span> <span class="nav-text">2. Logback配置文件 (logback.xml)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Java%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.3.0.3.</span> <span class="nav-text">3. Java代码实现示例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE%E5%BB%BA%E8%AE%AE"><span class="nav-number">2.3.0.4.</span> <span class="nav-text">4. 高级配置建议</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC3%E7%AB%A0-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="nav-number">3.</span> <span class="nav-text">第3章　单元测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC4%E7%AB%A0-%E5%AE%89%E5%85%A8%E8%A7%84%E7%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">第4章 安全规约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC5%E7%AB%A0-MySQL%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">5.</span> <span class="nav-text">第5章　MySQL数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E5%BB%BA%E8%A1%A8%E8%A7%84%E7%BA%A6"><span class="nav-number">5.1.</span> <span class="nav-text">5.1　建表规约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E7%B4%A2%E5%BC%95%E8%A7%84%E7%BA%A6"><span class="nav-number">5.2.</span> <span class="nav-text">5.2　索引规约</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF%E7%90%86%E8%A7%A3"><span class="nav-number">5.2.0.1.</span> <span class="nav-text">问题背景理解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">5.2.0.2.</span> <span class="nav-text">原始分页查询的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88%E4%B8%80%EF%BC%9A%E5%BB%B6%E8%BF%9F%E5%85%B3%E8%81%94"><span class="nav-number">5.2.0.3.</span> <span class="nav-text">优化方案一：延迟关联</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E5%8E%9F%E7%90%86-%E5%85%88%E9%80%9A%E8%BF%87%E7%B4%A2%E5%BC%95%E8%8E%B7%E5%8F%96%E4%B8%BB%E9%94%AEID%EF%BC%8C%E7%84%B6%E5%90%8E%E5%86%8D%E5%85%B3%E8%81%94%E5%8E%9F%E8%A1%A8%E8%8E%B7%E5%8F%96%E5%AE%8C%E6%95%B4%E6%95%B0%E6%8D%AE%E3%80%82"><span class="nav-number">5.2.0.3.1.</span> <span class="nav-text">优化原理:先通过索引获取主键ID，然后再关联原表获取完整数据。</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88%E4%BA%8C%EF%BC%9A%E5%AD%90%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96"><span class="nav-number">5.2.0.4.</span> <span class="nav-text">优化方案二：子查询优化</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E5%8E%9F%E7%90%86-%E5%88%A9%E7%94%A8%E4%B8%BB%E9%94%AE%E6%88%96%E5%94%AF%E4%B8%80%E7%B4%A2%E5%BC%95%E7%9A%84%E7%89%B9%E6%80%A7%EF%BC%8C%E5%85%88%E5%AE%9A%E4%BD%8D%E5%88%B0%E8%B5%B7%E5%A7%8B%E4%BD%8D%E7%BD%AE%EF%BC%8C%E5%86%8D%E8%8E%B7%E5%8F%96%E5%90%8E%E7%BB%AD%E8%AE%B0%E5%BD%95%E3%80%82"><span class="nav-number">5.2.0.4.1.</span> <span class="nav-text">优化原理:利用主键或唯一索引的特性，先定位到起始位置，再获取后续记录。</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E6%A1%88%E4%BE%8B%E5%AF%B9%E6%AF%94"><span class="nav-number">5.2.0.5.</span> <span class="nav-text">实际案例对比</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8E%9F%E5%A7%8B%E6%9F%A5%E8%AF%A2%EF%BC%88%E6%80%A7%E8%83%BD%E5%B7%AE%EF%BC%89"><span class="nav-number">5.2.0.5.1.</span> <span class="nav-text">原始查询（性能差）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E5%90%8E%E7%9A%84%E6%9F%A5%E8%AF%A2%EF%BC%88%E6%80%A7%E8%83%BD%E5%A5%BD%EF%BC%89"><span class="nav-number">5.2.0.5.2.</span> <span class="nav-text">优化后的查询（性能好）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5"><span class="nav-number">5.2.0.5.3.</span> <span class="nav-text">其他优化策略</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E4%BA%9B%E4%BC%98%E5%8C%96%E6%9C%89%E6%95%88%EF%BC%9F"><span class="nav-number">5.2.0.5.4.</span> <span class="nav-text">为什么这些优化有效？</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-SQL%E8%AF%AD%E5%8F%A5"><span class="nav-number">5.3.</span> <span class="nav-text">5.3　SQL语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-ORM%E6%98%A0%E5%B0%84"><span class="nav-number">5.4.</span> <span class="nav-text">5.4　ORM映射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC6%E7%AB%A0-%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84"><span class="nav-number">6.</span> <span class="nav-text">第6章　工程结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E5%BA%94%E7%94%A8%E5%88%86%E5%B1%82"><span class="nav-number">6.1.</span> <span class="nav-text">6.1　应用分层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E4%BA%8C%E6%96%B9%E5%BA%93%E4%BE%9D%E8%B5%96"><span class="nav-number">6.2.</span> <span class="nav-text">6.2　二方库依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">6.3.</span> <span class="nav-text">6.3　服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC7%E7%AB%A0-%E8%AE%BE%E8%AE%A1%E8%A7%84%E7%BA%A6"><span class="nav-number">7.</span> <span class="nav-text">第7章　设计规约</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

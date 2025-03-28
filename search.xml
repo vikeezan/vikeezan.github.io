@@ -1,31 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>EP02-Hexo博客next主题下不蒜子busuanzi访问量统计不显示</title>
-    <url>/2019/03/27/EP02-busuanzi-error-solve/</url>
-    <content><![CDATA[<p>首先明确在hexo博客的主题配置时，有两个文件经常会用到。一个是blog根目录下的<code>_config.yml</code>文件，我们称其为<strong>站点配置文件</strong>，另一个则是<code>themes\next</code>下的<code>_config.yml</code>文件，我们称其为<strong>主题配置文件</strong>，在主题配置文件内next本身已自集成了一个统计算法，具体的用法如下:</p>
-<span id="more"></span>
-
-<p>打开<strong>主题配置文件</strong>，建议用Sublime Text打开，可以使用<code>ctrl+f</code>快捷键，输入<code>busuanzi</code>,你会看到以下代码:（V5版本)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  # count values only if the other configs are false</span><br><span class="line">  enable: false</span><br><span class="line">  # custom uv span for the whole site</span><br><span class="line">  site_uv: true</span><br><span class="line">  site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; </span><br><span class="line">  site_uv_footer: </span><br><span class="line">  # custom pv span for the whole site</span><br><span class="line">  site_pv: true</span><br><span class="line">  site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt;</span><br><span class="line">  site_pv_footer: </span><br><span class="line">  # custom pv span for one page only</span><br><span class="line">  page_pv: true</span><br><span class="line">  page_pv_header: &lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt;</span><br><span class="line">  page_pv_footer: ```</span><br><span class="line">（v7版本）</span><br></pre></td></tr></table></figure>
-<p>busuanzi_count:<br>  enable: false<br>  total_visitors: true<br>  total_visitors_icon: user<br>  total_views: true<br>  total_views_icon: eye<br>  post_views: true<br>  post_views_icon: eye&#96;&#96;&#96;<br>两个版本的算法虽然在具体细节上有所不同，但总的来说大同小异，使用方法都是将<code>enable: false</code>语句更改为<code>enable: true</code>，改完之后就可以在网站底部看到浏览量已经显示出来了。</p>
-<p>这时v5版本的用户可能会发现浏览量依旧显示不出来，打开控制台查看发现是因为<code>不蒜子</code>的js文件找不到所以出错了，据<code>不蒜子</code>的作者<a href="http://ibruce.info/2015/04/04/busuanzi/">不蒜子官方网站</a>介绍是原先的域名失效了，所以不得已更换了新的域名。所以现在我们要在js文件里重新引用一下，接下来是解决方法：</p>
-<p>简单来讲就是将<code>next</code>主题下<code>不蒜子</code>的js引用文件更改一下即可。我们首先进去blog根目录下的<code>themes</code>文件夹，找到我们在用的<code>next</code>主题文件夹，然后在<code>\layout\_third-party\analytics</code>下找到<code>busuanzi-counter.swig</code>文件，右击用sublime text打开，在该文件下找到如下语句：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script async src=&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>将这句话更改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>然后再刷新下页面，就大功告成啦~总的来说解决问题的方法不难，不过不清楚门道的话不知道怎么改，反正我折腾了很久就是了</p>
-<h3 id="祝大家建站快乐，少遇坑"><a href="#祝大家建站快乐，少遇坑" class="headerlink" title="祝大家建站快乐，少遇坑~"></a>祝大家建站快乐，少遇坑~</h3>]]></content>
-      <categories>
-        <category>建站填坑</category>
-      </categories>
-      <tags>
-        <tag>分享</tag>
-        <tag>hexo</tag>
-        <tag>next</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>EP01-常用的Markdown指令</title>
     <url>/2019/03/26/EP01-markdown-daily-used/</url>
     <content><![CDATA[<p>Markdown是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的HTML标记语言来说，Markdown可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。</p>
@@ -81,8 +56,33 @@
         <category>markdown</category>
       </categories>
       <tags>
-        <tag>分享</tag>
         <tag>导航</tag>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>EP02-Hexo博客next主题下不蒜子busuanzi访问量统计不显示</title>
+    <url>/2019/03/27/EP02-busuanzi-error-solve/</url>
+    <content><![CDATA[<p>首先明确在hexo博客的主题配置时，有两个文件经常会用到。一个是blog根目录下的<code>_config.yml</code>文件，我们称其为<strong>站点配置文件</strong>，另一个则是<code>themes\next</code>下的<code>_config.yml</code>文件，我们称其为<strong>主题配置文件</strong>，在主题配置文件内next本身已自集成了一个统计算法，具体的用法如下:</p>
+<span id="more"></span>
+
+<p>打开<strong>主题配置文件</strong>，建议用Sublime Text打开，可以使用<code>ctrl+f</code>快捷键，输入<code>busuanzi</code>,你会看到以下代码:（V5版本)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  # count values only if the other configs are false</span><br><span class="line">  enable: false</span><br><span class="line">  # custom uv span for the whole site</span><br><span class="line">  site_uv: true</span><br><span class="line">  site_uv_header: &lt;i class=&quot;fa fa-user&quot;&gt;&lt;/i&gt; </span><br><span class="line">  site_uv_footer: </span><br><span class="line">  # custom pv span for the whole site</span><br><span class="line">  site_pv: true</span><br><span class="line">  site_pv_header: &lt;i class=&quot;fa fa-eye&quot;&gt;&lt;/i&gt;</span><br><span class="line">  site_pv_footer: </span><br><span class="line">  # custom pv span for one page only</span><br><span class="line">  page_pv: true</span><br><span class="line">  page_pv_header: &lt;i class=&quot;fa fa-file-o&quot;&gt;&lt;/i&gt;</span><br><span class="line">  page_pv_footer: ```</span><br><span class="line">（v7版本）</span><br></pre></td></tr></table></figure>
+<p>busuanzi_count:<br>  enable: false<br>  total_visitors: true<br>  total_visitors_icon: user<br>  total_views: true<br>  total_views_icon: eye<br>  post_views: true<br>  post_views_icon: eye&#96;&#96;&#96;<br>两个版本的算法虽然在具体细节上有所不同，但总的来说大同小异，使用方法都是将<code>enable: false</code>语句更改为<code>enable: true</code>，改完之后就可以在网站底部看到浏览量已经显示出来了。</p>
+<p>这时v5版本的用户可能会发现浏览量依旧显示不出来，打开控制台查看发现是因为<code>不蒜子</code>的js文件找不到所以出错了，据<code>不蒜子</code>的作者<a href="http://ibruce.info/2015/04/04/busuanzi/">不蒜子官方网站</a>介绍是原先的域名失效了，所以不得已更换了新的域名。所以现在我们要在js文件里重新引用一下，接下来是解决方法：</p>
+<p>简单来讲就是将<code>next</code>主题下<code>不蒜子</code>的js引用文件更改一下即可。我们首先进去blog根目录下的<code>themes</code>文件夹，找到我们在用的<code>next</code>主题文件夹，然后在<code>\layout\_third-party\analytics</code>下找到<code>busuanzi-counter.swig</code>文件，右击用sublime text打开，在该文件下找到如下语句：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script async src=&quot;https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>将这句话更改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script async src=&quot;//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>然后再刷新下页面，就大功告成啦~总的来说解决问题的方法不难，不过不清楚门道的话不知道怎么改，反正我折腾了很久就是了</p>
+<h3 id="祝大家建站快乐，少遇坑"><a href="#祝大家建站快乐，少遇坑" class="headerlink" title="祝大家建站快乐，少遇坑~"></a>祝大家建站快乐，少遇坑~</h3>]]></content>
+      <categories>
+        <category>建站填坑</category>
+      </categories>
+      <tags>
+        <tag>分享</tag>
+        <tag>hexo</tag>
+        <tag>next</tag>
       </tags>
   </entry>
   <entry>
@@ -94,7 +94,7 @@
 <li>另一个分支则是hexo副分支（自己起的名字，可以更改），这个分支的作用是保存博客的最新版本，在不同的电脑上pull并新建博客后，push到这个分支上，这样随时都可以找到博客的最新版本，该分支上的更改如果不经过<code>hexo deploy</code>，不会影响到master主分支上的内容。</li>
 </ul>
 <p><strong>PS：个人建议之前没有接触过git的同学可以先看一下有关git的基础教程，因为没接触过git的同学瞎用指令会把网站搞崩的，别问我为啥知道…这里推荐廖雪峰的课</strong><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">廖雪峰git教程</a></p>
-<h2 id="2-搭建流程"><a href="#2-搭建流程" class="headerlink" title="2.搭建流程"></a>2.搭建流程</h2><p>1.创建仓库，<a href="https://username.github.io/">https://username.github.io/</a>。其中的<strong>username</strong>要由你自己定义，要和你Github注册的用户名保持一致;<br>2.创建两个分支，master和hexo。这一步不用手动创建，后面有指令会自动创建hexo分支的；<br>3.设置hexo为默认分支。因为我们只需要手动管理这个分支上的网站文件，设置方法为项目右上角setting里的branch选项卡，将其中的默认分支更改为hexo即可；<br>4.在第二台电脑上使用git clone <a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#103;&#105;&#x74;&#64;&#103;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a>:username&#x2F;username.github.io.git拷贝仓库；<br>5.在本地的与Github相连的<a href="https://username.github.io/">https://username.github.io/</a>文件夹下右键使用Git Bash依次执行<code>npm install -g hexo-cli </code>安装hexo、<code>hexo init</code>初始化hexo、<code>npm install hexo-deployer-git --save</code>让hexo知道你要把blog部署在哪一个位置。这三条指令完成后当前分支应显示为hexo；<br>6.修改博客站点配置文件<code>_config.yml</code>中的deploy参数，将branch的参数改为master；<br>7.依次执行<code>git add .</code>添加所有文件到缓存区、<code>git commit -m “…”</code>提交缓存区的文件同时增添备注、<code>git push origin hexo</code>将更改的内容push到github的hexo分支进行备份；<br>8.执行<code>hexo g -d</code>生成网站并部署到Github上。<br>经过以上操作之后，我们的master分支用于存放网站的静态文件，hexo分支用于存放网站的原始文件，井水不犯河水，简直太完美了有没有！</p>
+<h2 id="2-搭建流程"><a href="#2-搭建流程" class="headerlink" title="2.搭建流程"></a>2.搭建流程</h2><p>1.创建仓库，<a href="https://username.github.io/">https://username.github.io/</a>。其中的<strong>username</strong>要由你自己定义，要和你Github注册的用户名保持一致;<br>2.创建两个分支，master和hexo。这一步不用手动创建，后面有指令会自动创建hexo分支的；<br>3.设置hexo为默认分支。因为我们只需要手动管理这个分支上的网站文件，设置方法为项目右上角setting里的branch选项卡，将其中的默认分支更改为hexo即可；<br>4.在第二台电脑上使用git clone <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#109;">&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#109;</a>:username&#x2F;username.github.io.git拷贝仓库；<br>5.在本地的与Github相连的<a href="https://username.github.io/">https://username.github.io/</a>文件夹下右键使用Git Bash依次执行<code>npm install -g hexo-cli </code>安装hexo、<code>hexo init</code>初始化hexo、<code>npm install hexo-deployer-git --save</code>让hexo知道你要把blog部署在哪一个位置。这三条指令完成后当前分支应显示为hexo；<br>6.修改博客站点配置文件<code>_config.yml</code>中的deploy参数，将branch的参数改为master；<br>7.依次执行<code>git add .</code>添加所有文件到缓存区、<code>git commit -m “…”</code>提交缓存区的文件同时增添备注、<code>git push origin hexo</code>将更改的内容push到github的hexo分支进行备份；<br>8.执行<code>hexo g -d</code>生成网站并部署到Github上。<br>经过以上操作之后，我们的master分支用于存放网站的静态文件，hexo分支用于存放网站的原始文件，井水不犯河水，简直太完美了有没有！</p>
 <h3 id="2-1第一个终端的hexo分支"><a href="#2-1第一个终端的hexo分支" class="headerlink" title="2.1第一个终端的hexo分支"></a>2.1第一个终端的hexo分支</h3><p>在一开始创建博客的电脑上，将本地blog文件夹内必要的hexo文件push到username.github.io的hexo分支上，具体操作如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init  //初始化本地仓库</span><br><span class="line">git add source //将必要的文件依次添加，有些文件夹如npm install产生的node_modules由于路径过长不好处理，所以这里没有用`git add .`命令了，而是依次添加必要文件,例如source themes scaffolds _config.yml package.json package-lock.json等。</span><br><span class="line">git commit -m &quot;Blog Source Hexo&quot; //备注这是blog网站最原始的文件</span><br><span class="line">git branch hexo  //新建hexo分支</span><br><span class="line">git checkout hexo  //切换到hexo分支上</span><br><span class="line">git remote add origin git@github.com:yourname/yourname.github.io.git  //将本地与Github项目对接</span><br><span class="line">git push origin hexo  //push到Github项目的hexo分支上</span><br></pre></td></tr></table></figure>
 <h3 id="2-2另一终端完成clone复制以及push更新"><a href="#2-2另一终端完成clone复制以及push更新" class="headerlink" title="2.2另一终端完成clone复制以及push更新"></a>2.2另一终端完成clone复制以及push更新</h3><p>在另一个终端更新博客，只需要将Github的hexo分支上的内容克隆到本地，然后再对其进行更改和push更新，具体操作如下：</p>
@@ -139,67 +139,6 @@
       <tags>
         <tag>算法</tag>
         <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>EP05-剑指offer——2.替换空格</title>
-    <url>/2019/07/27/EP05-jianzhioffer02/</url>
-    <content><![CDATA[<h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><blockquote>
-<p>请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p>
-</blockquote>
-<h3 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;拿到字符串之后，很容易想到有两种方式完成替换。第一种：从头到尾遍历，在原字符串的基础上进行替换。这种方式的缺点在于靠后的字符串会多次移动，因此对于含有O（n）个<strong>空格字符</strong>的字符串而言时间复杂度是O（n2）。第二种：创建一个新的字符串，并在其上进行替换。这种方式需要我们自己分配足够的内存空间。<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本文采用了一种使用<strong>从后向前遍历</strong>实现空格替换的方法，这种方法中所有的字符串只需要移动一次，因此这个算法的时间复杂度为O（n）。总体的算法步骤如下：</p>
-<span id="more"></span>
-<ul>
-<li>先遍历一次字符串，得到字符串中的空格个数，以及插入新字符之前的原字符串长度；</li>
-<li>根据第一步的结果，计算出替换完成后新字符串的长度。新字符串长度 &#x3D; 原字符串长度 + 空格个数*2；</li>
-<li>给定两个指针a和b，a指向原字符串尾，b指向替换之后的字符串尾。向前移动指针a，逐个把它指向的字符复制到b指向的位置，直到碰到空格，a向前一格，b之前插入字符串”%20”，同时b向前移动3格。</li>
-<li>重复第三步，直到a和b指向同一个位置。</li>
-</ul>
-<h3 id="3-举例说明"><a href="#3-举例说明" class="headerlink" title="3.举例说明"></a>3.举例说明</h3><p>以”We are happy”为例，”We are happy”这个字符串的长度为14（包括结尾符号”\n”），里面有两个空格，因此替换之后字符串的长度是18。我们从字符串的尾部开始复制和替换。首先准备两个指针P1和P2，P1指向原始字符串的末尾，P2指向替换之后的字符串末尾。接下来向前移动指针P1，逐个把它指向的字符复制到P2指向的位置，直到碰到第一个空格。碰到第一个空格后，P1向前移动1格，P2位置开始向前插入字符串”%20”，同时P2向前移动3格。</p>
-<img src="/2019/07/27/EP05-jianzhioffer02/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BE%8B%E5%AD%90.jpg" class="" title="字符串例子">
-
-<h3 id="4-代码实现"><a href="#4-代码实现" class="headerlink" title="4.代码实现"></a>4.代码实现</h3><p><strong>c++：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution&#123;</span><br><span class="line">public:</span><br><span class="line">	void replaceSpace(char *string,int length)&#123;</span><br><span class="line">    if(string == NULL || length &lt;= 0)</span><br><span class="line">    	return;</span><br><span class="line">    //循环遍历数组，得到字符串的总长，以及空格的个数</span><br><span class="line">    int originLength = 0;</span><br><span class="line">    int numSpace = 0;</span><br><span class="line">    int i = 0;</span><br><span class="line">    while(string[i] != &#x27;\0&#x27;)</span><br><span class="line">    	&#123;</span><br><span class="line">        ++originLength;</span><br><span class="line"></span><br><span class="line">        	if(string[i] == &#x27; &#x27;)</span><br><span class="line">            	++numSpace;</span><br><span class="line"></span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">    //得到新数组所需的字符串长度</span><br><span class="line">    int newLength = originLength + numSpace*2;//新字符串长度 = 原字符串长度 + 空格个数*2；</span><br><span class="line">    if(newLength &gt;length)</span><br><span class="line">    	return;</span><br><span class="line"></span><br><span class="line">	////检索到空格，就将空格替换为‘%’‘2’‘0’</span><br><span class="line">    int p1 = originLength;</span><br><span class="line">    int p2 = newLength;</span><br><span class="line">    while(p1 &gt;= 0 &amp;&amp; p2 &gt; p1 )&#123;</span><br><span class="line">    	if(string[p1] == &#x27; &#x27;)</span><br><span class="line">        &#123;</span><br><span class="line">        	string[p2--] = &#x27;0&#x27;;</span><br><span class="line">            string[p2--] = &#x27;2&#x27;;</span><br><span class="line">            string[p2--] = &#x27;%&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            string[p2--] = string[p1];</span><br><span class="line">        &#125;</span><br><span class="line">        --p1;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>python2.7:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line">class Solution:</span><br><span class="line">    # string指代 源字符串</span><br><span class="line">    def replaceSpace(self, string):</span><br><span class="line">        # write code here</span><br><span class="line">        return string.replace(&#x27; &#x27;, &#x27;%20&#x27;)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>剑指offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -313,6 +252,67 @@
       </categories>
       <tags>
         <tag>经典算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>EP05-剑指offer——2.替换空格</title>
+    <url>/2019/07/27/EP05-jianzhioffer02/</url>
+    <content><![CDATA[<h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><blockquote>
+<p>请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p>
+</blockquote>
+<h3 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;拿到字符串之后，很容易想到有两种方式完成替换。第一种：从头到尾遍历，在原字符串的基础上进行替换。这种方式的缺点在于靠后的字符串会多次移动，因此对于含有O（n）个<strong>空格字符</strong>的字符串而言时间复杂度是O（n2）。第二种：创建一个新的字符串，并在其上进行替换。这种方式需要我们自己分配足够的内存空间。<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本文采用了一种使用<strong>从后向前遍历</strong>实现空格替换的方法，这种方法中所有的字符串只需要移动一次，因此这个算法的时间复杂度为O（n）。总体的算法步骤如下：</p>
+<span id="more"></span>
+<ul>
+<li>先遍历一次字符串，得到字符串中的空格个数，以及插入新字符之前的原字符串长度；</li>
+<li>根据第一步的结果，计算出替换完成后新字符串的长度。新字符串长度 &#x3D; 原字符串长度 + 空格个数*2；</li>
+<li>给定两个指针a和b，a指向原字符串尾，b指向替换之后的字符串尾。向前移动指针a，逐个把它指向的字符复制到b指向的位置，直到碰到空格，a向前一格，b之前插入字符串”%20”，同时b向前移动3格。</li>
+<li>重复第三步，直到a和b指向同一个位置。</li>
+</ul>
+<h3 id="3-举例说明"><a href="#3-举例说明" class="headerlink" title="3.举例说明"></a>3.举例说明</h3><p>以”We are happy”为例，”We are happy”这个字符串的长度为14（包括结尾符号”\n”），里面有两个空格，因此替换之后字符串的长度是18。我们从字符串的尾部开始复制和替换。首先准备两个指针P1和P2，P1指向原始字符串的末尾，P2指向替换之后的字符串末尾。接下来向前移动指针P1，逐个把它指向的字符复制到P2指向的位置，直到碰到第一个空格。碰到第一个空格后，P1向前移动1格，P2位置开始向前插入字符串”%20”，同时P2向前移动3格。</p>
+<img src="/2019/07/27/EP05-jianzhioffer02/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BE%8B%E5%AD%90.jpg" class="" title="字符串例子">
+
+<h3 id="4-代码实现"><a href="#4-代码实现" class="headerlink" title="4.代码实现"></a>4.代码实现</h3><p><strong>c++：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution&#123;</span><br><span class="line">public:</span><br><span class="line">	void replaceSpace(char *string,int length)&#123;</span><br><span class="line">    if(string == NULL || length &lt;= 0)</span><br><span class="line">    	return;</span><br><span class="line">    //循环遍历数组，得到字符串的总长，以及空格的个数</span><br><span class="line">    int originLength = 0;</span><br><span class="line">    int numSpace = 0;</span><br><span class="line">    int i = 0;</span><br><span class="line">    while(string[i] != &#x27;\0&#x27;)</span><br><span class="line">    	&#123;</span><br><span class="line">        ++originLength;</span><br><span class="line"></span><br><span class="line">        	if(string[i] == &#x27; &#x27;)</span><br><span class="line">            	++numSpace;</span><br><span class="line"></span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">    //得到新数组所需的字符串长度</span><br><span class="line">    int newLength = originLength + numSpace*2;//新字符串长度 = 原字符串长度 + 空格个数*2；</span><br><span class="line">    if(newLength &gt;length)</span><br><span class="line">    	return;</span><br><span class="line"></span><br><span class="line">	////检索到空格，就将空格替换为‘%’‘2’‘0’</span><br><span class="line">    int p1 = originLength;</span><br><span class="line">    int p2 = newLength;</span><br><span class="line">    while(p1 &gt;= 0 &amp;&amp; p2 &gt; p1 )&#123;</span><br><span class="line">    	if(string[p1] == &#x27; &#x27;)</span><br><span class="line">        &#123;</span><br><span class="line">        	string[p2--] = &#x27;0&#x27;;</span><br><span class="line">            string[p2--] = &#x27;2&#x27;;</span><br><span class="line">            string[p2--] = &#x27;%&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            string[p2--] = string[p1];</span><br><span class="line">        &#125;</span><br><span class="line">        --p1;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>python2.7:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line">class Solution:</span><br><span class="line">    # string指代 源字符串</span><br><span class="line">    def replaceSpace(self, string):</span><br><span class="line">        # write code here</span><br><span class="line">        return string.replace(&#x27; &#x27;, &#x27;%20&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -923,7 +923,8 @@
 <h3 id="3、接口"><a href="#3、接口" class="headerlink" title="3、接口"></a>3、接口</h3><p>在 Java 中，接口可理解为对象间相互通信的协议。接口在继承中扮演着很重要的角色。</p>
 <p>接口只定义派生要用到的方法，但是方法的具体实现完全取决于派生类。</p>
 <h3 id="4、Java-源程序与编译型运行区别"><a href="#4、Java-源程序与编译型运行区别" class="headerlink" title="4、Java 源程序与编译型运行区别"></a>4、Java 源程序与编译型运行区别</h3><p>如下图所示：</p>
-<p><img src="/cainiao-java-learning/ZSSDMld.png" alt="img"></p>
+<img src="/2024/10/16/EP18-cainiao-java-learning/ZSSDMld.png" class="" title="ZSSDMld">
+
 <h3 id="5、文档注释"><a href="#5、文档注释" class="headerlink" title="5、文档注释"></a>5、文档注释</h3><p>文档注释以 <strong>&#x2F;*</strong>* 开始，以 ***&#x2F;** 结束，通常出现在类、方法、字段等的声明前面，用于生成代码文档，这种注释可以被工具提取并生成 API 文档，如 JavaDoc。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 这是一个文档注释示例</span><br><span class="line"> * 它通常包含有关类、方法或字段的详细信息</span><br><span class="line"> */</span><br><span class="line">public class MyClass &#123;</span><br><span class="line">    // 类的成员和方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -962,7 +963,8 @@
 <li><strong>类</strong>：类是一个模板，它描述一类对象的行为和状态。</li>
 </ul>
 <h3 id="Java-中的类"><a href="#Java-中的类" class="headerlink" title="Java 中的类"></a>Java 中的类</h3><p>类可以看成是创建 Java 对象的模板。</p>
-<p><img src="/cainiao-java-learning/20210105-java-object-1.png" alt="img"></p>
+<img src="/2024/10/16/EP18-cainiao-java-learning/20210105-java-object-1.png" class="" title="20210105-java-object-1">
+
 <p>一个类可以包含以下类型变量：</p>
 <ul>
 <li><strong>局部变量</strong>：在方法、构造方法或者语句块中定义的变量被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</li>
@@ -1073,6 +1075,807 @@
       </categories>
       <tags>
         <tag>正则表达式</tag>
+        <tag>java开发</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>EP20-《阿里巴巴Java开发手册》读书笔记</title>
+    <url>/2025/03/20/EP20-alibaba-java-readnote/</url>
+    <content><![CDATA[<h2 id="第1章-编程规约"><a href="#第1章-编程规约" class="headerlink" title="第1章　编程规约"></a>第1章　编程规约</h2><p>本章是传统意义上的代码规范，包括变量命名、代码风格、控制语句、代码注释、前后端规约等基本的编程习惯，以及从高并发场景中提炼出来的集合处理技巧与并发多线程的注意事项。</p>
+<h3 id="1-2-常量定义"><a href="#1-2-常量定义" class="headerlink" title="1.2 常量定义"></a>1.2 常量定义</h3><ol>
+<li>不要使用一个常量类维护所有的常量，要按常量功能进行归类，分开维护。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">说明：大而全的常量类杂乱无章，必须使用查找功能才能定位到要修改的常量，既不利于理解，也不利于维护。</span><br><span class="line">正例：缓存相关常量放在类CacheConsts下；系统配置相关常量放在类SystemConfigConsts下。</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>常量的复用层次有五层：跨应用共享常量、应用内共享常量、子工程内共享常量、包内共享常量和类内共享常量。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1）跨应用共享常量：放置在二方库中，通常是在client.jar中的constant目录下。</span><br><span class="line">2）应用内共享常量：放置在一方库中，通常是在子模块中的constant目录下。</span><br><span class="line">3）子工程内部共享常量：即在当前子工程的constant目录下。</span><br><span class="line">4）包内共享常量：即在当前包下单独的constant目录下。</span><br><span class="line">5）类内共享常量：直接在类内部以private static final定义。</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3代码格式"><a href="#1-3代码格式" class="headerlink" title="1.3代码格式"></a>1.3代码格式</h3><ol>
+<li>if&#x2F;for&#x2F;while&#x2F;switch&#x2F;do等保留字与括号之间都必须加空格。</li>
+<li>任何二目、三目运算符的左右两边都需要加一个空格。</li>
+<li>注释的双斜线与注释内容之间有且仅有一个空格。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//  这是一个示例注释，双斜线之后有一个空格</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>在进行类型强制转换时，右括号与被强制转换的值之间不需要任何空格隔开。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">double first = 3.14d;</span><br><span class="line">int second = (int)first + 2;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>在定义和传入方法参数时，多个参数逗号后面必须加空格。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">method(arg1, arg2, arg3);</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>单个方法的总行数不超过80。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">代码逻辑分清红花和绿叶、个性和共性，绿叶逻辑单独出来成为额外方法，使主干代码更加清晰；共性逻辑抽取成为共性方法，便于复用和维护。</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>在不同逻辑、不同语义、不同业务的代码之间插入一个空行，分隔开来以提升可读性。</li>
+</ol>
+<h3 id="1-4-OOP规约（object-oriented-programming-）"><a href="#1-4-OOP规约（object-oriented-programming-）" class="headerlink" title="1.4 OOP规约（object-oriented programming ）"></a>1.4 OOP规约（<strong>object-oriented programming</strong> ）</h3><ol>
+<li><p>避免通过一个类的对象引用访问此类的静态变量或静态方法，造成编译器解析成本无谓增加，直接用类名访问即可。</p>
+</li>
+<li><p>对外部正在调用或者二方库依赖的接口，不允许修改方法签名，避免对接口调用方产生影响。若接口过时，则必须加@Deprecated注解，并清晰地说明采用的新接口或者新服务是什么。</p>
+</li>
+<li><p>Object的equals方法容易抛空指针异常，应使用常量或确定有值的对象调用equals。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;test&quot;</span>.equals(object);<span class="comment">//正例</span></span><br><span class="line">object.equals(<span class="string">&quot;test&quot;</span>);<span class="comment">//反例</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>浮点数之间的等值判断，基本数据类型不能用&#x3D;&#x3D;进行比较，包装数据类型不能用equals方法判断。</p>
+<p>说明：浮点数采用“尾数+阶码”的编码方式，类似于科学计数法的“有效数字+指数”的表示方式。二进制无法精确表示大部分十进制小数，具体原理参考《码出高效：Java开发手册》。</p>
+<img src="/2025/03/20/EP20-alibaba-java-readnote/%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9B%B8%E5%87%8F%E4%BE%8B%E5%AD%90.png" class="" title="浮点数相减例子">
+</li>
+<li><p>禁止使用构造方法BigDecimal(double)的方式把double值转化为BigDecimal对象。</p>
+<p><strong>说明：</strong>BigDecimal(double)存在精度损失风险，在精确计算或值比较的场景中，可能会导致业务逻辑出现异常。</p>
+</li>
+<li><p>在定义DO&#x2F;DTO&#x2F;VO等POJO类时，不要设定任何属性默认值。</p>
+</li>
+<li><p>禁止在POJO类中同时存在对应属性xxx的isXxx()和getXxx()方法。</p>
+<p><strong>说明：</strong>框架在调用属性xxx的提取方法时，并不能确定哪种方法一定是被优先调用的。</p>
+</li>
+<li><p>当使用索引访问用String的split方法得到的数组时，需在最后一个分隔符后做有无内容的检查，否则会有抛出IndexOutOfBoundsException的风险。</p>
+</li>
+<li><p>当一个类有多个构造方法，或者多个同名方法时，这些方法应该按顺序放置在一起，便于阅读。优先于第<strong>10</strong>条规则。</p>
+</li>
+<li><p>类内方法定义的顺序依次是：公有方法或保护方法 &gt; 私有方法 &gt; getter &#x2F; setter方法。</p>
+<p><strong>说明：</strong>公有方法是类的调用者和维护者最关心的方法，首屏展示最好；保护方法虽然只是子类关心，也可能是“模板设计模式”下的核心方法；而私有方法外部一般不需要特别关心，是一个黑盒实现；因为承载的信息价值较低，所有Service和DAO的getter&#x2F;setter方法都放在类体的最后。</p>
+</li>
+<li><p>在循环体内，字符串的连接方式使用StringBuilder的append方法扩展。</p>
+</li>
+<li><p>final可以声明类、成员变量、方法及本地变量，下列情况使用final关键字。</p>
+<p>1）<strong>不允许被继承</strong>的类，如：String类。</p>
+<p>2）<strong>不允许修改引用</strong>的域对象，如：POJO类的域变量。</p>
+<p>3）<strong>不允许被覆写</strong>的方法，如：POJO类的setter方法。</p>
+<p>4）<strong>不允许</strong>在运行过程中给<strong>局部变量重新赋值</strong>。</p>
+<p>5）<strong>避免上下文重复使用一个变量</strong>，使用final描述可以强制重新定义一个变量，方便更好地重构。</p>
+</li>
+<li><p>慎用Object的clone方法拷贝对象。</p>
+<p><strong>说明：</strong>对象的clone方法默认是浅拷贝，若想实现深拷贝，需要覆写clone方法来实现域对象的深度遍历式拷贝。</p>
+</li>
+</ol>
+<h3 id="1-5-日期时间"><a href="#1-5-日期时间" class="headerlink" title="1.5　日期时间"></a>1.5　日期时间</h3><ol>
+<li><p>在日期格式化时，传入pattern中表示年份统一使用小写的y。</p>
+<p><strong>说明：</strong>在日期格式化时，yyyy表示当天所在的年，大写的YYYY表示week in which year（JDK 7之后引入的概念），意思是当天所在的周属于的年份。一周从周日开始，周六结束，只要本周跨年，返回的YYYY就是下一年。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在日期格式中，分清楚大写的M和小写的m、大写的H和小写的h分别代表的意义。</p>
+<p><strong>说明：</strong>日期格式中的这两对字母表意如下：1）表示月份，用大写的M；2）表示分钟，用小写的m；3）表示24小时制，用大写的H；4）表示12小时制，用小写的h。</p>
+</li>
+<li><p>不要在程序中写死一年为365天，避免在闰年时出现日期转换错误或程序逻辑错误。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 获取今年的天数</span><br><span class="line">int days = LocalDate.now().lengthOfYear();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用枚举值指代月份。如果使用数字，则注意Date、Calendar等日期相关类的月份（month）取值在0～11之间。</p>
+<p><strong>说明：</strong>参考JDK原生注释，Month value is 0-based.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">e.g. 0 for January</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="1-6-集合处理"><a href="#1-6-集合处理" class="headerlink" title="1.6　集合处理"></a>1.6　集合处理</h3><ol>
+<li><p>判断所有集合内部的元素是否为空，应使用isEmpty()方法，而不是使用size()&#x3D;&#x3D;0的方式。</p>
+<p><strong>说明：</strong>在某些集合中，前者的时间复杂度为O(1)，而且可读性更好。</p>
+</li>
+<li><p>在使用java.util.stream.Collectors类的toMap()方法转为Map集合时，一定要使用含有参数类型为BinaryOperator、参数名为mergeFunction的方法，否则当出现相同key值时，会抛出IllegalStateException异常。</p>
+<p><strong>说明：</strong>参数mergeFunction的作用是当出现key重复时，自定义对value的处理策略。</p>
+</li>
+<li><p>在使用java.util.stream.Collectors类的toMap()方法转为Map集合时，一定要注意当value为null时，会抛出NPE异常。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">会存在如下判断：</span><br><span class="line">if (value == null || remappingFunction == null)&#123;</span><br><span class="line">	throw new NullPointerException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ArrayList的subList结果不可强转成ArrayList，否则会抛出ClassCastException异常，即java.util. RandomAccessSubList cannot be cast to java.util. ArrayList。</p>
+<p><strong>说明：</strong>subList()返回的是ArrayList的内部类SubList，并不是ArrayList本身，而是ArrayList的一个视图，对于SubList的所有操作最终会反映到原列表上。</p>
+</li>
+<li><p>Collections类返回的对象，如：emptyList()&#x2F; singletonList()等都是immutable list，不可对其添加或者删除元素。</p>
+</li>
+<li><p>在使用Collection接口任何实现类的addAll()方法时，都要对输入的集合参数进行NPE判断。</p>
+<p><strong>说明：</strong>ArrayList#addAll方法的第一行代码即Object[] a &#x3D; c. toArray();，其中，c为输入集合参数，如果为null，则直接抛出异常。</p>
+</li>
+<li><p>当使用工具类Arrays.asList()把<strong>数组转换成集合时，不能使用其修改集合相关的方法</strong>，它的add&#x2F;remove&#x2F;clear方法会抛出UnsupportedOperationException异常。</p>
+<p><strong>说明：</strong>asList的返回对象是一个Arrays内部类，并没有实现集合的修改方法。Arrays.asList体现的是适配器模式，只是转换接口，后台的数据仍是数组。</p>
+</li>
+<li><p>在无泛型限制定义的集合赋值给泛型限制的集合中，当使用集合元素时，需要进行instanceof判断，避免抛出ClassCastException异常。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 无泛型限制的集合：可以存储任意类型的对象，但取出时需要手动进行类型转换，容易引发ClassCastException</span></span><br><span class="line"><span class="type">List</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>(); </span><br><span class="line">list.add(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">list.add(<span class="number">123</span>); <span class="comment">// 可以存储不同类型</span></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> (String) list.get(<span class="number">0</span>); <span class="comment">// 需要强制类型转换</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">num</span> <span class="operator">=</span> (Integer) list.get(<span class="number">1</span>); <span class="comment">// 需要强制类型转换</span></span><br><span class="line"><span class="comment">// 泛型限制的集合</span></span><br><span class="line">List&lt;String&gt; genericList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">genericList.add(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"><span class="comment">// genericList.add(123); // 编译错误，只能存储String类型</span></span><br><span class="line"><span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> genericList.get(<span class="number">0</span>); <span class="comment">// 无需强制类型转换</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不要在foreach循环中对元素进行remove&#x2F;add操作。当进行remove操作时，请使用Iterator方式。如果是并发操作，需要对Iterator对象加锁。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="comment">// 创建一个集合</span></span><br><span class="line">    List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    list.add(<span class="string">&quot;Apple&quot;</span>);</span><br><span class="line">    list.add(<span class="string">&quot;Banana&quot;</span>);</span><br><span class="line">    list.add(<span class="string">&quot;Cherry&quot;</span>);</span><br><span class="line">    <span class="comment">// 获取 Iterator 对象</span></span><br><span class="line">    Iterator&lt;String&gt; iterator = list.iterator();</span><br><span class="line">    <span class="comment">// 遍历集合</span></span><br><span class="line">    <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">fruit</span> <span class="operator">=</span> iterator.next(); <span class="comment">// 获取下一个元素</span></span><br><span class="line">        System.out.println(fruit);</span><br><span class="line">        <span class="comment">// 如果需要，可以移除当前元素</span></span><br><span class="line">        <span class="keyword">if</span> (fruit.equals(<span class="string">&quot;Banana&quot;</span>)) &#123;</span><br><span class="line">            iterator.remove(); <span class="comment">// 移除 &quot;Banana&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 输出修改后的集合</span></span><br><span class="line">    System.out.println(<span class="string">&quot;修改后的集合: &quot;</span> + list);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当使用泛型集合定义时，在JDK 7及以上版本中，使用diamond语法或全省略。</p>
+<p><strong>说明：</strong>菱形泛型即diamond，直接使用&lt;&gt;指代前边已经指定的类型。</p>
+</li>
+<li><p>使用entrySet遍历Map类集合K&#x2F;V，而不是用keySet方式遍历。</p>
+<p><strong>说明：</strong>keySet方式其实遍历了两次，一次是转为Iterator对象，另一次是从hashMap中取出Key所对应的Value。而entrySet只遍历了一次就把Key和Value都放到了entry中，效率更高。如果是JDK 8，则使用Map.forEach方法。</p>
+<p><strong>正例：</strong>values()返回的是V值集合，是一个list集合对象；keySet()返回的是K值集合，是一个Set集合对象；entrySet()返回的是K-V值组合集合。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MapTraversalExample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 创建一个 Map 集合</span></span><br><span class="line">        Map&lt;String, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">&quot;Apple&quot;</span>, <span class="number">10</span>);</span><br><span class="line">        map.put(<span class="string">&quot;Banana&quot;</span>, <span class="number">20</span>);</span><br><span class="line">        map.put(<span class="string">&quot;Cherry&quot;</span>, <span class="number">30</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1. 使用 keySet 方式遍历（不推荐，效率较低）</span></span><br><span class="line">        	<span class="comment">// (1)通过 map.keySet() 获取所有的 Key，然后遍历 Key。每次遍历时，需要通过 map.get(key) 从 Map 中获取对应的 Value。</span></span><br><span class="line">        	<span class="comment">// (2)缺点：遍历了两次，第一次遍历 Key，第二次通过 Key 获取 Value，效率较低。</span></span><br><span class="line">        System.out.println(<span class="string">&quot;使用 keySet 方式遍历：&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (String key : map.keySet()) &#123;</span><br><span class="line">            <span class="type">Integer</span> <span class="variable">value</span> <span class="operator">=</span> map.get(key); <span class="comment">// 需要额外从 Map 中获取 Value</span></span><br><span class="line">            System.out.println(<span class="string">&quot;Key: &quot;</span> + key + <span class="string">&quot;, Value: &quot;</span> + value);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2. 使用 entrySet 方式遍历（推荐，效率更高）</span></span><br><span class="line">        	<span class="comment">//(1)通过 map.entrySet() 获取所有的 Map.Entry 对象。每个 Map.Entry 对象包含一个 Key 和对应的 Value。</span></span><br><span class="line">        	<span class="comment">//(2)优点：只需遍历一次，直接从 Entry 中获取 Key 和 Value，效率更高。</span></span><br><span class="line">        System.out.println(<span class="string">&quot;\n使用 entrySet 方式遍历：&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, Integer&gt; entry : map.entrySet()) &#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">            <span class="type">Integer</span> <span class="variable">value</span> <span class="operator">=</span> entry.getValue(); <span class="comment">// 直接从 Entry 中获取 Key 和 Value</span></span><br><span class="line">            System.out.println(<span class="string">&quot;Key: &quot;</span> + key + <span class="string">&quot;, Value: &quot;</span> + value);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3. 使用 JDK 8 的 forEach 方法（推荐，代码更简洁）</span></span><br><span class="line">        	<span class="comment">//(1)使用 map.forEach((key, value) -&gt; &#123; ... &#125;) 方法，直接遍历 Key 和 Value。</span></span><br><span class="line">        	<span class="comment">//(2)优点：代码更简洁，可读性更高。</span></span><br><span class="line">        System.out.println(<span class="string">&quot;\n使用 JDK 8 的 forEach 方法遍历：&quot;</span>);</span><br><span class="line">        map.forEach((key, value) -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Key: &quot;</span> + key + <span class="string">&quot;, Value: &quot;</span> + value);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>高度注意Map类集合K&#x2F;V能否存储null值，如表1-1所示。</p>
+<img src="/2025/03/20/EP20-alibaba-java-readnote/Map%E7%B1%BB%E9%9B%86%E5%90%88KV%E5%AD%98%E5%82%A8.jpg" class="" title="Map类集合KV存储">
+</li>
+<li><p>合理利用好集合的有序性(sort)和稳定性(order)，避免集合的无序性(unsort)和不稳定性(unorder)带来的负面影响。</p>
+<p><strong>说明：</strong>有序性指遍历的结果按某种比较规则依次排列。稳定性指集合每次遍历的元素次序是一定的。如：<strong>ArrayList是order&#x2F;unsort；HashMap是unorder&#x2F;unsort；TreeSet是order&#x2F;sort</strong>。</p>
+</li>
+<li><p>利用<strong>Set元素</strong>唯一的特性，可以<strong>快速对一个集合进行去重操作</strong>，避免使用List的contains()进行遍历、去重或者判断包含操作。</p>
+</li>
+</ol>
+<h3 id="1-7-并发处理"><a href="#1-7-并发处理" class="headerlink" title="1.7　并发处理"></a>1.7　并发处理</h3><ol>
+<li><p>当创建线程或线程池时，请指定有意义的线程名称，出错时方便回溯。</p>
+<blockquote>
+<ul>
+<li><p>（1）为单个线程指定名称：在创建 <code>Thread</code> 时，通过构造方法的第二个参数指定线程名称。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public class NamedThreadExample &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 创建一个线程，并指定有意义的名称</span><br><span class="line">        Thread thread = new Thread(() -&gt; &#123;</span><br><span class="line">            System.out.println(&quot;线程正在执行任务...&quot;);</span><br><span class="line">            // 模拟任务执行</span><br><span class="line">            try &#123;</span><br><span class="line">                Thread.sleep(1000);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, &quot;File-Processing-Thread&quot;); // 指定线程名称为 &quot;File-Processing-Thread&quot;</span><br><span class="line"></span><br><span class="line">        // 启动线程</span><br><span class="line">        thread.start();</span><br><span class="line"></span><br><span class="line">        // 打印线程名称</span><br><span class="line">        System.out.println(&quot;线程名称: &quot; + thread.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>（2）为线程池指定线程名称：使用自定义的 <code>ThreadFactory</code>，在 <code>newThread</code> 方法中为线程指定名称。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import java.util.concurrent.*;</span><br><span class="line"></span><br><span class="line">public class NamedThreadPoolExample &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 自定义线程工厂，为线程池中的线程指定有意义的名称</span><br><span class="line">        ThreadFactory threadFactory = new ThreadFactory() &#123;</span><br><span class="line">            private int count = 0;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public Thread newThread(Runnable r) &#123;</span><br><span class="line">                return new Thread(r, &quot;Task-Thread-&quot; + (++count)); // 指定线程名称</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        // 创建线程池，使用自定义的线程工厂</span><br><span class="line">        ExecutorService executor = Executors.newFixedThreadPool(3, threadFactory);</span><br><span class="line"></span><br><span class="line">        // 提交任务到线程池</span><br><span class="line">        for (int i = 1; i &lt;= 5; i++) &#123;</span><br><span class="line">            int taskId = i;</span><br><span class="line">            executor.submit(() -&gt; &#123;</span><br><span class="line">                System.out.println(&quot;任务 &quot; + taskId + &quot; 正在由线程 &quot; + Thread.currentThread().getName() + &quot; 执行&quot;);</span><br><span class="line">                // 模拟任务执行</span><br><span class="line">                try &#123;</span><br><span class="line">                    Thread.sleep(1000);</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 关闭线程池</span><br><span class="line">        executor.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>（3）使用 Guava 的 <code>ThreadFactoryBuilder</code>（推荐）：更方便地指定线程名称格式。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import com.google.common.util.concurrent.ThreadFactoryBuilder;</span><br><span class="line">import java.util.concurrent.*;</span><br><span class="line"></span><br><span class="line">public class GuavaThreadPoolExample &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 使用 Guava 的 ThreadFactoryBuilder 创建线程工厂</span><br><span class="line">        ThreadFactory threadFactory = new ThreadFactoryBuilder()</span><br><span class="line">                .setNameFormat(&quot;Guava-Thread-%d&quot;) // 指定线程名称格式</span><br><span class="line">                .build();</span><br><span class="line">        // 创建线程池，使用 Guava 的线程工厂</span><br><span class="line">        ExecutorService executor = Executors.newFixedThreadPool(3, threadFactory);</span><br><span class="line">        // 提交任务到线程池</span><br><span class="line">        for (int i = 1; i &lt;= 5; i++) &#123;</span><br><span class="line">            int taskId = i;</span><br><span class="line">            executor.submit(() -&gt; &#123;</span><br><span class="line">                System.out.println(&quot;任务 &quot; + taskId + &quot; 正在由线程 &quot; + Thread.currentThread().getName() + &quot; 执行&quot;);</span><br><span class="line">                // 模拟任务执行</span><br><span class="line">                try &#123;</span><br><span class="line">                    Thread.sleep(1000);</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        // 关闭线程池</span><br><span class="line">        executor.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</blockquote>
+</li>
+<li><p>线程资源必须通过线程池提供，不允许在应用中自行显式创建线程。</p>
+<p><strong>说明：</strong>使用线程池的好处是减少在创建和销毁线程上消耗的时间及系统资源，解决资源不足的问题。如果不使用线程池，则有可能造成系统创建大量同类线程而导致消耗完内存或者“过度切换”的问题。</p>
+</li>
+<li><p>SimpleDateFormat是线程不安全的类，一般不要定义为static变量，如果定义为static，则必须加锁，或者使用DateUtils工具类。</p>
+<p><strong>说明：</strong>如果是JDK 8的应用，可以使用Instant代替Date，LocalDateTime代替Calendar，DateTimeFormatter代替SimpleDateFormat。官方给出的解释：simple beautiful strong immutable thread-safe。</p>
+</li>
+<li><p>必须回收自定义的ThreadLocal变量，尤其在线程池场景下，线程经常会被复用，如果不清理自定义的ThreadLocal变量，则可能会影响后续业务逻辑和造成内存泄露等问题。尽量在代理中使用try-finally块回收。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">objectThreadLocal.set(userInfo);</span><br><span class="line">try&#123;</span><br><span class="line">	//代码省略</span><br><span class="line">&#125;finally&#123;</span><br><span class="line">	objectThreadLocal.remove();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在高并发场景中，同步调用应该考量锁的性能损耗。能用无锁数据结构，就不要用锁；能锁区块，就不要锁整个方法体；能用对象锁，就不要用类锁。</p>
+<p><strong>说明：</strong>使加<strong>锁的代码块工作量尽可能的小</strong>，避免在锁代码块中调用RPC方法。</p>
+<blockquote>
+<p><strong>RPC（Remote Procedure Call，远程过程调用）</strong> 是一种允许程序调用远程服务器上的方法或函数的机制，就像调用本地方法一样。RPC 的核心思想是隐藏网络通信的复杂性，使开发者能够像调用本地方法一样调用远程服务。</p>
+</blockquote>
+</li>
+<li><p>在对多个资源、数据库表、对象同时加锁时，需要保持一致的加锁顺序，否则可能会造成死锁。</p>
+<p><strong>说明：</strong>如果线程一需要对表A、B、C依次全部加锁后才可以进行更新操作，那么线程二的加锁顺序也必须是A、B、C，否则可能出现死锁。</p>
+</li>
+<li><p>在使用阻塞<strong>等待获取锁的方式中，必须在try代码块之外</strong>，并且在加锁方法与try代码块之间没有任何可能抛出异常的方法调用，避免加锁成功后，在finally中无法解锁。</p>
+<p><strong>说明一：</strong>如果在lock方法与try代码块之间的方法调用抛出异常，那么无法解锁，造成其他线程无法成功获取锁。</p>
+<p><strong>说明二：</strong>如果lock方法在try代码块之内，可能由于其他方法抛出异常，导致在finally代码块中，unlock对未加锁的对象尝试解锁，它会调用AQS的try Release方法（取决于具体实现类），抛出Illegal MonitorStateException异常。</p>
+<p><strong>说明三：</strong>在Lock对象的lock方法实现中，可能抛出unchecked异常，产生的后果与说明二相同。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Lock lock = new XxxLock();</span><br><span class="line">lock.lock();</span><br><span class="line">try &#123;</span><br><span class="line">	doSomething();</span><br><span class="line">	doOthers();</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">	lock.unlock();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在并发修改同一记录时，为避免更新丢失，需要加锁。要么在应用层加锁，要么在缓存层加锁，要么在数据库层使用乐观锁，使用version作为更新依据。</p>
+<p><strong>说明：</strong>如果每次访问冲突概率小于20%，则推荐使用乐观锁，否则使用悲观锁。乐观锁的重试次数不得小于3次。</p>
+</li>
+<li><p>与资金相关的金融敏感信息，使用悲观锁策略。</p>
+<p><strong>说明：</strong>乐观锁在获得锁的同时已经完成了更新操作，校验逻辑容易出现漏洞。另外，乐观锁对冲突的解决策略有较复杂的要求，处理不当容易造成系统压力或数据异常，所以与资金相关的金融敏感信息不建议使用乐观锁更新。</p>
+<blockquote>
+<p><strong>正例：</strong>悲观锁遵循“一锁二判三更新四释放”的原则</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ProductDao</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> JdbcTemplate jdbcTemplate;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 更新产品价格，使用乐观锁机制</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">updateProductPriceWithRetry</span><span class="params">(Long productId, BigDecimal newPrice)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">retryCount</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">final</span> <span class="type">int</span> <span class="variable">maxRetries</span> <span class="operator">=</span> <span class="number">3</span>; <span class="comment">// 最少重试3次</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (retryCount &lt; maxRetries) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 1. 查询当前产品和版本号</span></span><br><span class="line">                <span class="type">Product</span> <span class="variable">product</span> <span class="operator">=</span> jdbcTemplate.queryForObject(</span><br><span class="line">                    <span class="string">&quot;SELECT id, name, price, version FROM products WHERE id = ?&quot;</span>,</span><br><span class="line">                    (rs, rowNum) -&gt; <span class="keyword">new</span> <span class="title class_">Product</span>(</span><br><span class="line">                        rs.getLong(<span class="string">&quot;id&quot;</span>),</span><br><span class="line">                        rs.getString(<span class="string">&quot;name&quot;</span>),</span><br><span class="line">                        rs.getBigDecimal(<span class="string">&quot;price&quot;</span>),</span><br><span class="line">                        rs.getInt(<span class="string">&quot;version&quot;</span>)</span><br><span class="line">                    ),</span><br><span class="line">                    productId</span><br><span class="line">                );</span><br><span class="line">                <span class="comment">// 2. 执行更新操作，带上version条件</span></span><br><span class="line">                <span class="type">int</span> <span class="variable">updatedRows</span> <span class="operator">=</span> jdbcTemplate.update(</span><br><span class="line">                    <span class="string">&quot;UPDATE products SET price = ?, version = version + 1 WHERE id = ? AND version = ?&quot;</span>,</span><br><span class="line">                    newPrice, productId, product.getVersion()</span><br><span class="line">                );</span><br><span class="line">                <span class="comment">// 3. 检查是否更新成功</span></span><br><span class="line">                <span class="keyword">if</span> (updatedRows &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 更新成功</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 4. 如果没有更新任何行，说明version不匹配，数据已被其他事务修改</span></span><br><span class="line">                retryCount++;</span><br><span class="line">                Thread.sleep(<span class="number">100</span>); <span class="comment">// 短暂等待后重试</span></span><br><span class="line">                </span><br><span class="line">            &#125; <span class="keyword">catch</span> (EmptyResultDataAccessException e) &#123;</span><br><span class="line">                <span class="comment">// 产品不存在</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                Thread.currentThread().interrupt();</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;更新被中断&quot;</span>, e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 重试3次后仍然失败</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">OptimisticLockingFailureException</span>(<span class="string">&quot;更新产品价格失败，经过&quot;</span> + maxRetries + <span class="string">&quot;次重试后仍无法完成&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 产品实体类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Product</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> BigDecimal price;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> version;</span><br><span class="line">    <span class="comment">// 构造方法、getter和setter省略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>使用CountDownLatch进行异步转同步操作，每个线程在退出前必须调用countDown方法，线程执行代码注意catch异常，确保countDown方法被执行到，避免主线程无法执行至await方法，直到超时才返回结果。</p>
+<p><strong>说明：</strong>子线程抛出异常堆栈，不能在主线程try-catch到。</p>
+</li>
+<li><p><strong>避免Random实例被多线程使用，</strong>虽然共享该实例是线程安全的，但会因竞争同一seed导致性能下降。</p>
+<p><strong>说明：</strong>Random实例包括java.util.Random的实例或者Math. random()的方式。<strong>正例：</strong>在JDK 7之后，可以直接使用API ThreadLocalRandom；而在JDK 7之前，需要编码保证每个线程持有一个单独的Random实例。</p>
+</li>
+<li><p>ThreadLocal对象使用static修饰，Thread Local无法解决共享对象的更新问题。</p>
+<p><strong>说明：</strong>这个变量是针对一个线程内所有操作共享的，所以设置为静态变量，所有此类实例共享此静态变量，也就是说，在类第一次被使用时装载，只分配一块存储空间，所有此类的对象（只要是这个线程内定义的）都可以操控这个变量。</p>
+</li>
+</ol>
+<h3 id="1-8-控制语句"><a href="#1-8-控制语句" class="headerlink" title="1.8  控制语句"></a>1.8  控制语句</h3><ol>
+<li><p>在一个switch块内，每个case要么通过continue&#x2F; break&#x2F;return等终止，要么注释说明程序将继续执行到哪一个case为止。一个switch块内必须包含一个default语句并且放在最后，即使它什么代码也没有。</p>
+<p><strong>说明：</strong>break是退出switch语句块，而return是退出方法体。</p>
+</li>
+<li><p>当switch括号内的变量类型为String并且此变量为外部参数时，必须先进行null判断。</p>
+</li>
+<li><p>在三目运算符condition? 表达式1 : 表达式2中，注意表达式1和表达式2在类型对齐时，可能抛出自动拆箱导致的NPE异常。</p>
+<p><strong>说明：</strong>以下两种场景会触发类型对齐的拆箱操作：</p>
+<p>1）表达式1或表达式2的值有一个是原始类型。</p>
+<p>2）表达式1或表达式2的值的类型不一致，会强制拆箱升级成表示范围更大的那个类型。</p>
+</li>
+<li><p>在高并发场景中，避免使用“等于”判断作为中断或退出的条件。</p>
+<p><strong>说明：如果没有处理好并发控制，容易产生等值判断被“击穿”的情况</strong>，使用大于或小于的区间判断条件来代替。</p>
+<p><strong>反例：</strong>当判断剩余奖品数量等于0时，终止发放奖品，但因为并发处理错误，导致奖品数量瞬间变成了负数，这样的话活动将无法终止。</p>
+</li>
+<li><p>表达异常的分支时，尽量少用if-else方式，这种方式可以改写成：</p>
+<p><strong>说明：</strong>如果不得不使用if()…else if()…else…方式表达逻辑，那么为【强制】避免后续代码维护困难，请勿超过3层。</p>
+</li>
+<li><p>除常用方法（如getXxx&#x2F;isXxx）外，不要在条件判断中执行其他复杂的语句，将复杂逻辑判断的结果赋值给一个有意义的布尔变量名，以提高可读性。</p>
+<p><strong>说明：</strong>很多if语句内的逻辑表达式相当复杂，与、或、取反混合运算，甚至各种方法纵深调用，理解成本非常高。如果赋值一个非常好理解的布尔变量名字，则是件令人赏心悦目的事情。</p>
+</li>
+<li><p>不要在其他表达式（尤其是条件表达式）中插入赋值语句。</p>
+<p><strong>说明：</strong>赋值点类似于人体的穴位，对于代码的理解至关重要，所以赋值语句需要清晰地单独成为一行。</p>
+</li>
+<li><p>避免采用取反逻辑运算符。</p>
+<p><strong>说明：</strong>取反逻辑不利于快速理解，并且取反逻辑写法一般都存在对应的正向逻辑写法。</p>
+</li>
+<li><p>公开接口需要进行入参保护，尤其是批量操作的接口。</p>
+<p><strong>反例：</strong>某业务系统，提供一个用户批量查询的接口，API文档上有说最多查多少个，但接口实现上没做任何保护，导致调用方传了一个1000的用户id数组，查询信息后，内存爆满。</p>
+</li>
+</ol>
+<h3 id="1-9-注释规约"><a href="#1-9-注释规约" class="headerlink" title="1.9  注释规约"></a>1.9  注释规约</h3><ol>
+<li><p>类、类属性、类方法的注释必须使用Javadoc规范，使用&#x2F;*<em>内容</em>&#x2F;格式，不得使用&#x2F;&#x2F; xxx方式。</p>
+<p><strong>说明：</strong>在IDE编辑窗口中，Javadoc方式会提示相关注释，生成Javadoc可以正确输出相应注释；在IDE中，当工程调用方法时，不进入方法即可悬浮提示方法、参数、返回值的意义，提高阅读效率。</p>
+</li>
+<li><p>所有的类都必须添加创建者和创建日期。</p>
+<p><strong>说明：</strong>在设置模板时，注意IDEA的@author为’${USER}’，而eclipse的@author为’${user}’，大小写有区别。日期的设置统一为yyyy&#x2F;MM&#x2F;dd的格式。</p>
+</li>
+<li><p>与其用“半吊子”英文注释，不如用中文注释把问题说清楚。专有名词与关键字保持英文原文即可。</p>
+<p><strong>反例：</strong>将“TCP连接超时”解释成“传输控制协议连接超时”，理解起来反而费脑筋。</p>
+</li>
+<li><p>谨慎注释掉代码。在上方详细说明，而不是简单地注释掉。如果无用，则删除。</p>
+<p><strong>说明：</strong>代码被注释掉有两种可能：</p>
+<p>1）后续会恢复此段代码逻辑；</p>
+<p>2）永久不用。</p>
+<p>前者如果没有备注信息，则难以知晓注释动机。后者建议直接删除，假如需要查阅历史代码，登录代码仓库即可。</p>
+</li>
+<li><p>对于注释的要求。</p>
+<p>1）能够准确反映设计思想和代码逻辑。</p>
+<p>2）能够描述业务含义，使其他程序员能够迅速了解到代码背后的信息。完全没有注释的大段代码对于阅读者形同天书，注释既是给自己看的，即使隔很长时间，也能清晰理解当时的思路；也是给继任者看的，使其能够快速接替自己的工作。</p>
+</li>
+<li><p>特殊注释标记，请注明标记人与标记时间。注意及时处理这些标记，通过标记扫描，经常清理此类标记。有时候线上故障就来源于这些标记处的代码。</p>
+<p>1）待办事宜（TODO）:（标记人，标记时间，[预计处理时间]）。</p>
+<p>表示需要实现，但目前还未实现的功能。这实际上是一个Javadoc的标签，虽然目前的Javadoc还没有实现，但已经被广泛使用。只能应用于类、接口和方法（因为它是一个Javadoc标签）。</p>
+<p>2）错误，不能工作（FIXME）:（标记人，标记时间，[预计处理时间]）。</p>
+<p>在注释中用FIXME标记某代码是错误的，而且不能工作，需要及时纠正的情况。</p>
+</li>
+</ol>
+<h3 id="1-10-前后端规约"><a href="#1-10-前后端规约" class="headerlink" title="1.10 前后端规约"></a>1.10 前后端规约</h3><ol>
+<li><p>前后端数据列表相关的接口返回，如果为空，则返回空数组[]或空集合{}。</p>
+<p><strong>说明：</strong>此条约定有利于数据层面上的协作更加高效，减少前端很多琐碎的null判断。</p>
+</li>
+<li><p>当服务端发生错误时，返回给前端的响应信息必须包含HTTP状态码、errorCode、errorMessage和用户提示信息四部分。</p>
+<p><strong>说明：</strong>四部分的涉众对象分别是浏览器、前端开发、错误排查人员、用户。其中输出给用户的提示信息要求：简短清晰、提示友好，引导用户进行下一步操作或解释错误原因，提示信息可以包括错误原因、上下文环境、推荐操作等。errorMessage：简要描述后端出错原因，便于错误排查人员快速定位问题，注意不要包含敏感数据信息。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">正例：常见的HTTP状态码如下。</span><br><span class="line">1）200 OK: 表明该请求被成功地完成，所请求的资源发送到客户端。</span><br><span class="line">2）401 Unauthorized: 请求要求身份验证，常见于需要登录而用户未登录的情况。</span><br><span class="line">3）403 Forbidden：服务器拒绝请求，常见于机密信息或通过复制其他登录用户链接访问服务器的情况。</span><br><span class="line">4）404 Not Found: 服务器无法获得所请求的网页，请求资源不存在。</span><br><span class="line">5）500 Internal Server Error: 服务器内部错误。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当HTTP请求通过URL传递参数时，不能超过2048字节。</p>
+<p><strong>说明：</strong>不同浏览器对于URL的最大长度限制略有不同，并且对超出最大长度的处理逻辑也有差异，2048字节是取所有浏览器的最小值。</p>
+<p><strong>反例：</strong>某业务将退货的商品id列表放在URL中作为参数传递，当一次退货商品数量过多时，URL参数超长，传递到后端的参数被截断，导致部分商品未能正确退货。</p>
+</li>
+<li><p>HTTP请求通过body传递内容时，必须控制长度，超出最大长度后，后端解析会出错。</p>
+<p><strong>说明：</strong>Nginx默认限制为1MB，Tomcat默认限制为2MB，当确实有业务需要传递较多内容时，可以调大服务器端的限制。</p>
+</li>
+<li><p>服务端返回的数据，使用JSON格式而非XML。</p>
+<p><strong>说明：</strong>尽管HTTP支持使用不同的输出格式，例如纯文本、JSON、CSV、XML、RSS甚至HTML。但如果我们使用面向用户的服务，那么应该选择JSON</p>
+</li>
+<li><p>前后端的时间格式统一为”yyyy-MM-dd HH:mm:ss”，为GMT。</p>
+</li>
+</ol>
+<h3 id="1-11-其他"><a href="#1-11-其他" class="headerlink" title="1.11　其他"></a>1.11　其他</h3><ol>
+<li><p>避免用Apache Beanutils进行属性的copy。</p>
+<p><strong>说明：</strong>Apache BeanUtils性能较差，可以使用其他方案，比如Spring BeanUtils、Cglib BeanCopier，注意均是浅拷贝。</p>
+</li>
+<li><p>注意Math.random()方法返回的是double类型，取值的范围0≤x&lt;1（能够取到零值，注意除零异常）。如果想获取整数类型的随机数，不要将x放大10的若干倍后再取整，直接使用Random对象的nextInt或者nextLong方法即可。</p>
+</li>
+<li><p>不要在视图模板中加入任何复杂的逻辑。</p>
+<p><strong>说明：</strong>根据MVC理论，视图的职责是展示，不要抢模型和控制器的工作。</p>
+</li>
+<li><p>及时清理不再使用的代码段或配置信息。</p>
+<p><strong>说明：</strong>对于垃圾代码或过时配置，坚决清理干净，避免程序过度臃肿，代码冗余。</p>
+<img src="/2025/03/20/EP20-alibaba-java-readnote/%E6%B3%A8%E9%87%8A%E4%BB%A3%E7%A0%81%E7%9A%84%E8%A7%84%E7%BA%A6.png" class="" title="注释代码的规约"></li>
+</ol>
+<h2 id="第2章-异常日志"><a href="#第2章-异常日志" class="headerlink" title="第2章　异常日志"></a>第2章　异常日志</h2><p>异常处理是大部分程序员多年的痛点，本章主要涉及如何定义错误码，定义异常对象、捕获、处理异常事件，如何以合理的日志结构保存出错现场信息，以便快速定位问题。</p>
+<h3 id="2-1-错误码"><a href="#2-1-错误码" class="headerlink" title="2.1　错误码"></a>2.1　错误码</h3><ol>
+<li><p>错误码的制订原则：快速溯源、沟通标准化。</p>
+<p><strong>说明：</strong>错误码设计得过于完美和复杂，就像字典中的生僻字一样，虽然表意精准，但是不易懂。</p>
+<p><strong>正例：</strong>错误码回答“谁的错？”“错在哪？”的问题。</p>
+<p>1）错误码必须能够快速知晓错误来源，可快速判断是谁的问题。</p>
+<p>2）错误码必须能够清晰地比对（代码中容易equals）。</p>
+<p>3）错误码有利于团队快速对错误原因达成一致。</p>
+</li>
+<li><p>当全部正常，但不得不填充错误码时，返回五个零（00000）。</p>
+</li>
+<li><p>错误码为字符串类型，共5位，分为错误产生来源、四位数字编号两部分。</p>
+<p><strong>说明：</strong>错误产生来源分为A、B、C三种，A表示错误来源于用户，例如参数错误、用户安装版本过低、用户支付超时等；B表示错误来源于当前系统，例如业务逻辑出错、程序健壮性差等；C表示错误来源于第三方服务，例如CDN服务出错、消息投递超时等；四位数字编号从0001到9999，大类之间的步长间距预留100。</p>
+</li>
+<li><p>错误码使用者避免随意定义新的错误码。</p>
+<p><strong>说明：</strong>在代码中使用错误码时，尽可能在原有错误码附表中找到语义相同或者相近的错误码。</p>
+</li>
+<li><p>错误码不能直接输出给用户作为提示信息使用。</p>
+<p><strong>说明：</strong>堆栈、错误码（errorCode）、错误信息(errorMessage)、提示信息（userTip）是一个有效关联并互相转义的和谐整体，但请勿越俎代庖。</p>
+</li>
+<li><p>错误码分为一级宏观错误码、二级宏观错误码、三级宏观错误码。</p>
+<p><strong>说明：</strong>在无法确定的错误场景中，可以直接使用一级宏观错误码，分别是：A0001（用户端错误）、B0001（系统执行出错）、C0001（调用第三方服务出错）。</p>
+<p><strong>正例：</strong>调用第三方服务出错是一级，中间件出错是二级，消息服务出错是三级。</p>
+</li>
+</ol>
+<h3 id="2-2-异常处理"><a href="#2-2-异常处理" class="headerlink" title="2.2　异常处理"></a>2.2　异常处理</h3><ol>
+<li><p>Java类库中定义的可以通过预检查方式规避的RuntimeException不应该通过catch的方式处理，如：NullPointerException、IndexOutOfBoundsException等。</p>
+<p><strong>说明：</strong>无法通过预检查的异常不在此列，比如当解析字符串形式的数字时，可能存在数字格式错误，通过catch NumberFormatException实现。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">正例：if (obj!=null) &#123;...&#125;</span><br><span class="line">反例：try &#123; obj.method(); &#125; catch(NullPointerException e)&#123;...&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>异常被捕获后不要用来做流程控制和条件控制。</p>
+</li>
+<li><p>catch时请分清稳定代码和非稳定代码。稳定代码一般指本机运行且执行结果确定性高的代码。对于非稳定代码的catch，尽可能在进行异常类型的区分后，再做对应的异常处理。</p>
+<p><strong>说明：对大段代码进行try-catch，将使程序无法根据不同的异常做出正确的“应激”反应，也不利于定位问题，这是一种不负责任的表现。</strong></p>
+<blockquote>
+<h5 id="（1）稳定代码示例"><a href="#（1）稳定代码示例" class="headerlink" title="（1）稳定代码示例"></a>（1）稳定代码示例</h5><p>稳定代码通常指在本机运行且执行结果确定性高的代码，例如简单的数学运算或确定性的数据处理。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 稳定代码示例 - 简单的数学计算</span><br><span class="line">public int calculateCircleArea(int radius) &#123;</span><br><span class="line">    // 这是一个确定性很高的计算</span><br><span class="line">    return (int)(Math.PI * radius * radius);</span><br><span class="line">&#125;</span><br><span class="line">// 调用稳定代码时，通常不需要try-catch</span><br><span class="line">public void useStableCode() &#123;</span><br><span class="line">    int radius = 5;</span><br><span class="line">    int area = calculateCircleArea(radius);</span><br><span class="line">    System.out.println(&quot;Area: &quot; + area);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于这种稳定代码，不需要使用try-catch，因为：</p>
+<ol>
+<li>所有操作都是确定性的</li>
+<li>不会抛出意外异常</li>
+<li>参数类型和范围可以通过前置条件检查</li>
+</ol>
+<h5 id="（2）非稳定代码示例"><a href="#（2）非稳定代码示例" class="headerlink" title="（2）非稳定代码示例"></a>（2）非稳定代码示例</h5><p>非稳定代码通常涉及外部依赖或不确定因素，如网络请求、文件IO、数据库操作等。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 非稳定代码示例 - 从网络获取数据</span><br><span class="line">public String fetchDataFromAPI(String url) throws IOException, APIException &#123;</span><br><span class="line">    // 这里可能有多种异常情况</span><br><span class="line">    HttpRequest request = HttpRequest.newBuilder()</span><br><span class="line">            .uri(URI.create(url))</span><br><span class="line">            .build();</span><br><span class="line">    HttpResponse&lt;String&gt; response = HttpClient.newHttpClient()</span><br><span class="line">            .send(request, HttpResponse.BodyHandlers.ofString());</span><br><span class="line">    if (response.statusCode() != 200) &#123;</span><br><span class="line">        throw new APIException(&quot;API returned status: &quot; + response.statusCode());</span><br><span class="line">    &#125;</span><br><span class="line">    return response.body();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 调用非稳定代码时，应该区分处理不同异常</span><br><span class="line">public void useUnstableCode() &#123;</span><br><span class="line">    String apiUrl = &quot;https://api.example.com/data&quot;;</span><br><span class="line">    try &#123;</span><br><span class="line">        String data = fetchDataFromAPI(apiUrl);</span><br><span class="line">        processData(data);</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">        // 处理网络或IO相关异常</span><br><span class="line">        System.err.println(&quot;Network error: &quot; + e.getMessage());</span><br><span class="line">        // 可能的恢复操作，如重试或使用缓存</span><br><span class="line">    &#125; catch (APIException e) &#123;</span><br><span class="line">        // 处理API特定的业务异常</span><br><span class="line">        System.err.println(&quot;API error: &quot; + e.getMessage());</span><br><span class="line">        // 可能的恢复操作，如使用备用API</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        // 捕获其他未预期的异常</span><br><span class="line">        System.err.println(&quot;Unexpected error: &quot; + e.getMessage());</span><br><span class="line">        // 记录日志并优雅降级</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于非稳定代码，应该：</p>
+<ol>
+<li>区分不同类型的异常</li>
+<li>为每种异常提供适当的处理或恢复策略</li>
+<li>避免笼统的捕获所有异常</li>
+<li>在最外层提供适当的错误反馈机制</li>
+</ol>
+<h5 id="（3）不良实践示例（应避免）"><a href="#（3）不良实践示例（应避免）" class="headerlink" title="（3）不良实践示例（应避免）"></a>（3）不良实践示例（应避免）</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 不好的做法 - 大段代码笼统try-catch</span><br><span class="line">public void badPractice() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        // 包含多种操作的代码块</span><br><span class="line">        String data = fetchDataFromAPI(&quot;https://api.example.com/data&quot;);</span><br><span class="line">        processData(data);</span><br><span class="line">        saveToDatabase(data);</span><br><span class="line">        sendNotification();</span><br><span class="line">    &#125; catch (Exception e) &#123; // 捕获所有异常</span><br><span class="line">        System.out.println(&quot;Something went wrong&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这种做法的缺点：</p>
+<ol>
+<li>无法区分不同类型的错误</li>
+<li>无法针对特定错误采取特定恢复措施</li>
+<li>不利于问题定位和调试</li>
+<li>用户体验差（只有笼统的错误信息）</li>
+</ol>
+</blockquote>
+</li>
+<li><p>捕获异常是为了处理异常，不要捕获了却什么都不处理而抛弃之，如果不想处理它，请将该异常抛给它的调用者。最外层的业务使用者必须处理异常，将其转化为用户可以理解的内容。</p>
+</li>
+<li><p>finally块必须对资源对象、流对象进行关闭操作，如果有异常就要做try-catch操作。</p>
+<p><strong>说明：</strong>对于JDK 7及以上版本，可以使用try-with-resources方式。</p>
+</li>
+<li><p>不要在finally块中使用return。</p>
+<p><strong>说明：</strong>try块中的return语句执行成功后，并不马上返回，而是继续执行finally块中的语句，如果此处存在return语句，则在此直接返回，无情地丢弃try块中的返回点。</p>
+</li>
+<li><p>捕获异常与抛异常必须完全匹配，或者捕获异常是抛异常的父类。</p>
+<p><strong>说明：</strong>如果预计对方抛的是绣球，实际接到的是铅球，就会产生意外。</p>
+</li>
+<li><p><strong>防止产生NPE是程序员的基本修养，</strong>注意NPE产生的场景。</p>
+<p><strong>说明：</strong>本手册明确，防止产生NPE是调用者的责任。即使被调用方法返回空集合或者空对象，对调用者来说，也并非高枕无忧，必须考虑到远程调用失败、序列化失败、运行时异常等场景返回null值的情况。</p>
+<p>1）当返回类型为基本数据类型，return包装数据类型的对象时，自动拆箱有可能产生NPE。</p>
+<p><strong>反例：</strong>public int f() { return Integer对象}， 如果为null，则自动拆箱，抛NPE。</p>
+<p>2）数据库的查询结果可能为null。</p>
+<p>3）集合里的元素即使isNotEmpty，取出的数据元素也可能为null。</p>
+<p>4）当远程调用返回对象时，一律要求进行空指针判断，以防止产生NPE。</p>
+<p>5）对于Session中获取的数据，建议进行NPE检查，以避免空指针。</p>
+<p>6）级联调用obj.getA().getB().getC()；的一连串调用，易产生NPE。</p>
+<p><strong>正例：</strong>使用JDK 8的Optional类防止产生NPE。</p>
+</li>
+<li><p>定义时区分unchecked &#x2F; checked异常，避免直接抛出new RuntimeException()，更不允许抛出Exception或者Throwable，应使用有业务含义的自定义异常。推荐业界已定义过的自定义异常，如：DAOException &#x2F; ServiceException等。</p>
+</li>
+</ol>
+<h3 id="2-3-日志规约"><a href="#2-3-日志规约" class="headerlink" title="2.3　日志规约"></a>2.3　日志规约</h3><ol>
+<li><p>应用中不可直接使用日志系统（Log4j、Logback）中的API，而应依赖使用日志框架（SLF4J、JCL–Jakarta Commons Logging）中的API，使用门面模式的日志框架，有利于维护日志并保证各个类的日志处理方式统一。</p>
+</li>
+<li><p>所有日志文件至少保存15天，因为有些异常具备以“周”为频次发生的特点。对于当天日志，以“应用名.log”保存在“&#x2F;home&#x2F;admin&#x2F;应用名&#x2F;logs&#x2F;”目录下，过往日志格式： {logname}.log.{保存日期}，日期格式：yyyy-MM-dd。</p>
+</li>
+<li><p>应用中的扩展日志（如打点、临时监控、访问日志等）命名方式：appName_logType_logName.log。logType为日志类型，如stats&#x2F;monitor&#x2F;access等；logName为日志描述。这种命名的好处是通过文件名就可以知道日志文件属于哪个应用，哪种类型，有什么目的，这也有利于归类查找。</p>
+<p><strong>说明：</strong>推荐对日志进行分类，如将错误日志和业务日志分开存放，既便于开发人员查看，也便于通过日志及时监控系统。</p>
+<p>下面是一个完整的基于SLF4J+Logback实现错误日志和业务日志分离的示例，包含配置和代码实现。</p>
+<blockquote>
+<h5 id="1-Maven依赖配置"><a href="#1-Maven依赖配置" class="headerlink" title="1. Maven依赖配置"></a>1. Maven依赖配置</h5><p>首先确保pom.xml中包含必要的依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">    &lt;!-- SLF4J API --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.0.7&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;!-- Logback实现 --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;ch.qos.logback&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;logback-classic&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.4.7&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-Logback配置文件-logback-xml"><a href="#2-Logback配置文件-logback-xml" class="headerlink" title="2. Logback配置文件 (logback.xml)"></a>2. Logback配置文件 (logback.xml)</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;!-- 定义日志存储目录 --&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;LOG_DIR&quot;</span> value=<span class="string">&quot;./logs&quot;</span> /&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;!-- 公共日志格式 --&gt;</span><br><span class="line">    &lt;property name=<span class="string">&quot;COMMON_PATTERN&quot;</span> </span><br><span class="line">              value=<span class="string">&quot;%d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;36&#125; - %msg%n&quot;</span> /&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;!-- 业务日志Appender --&gt;</span><br><span class="line">    &lt;appender name=<span class="string">&quot;BUSINESS&quot;</span> class=<span class="string">&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;</span>&gt;</span><br><span class="line">        &lt;file&gt;$&#123;LOG_DIR&#125;/business.log&lt;/file&gt;</span><br><span class="line">        &lt;encoder&gt;</span><br><span class="line">            &lt;pattern&gt;$&#123;COMMON_PATTERN&#125;&lt;/pattern&gt;</span><br><span class="line">            &lt;charset&gt;UTF-<span class="number">8</span>&lt;/charset&gt;</span><br><span class="line">        &lt;/encoder&gt;</span><br><span class="line">        &lt;rollingPolicy class=<span class="string">&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;</span>&gt;</span><br><span class="line">            &lt;fileNamePattern&gt;$&#123;LOG_DIR&#125;/business.%d&#123;yyyy-MM-dd&#125;.log&lt;/fileNamePattern&gt;</span><br><span class="line">            &lt;maxHistory&gt;<span class="number">30</span>&lt;/maxHistory&gt;</span><br><span class="line">        &lt;/rollingPolicy&gt;</span><br><span class="line">    &lt;/appender&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;!-- 错误日志Appender --&gt;</span><br><span class="line">    &lt;appender name=<span class="string">&quot;ERROR&quot;</span> class=<span class="string">&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;</span>&gt;</span><br><span class="line">        &lt;file&gt;$&#123;LOG_DIR&#125;/error.log&lt;/file&gt;</span><br><span class="line">        &lt;encoder&gt;</span><br><span class="line">            &lt;pattern&gt;$&#123;COMMON_PATTERN&#125;&lt;/pattern&gt;</span><br><span class="line">            &lt;charset&gt;UTF-<span class="number">8</span>&lt;/charset&gt;</span><br><span class="line">        &lt;/encoder&gt;</span><br><span class="line">        &lt;filter class=<span class="string">&quot;ch.qos.logback.classic.filter.ThresholdFilter&quot;</span>&gt;</span><br><span class="line">            &lt;level&gt;ERROR&lt;/level&gt;</span><br><span class="line">        &lt;/filter&gt;</span><br><span class="line">        &lt;rollingPolicy class=<span class="string">&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;</span>&gt;</span><br><span class="line">            &lt;fileNamePattern&gt;$&#123;LOG_DIR&#125;/error.%d&#123;yyyy-MM-dd&#125;.log&lt;/fileNamePattern&gt;</span><br><span class="line">            &lt;maxHistory&gt;<span class="number">90</span>&lt;/maxHistory&gt; &lt;!-- 错误日志保留更久 --&gt;</span><br><span class="line">        &lt;/rollingPolicy&gt;</span><br><span class="line">    &lt;/appender&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;!-- 业务日志Logger配置 --&gt;</span><br><span class="line">    &lt;logger name=<span class="string">&quot;com.example.business&quot;</span> level=<span class="string">&quot;INFO&quot;</span> additivity=<span class="string">&quot;false&quot;</span>&gt;</span><br><span class="line">        &lt;appender-ref ref=<span class="string">&quot;BUSINESS&quot;</span> /&gt;</span><br><span class="line">    &lt;/logger&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;!-- 系统错误日志配置 --&gt;</span><br><span class="line">    &lt;root level=<span class="string">&quot;ERROR&quot;</span>&gt;</span><br><span class="line">        &lt;appender-ref ref=<span class="string">&quot;ERROR&quot;</span> /&gt;</span><br><span class="line">    &lt;/root&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-Java代码实现示例"><a href="#3-Java代码实现示例" class="headerlink" title="3. Java代码实现示例"></a>3. Java代码实现示例</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">OrderService</span> &#123;</span><br><span class="line">    <span class="comment">// 业务日志Logger - 使用特定包名</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">businessLogger</span> <span class="operator">=</span> </span><br><span class="line">            LoggerFactory.getLogger(<span class="string">&quot;com.example.business.OrderService&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 错误日志Logger - 使用类名(会被root logger捕获)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">errorLogger</span> <span class="operator">=</span> </span><br><span class="line">            LoggerFactory.getLogger(OrderService.class);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processOrder</span><span class="params">(Order order)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 业务日志记录</span></span><br><span class="line">            businessLogger.info(<span class="string">&quot;开始处理订单, 订单ID: &#123;&#125;&quot;</span>, order.getId());</span><br><span class="line">            businessLogger.debug(<span class="string">&quot;订单详情: &#123;&#125;&quot;</span>, order.toString());</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 业务逻辑处理...</span></span><br><span class="line">            </span><br><span class="line">            businessLogger.info(<span class="string">&quot;订单处理完成, 订单ID: &#123;&#125;&quot;</span>, order.getId());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">// 错误日志记录</span></span><br><span class="line">            errorLogger.error(<span class="string">&quot;处理订单异常, 订单ID: &quot;</span> + order.getId(), e);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 同时也可以在业务日志中记录错误(可选)</span></span><br><span class="line">            businessLogger.warn(<span class="string">&quot;订单处理失败, 订单ID: &#123;&#125;, 原因: &#123;&#125;&quot;</span>, </span><br><span class="line">                    order.getId(), e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另一个服务示例</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PaymentService</span> &#123;</span><br><span class="line">    <span class="comment">// 业务日志Logger</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">businessLogger</span> <span class="operator">=</span> </span><br><span class="line">            LoggerFactory.getLogger(<span class="string">&quot;com.example.business.PaymentService&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 错误日志Logger</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">errorLogger</span> <span class="operator">=</span> </span><br><span class="line">            LoggerFactory.getLogger(PaymentService.class);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">processPayment</span><span class="params">(Payment payment)</span> &#123;</span><br><span class="line">        businessLogger.info(<span class="string">&quot;开始处理支付, 支付单号: &#123;&#125;&quot;</span>, payment.getTransactionId());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 支付处理逻辑...</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (PaymentException e) &#123;</span><br><span class="line">            errorLogger.error(<span class="string">&quot;支付处理失败, 交易号: &#123;&#125;, 错误码: &#123;&#125;&quot;</span>, </span><br><span class="line">                    payment.getTransactionId(), e.getErrorCode(), e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-高级配置建议"><a href="#4-高级配置建议" class="headerlink" title="4. 高级配置建议"></a>4. 高级配置建议</h5><ol>
+<li><strong>多环境配置</strong>：可以为不同环境(dev&#x2F;test&#x2F;prod)配置不同的日志级别和输出方式</li>
+<li><strong>日志文件大小控制</strong>：可以添加SizeBasedTriggeringPolicy控制单个日志文件大小</li>
+<li><strong>异步日志</strong>：对于高性能场景，可以使用AsyncAppender</li>
+<li><strong>MDC应用</strong>：可以在业务日志中添加追踪ID等上下文信息</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!-- 异步日志配置示例 --&gt;</span><br><span class="line">&lt;appender name=&quot;ASYNC_BUSINESS&quot; class=&quot;ch.qos.logback.classic.AsyncAppender&quot;&gt;</span><br><span class="line">    &lt;queueSize&gt;1024&lt;/queueSize&gt;</span><br><span class="line">    &lt;discardingThreshold&gt;0&lt;/discardingThreshold&gt;</span><br><span class="line">    &lt;appender-ref ref=&quot;BUSINESS&quot; /&gt;</span><br><span class="line">&lt;/appender&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这种分离方式使得：</p>
+<ul>
+<li>所有业务日志会记录到business.log文件中</li>
+<li>所有ERROR级别日志会记录到error.log文件中</li>
+<li>开发人员可以专注于查看业务日志</li>
+<li>运维人员可以监控error.log快速发现问题</li>
+</ul>
+</blockquote>
+</li>
+<li><p>当输出日志时，字符串变量之间的拼接使用占位符的方式。</p>
+<p><strong>说明：</strong>因为String字符串的拼接会使用StringBuilder的append()方式，所以有一定的性能损耗。<strong>使用占位符仅是替换动作，可以有效提升性能。</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">logger.debug(<span class="string">&quot;Processing trade with id : &#123;&#125; and symbol: &#123;&#125;&quot;</span>,id,symbol);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在生产环境中禁止直接使用System.out或System. err输出日志，或使用e.printStackTrace()打印异常堆栈。</p>
+</li>
+<li><p>异常信息应该包括两类：案发现场信息和异常堆栈信息。如果不处理，那么通过关键字throws往上抛出。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">logger.error(&quot;inputParams:&#123;&#125; and errorMessage: &#123;&#125;&quot;,各类参数或者对象.toString(), e,getMessage(),e)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打印日志时，禁止直接用JSON工具将对象转换成String。</p>
+<p><strong>正例：</strong>打印日志时，仅打印业务相关属性值或者调用其对象的toString()方法。</p>
+<p><strong>说明：</strong>如果对象里某些get方法被覆写，存在抛出异常的情况，则可能会因为打印日志而影响正常的业务流程的执行。</p>
+</li>
+<li><p><strong>谨慎地记录日志。在生产环境中禁止输出debug日志</strong>；<strong>有选择地输出info日志</strong>；如果使用warn记录刚上线时的业务行为信息，则一定要注意日志输出量的问题，避免把服务器磁盘撑爆，并及时删除这些观察日志。</p>
+<p><strong>说明：</strong>大量地输出无效日志，既不利于提升系统性能，也不利于快速定位错误点。记录日志时请思考：这些日志真的有人看吗？看到这条日志你能做什么？能不能给问题排查带来好处？</p>
+</li>
+<li><p>可以使用warn日志级别记录用户输入参数错误的情况，避免当用户投诉时无所适从。</p>
+<p><strong>说明：</strong>如非必要，请不要在此场景中打出error级别，避免频繁报警。注意日志输出的级别，<strong>error级别只记录系统逻辑出错、异常等重要的错误信息。</strong></p>
+</li>
+</ol>
+<h2 id="第3章-单元测试"><a href="#第3章-单元测试" class="headerlink" title="第3章　单元测试"></a>第3章　单元测试</h2><p>什么是好的单元测试标准？如何写好单元测试？本章首次提出AIR原则和BCDE原则进行衡量。</p>
+<ol>
+<li><p><strong>单元测试应该是全自动执行的，并且是非交互式的。</strong>测试用例通常是被定期执行的，执行过程必须完全自动化才有意义。需要人工检查输出结果的测试不是好的单元测试。单元测试中不准使用System.out进行人肉验证，必须使用assert验证。</p>
+</li>
+<li><p>保持单元测试的独立性。为了保证单元测试稳定可靠且便于维护，单元测试用例之间决不能互相调用，也不能依赖执行的先后次序。</p>
+<p><strong>反例：</strong>method2需要依赖method1的执行，将执行结果作为method2的输入。</p>
+</li>
+<li><p>对于单元测试，要保证测试粒度足够小，有助于精确定位问题。单元测试粒度至多是类级别，一般是方法级别。</p>
+<p><strong>说明：</strong>只有测试粒度足够小，才能在出错时尽快定位到出错位置。单元测试不负责检查跨类或者跨系统的交互逻辑，那是集成测试的领域。</p>
+</li>
+<li><p>【重要】<strong>核心业务、核心应用、核心模块的增量代码确保通过单元测试。</strong></p>
+<p><strong>说明：</strong>新增代码及时补充单元测试，如果新增代码影响了原有单元测试，请及时修正。</p>
+</li>
+<li><p>单元测试代码必须写在如下工程目录下：src&#x2F;test&#x2F; java，不允许写在业务代码目录下。</p>
+<p><strong>说明：</strong>源码编译时会跳过此目录，而单元测试框架默认扫描此目录。</p>
+</li>
+<li><p>单元测试的基本目标：语句覆盖率达到70%；核心模块的语句覆盖率和分支覆盖率都要达到100%。</p>
+<p><strong>说明：</strong>在工程规约的应用分层中提到的DAO层、Manager层、可重用度高的Service层，都应该进行单元测试。</p>
+</li>
+<li><p>编写单元测试代码遵守BCDE原则，以保证被测试模块的交付质量。</p>
+<ul>
+<li>B：Border，边界值测试，包括循环边界、特殊取值、特殊时间点和数据顺序等。</li>
+<li>C：Correct，正确地输入，并得到预期的结果。</li>
+<li>D：Design，与设计文档相结合，编写单元测试。</li>
+<li>E：Error，强制错误信息输入（如：非法数据、异常流程、业务允许输入等），并得到预期的结果。</li>
+</ul>
+</li>
+<li><p>和数据库相关的单元测试，可以设定自动回滚机制，不给数据库造成脏数据。或者对单元测试产生的数据有明确的前后缀标识。</p>
+<p><strong>正例：</strong>在阿里云的内部单元测试中，使用ALIYUN_UNIT_TEST_的前缀来标识单元测试相关代码。</p>
+</li>
+<li><p>作为一种质量保障手段，不建议项目发布后补充单元测试用例，建议在项目提测前完成单元测试。</p>
+</li>
+<li><p>为了更方便地进行单元测试，业务代码应避免出现以下情况。</p>
+<p>1）构造方法中做的事情过多。</p>
+<p>2）存在过多的全局变量和静态方法。</p>
+<p>3）存在过多的外部依赖。</p>
+<p>4）存在过多的条件语句。</p>
+<p><strong>说明：</strong>多层条件语句建议使用卫语句、策略模式、状态模式等方式重构。</p>
+</li>
+<li><p>不要对单元测试存在如下<strong>误解</strong>：</p>
+<p>1）<strong>那是测试工程师干的事情。</strong>本书是开发手册，凡是本书内容，都是与开发工程师强相关的。</p>
+<p>2）单元测试代码是多余的。系统的整体功能与各单元部件的测试正常与否是强相关的。</p>
+<p>3）单元测试代码不需要维护。如果不维护，那么一年半载后，单元测试几乎处于废弃状态。</p>
+<p>4）单元测试与线上故障没有辩证关系。好的单元测试能够最大限度地规避线上故障。</p>
+</li>
+</ol>
+<h2 id="第4章-安全规约"><a href="#第4章-安全规约" class="headerlink" title="第4章 安全规约"></a>第4章 安全规约</h2><p>“安全生产，责任重于泰山。”这句话同样适用于软件生产场景中，本章主要说明编程中需要注意的安全准则。</p>
+<ol>
+<li><p>隶属于用户个人的页面或者功能必须进行权限控制校验。</p>
+<p><strong>说明：</strong>防止没有做水平权限校验就可以随意访问、修改、删除别人的数据，比如查看他人的私信内容。</p>
+</li>
+<li><p>用户敏感数据禁止直接展示，必须对展示数据进行脱敏。</p>
+<p><strong>说明：</strong>个人手机号码显示为137****0969，隐藏中间4位，防止隐私泄露。</p>
+</li>
+<li><p>用户输入的SQL参数<strong>严格使用参数绑定或者METADATA字段值限定，防止SQL注入</strong>，禁止字符串拼接SQL访问数据库。</p>
+<p><strong>反例：</strong>某系统没有对危险字符 # –进行转义，导致在更新数据库时，where后边的信息被注释掉，对全库进行了更新，从而造成大量系统签名被恶意修改。</p>
+</li>
+<li><p>用户请求<strong>传入的任何参数必须做有效性验证</strong>。</p>
+<p><strong>说明：</strong>忽略参数校验可能导致如下情况。</p>
+<p>1）page size过大导致内存溢出。</p>
+<p>2）恶意order by导致数据库慢查询。</p>
+<p>3）缓存击穿。</p>
+<p>4）SSRF。</p>
+<p>5）任意重定向。</p>
+<p>6）SQL注入、Shell注入和反序列化注入。</p>
+<p>7）正则输入源串拒绝服务ReDoS。</p>
+<p>Java代码用正则来验证客户端的输入，有些正则写法验证普通用户输入没有问题，但是如果攻击人员使用特殊构造的字符串来验证，则有可能导致死循环。</p>
+</li>
+<li><p>在提交表单、AJAX时须执行CSRF安全验证。</p>
+<p><strong>说明：</strong>CSRF(Cross-Site Request Forgery)跨站请求伪造是一类常见的编程漏洞。对于存在CSRF漏洞的应用或网站，攻击者可以事先构造好URL，一旦用户访问，后台便可在其不知情的情况下对数据库中的用户参数进行相应的修改。</p>
+</li>
+<li><p>URL外部重定向传入的目标地址必须执行白名单过滤。</p>
+</li>
+<li><p>在使用平台资源时，例如短信、邮件、电话、下单、支付，必须实现正确的防重放的机制，如数量限制、疲劳度控制、验证码校验，避免被滥刷导致用户受扰或平台资损。</p>
+<p><strong>说明：</strong>例如，注册时将验证码发送到手机，如果没有限制次数和频率，那么可以利用此功能骚扰其他用户，并造成短信平台资源浪费。</p>
+</li>
+<li><p>针对发帖、评论、发送即时消息等用户生成内容的场景，必须实行防刷、文本内容违禁词过滤等风控策略。</p>
+</li>
+</ol>
+<h2 id="第5章-MySQL数据库"><a href="#第5章-MySQL数据库" class="headerlink" title="第5章　MySQL数据库"></a>第5章　MySQL数据库</h2><p>底层数据库的规范有助于降低软件实现的复杂度，降低沟通成本。本章主要说明建表规范、索引优化准则及ORM层的处理约定。ORM（Object-Relational Mapping）层是应用程序架构中负责处理<strong>对象与关系型数据库之间映射</strong>的组件层，它位于业务逻辑层和数据访问层之间。</p>
+<blockquote>
+<p><strong>ORM层的核心作用</strong>：</p>
+<ol>
+<li><strong>桥梁作用</strong>：将面向对象的编程语言与关系型数据库连接起来</li>
+<li><strong>转换功能</strong>：实现数据库表记录↔编程语言对象的双向转换</li>
+<li><strong>抽象封装</strong>：隐藏底层SQL操作细节，提供面向对象的数据库访问接口</li>
+</ol>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>提高开发效率，减少重复SQL编写</li>
+<li>使代码更面向对象，提高可维护性</li>
+<li>提供跨数据库支持（通过方言机制）</li>
+<li>内置安全机制防止SQL注入</li>
+</ul>
+<p><strong>局限</strong>：</p>
+<ul>
+<li>学习曲线较陡峭</li>
+<li>复杂查询可能性能不如手写SQL</li>
+<li>过度抽象可能导致调试困难</li>
+<li>不合理的映射设计可能引发N+1查询问题</li>
+</ul>
+<p><strong>ORM层工作流程示例</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 1. 定义实体类（对象-表映射）</span><br><span class="line">@Entity</span><br><span class="line">@Table(name = &quot;employees&quot;)</span><br><span class="line">public class Employee &#123;</span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue</span><br><span class="line">    private Long id;</span><br><span class="line">    </span><br><span class="line">    @Column(name = &quot;emp_name&quot;)</span><br><span class="line">    private String name;</span><br><span class="line">    </span><br><span class="line">    // 关联部门（关系映射）</span><br><span class="line">    @ManyToOne</span><br><span class="line">    @JoinColumn(name = &quot;dept_id&quot;)</span><br><span class="line">    private Department department;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 2. ORM操作示例</span><br><span class="line">public class EmployeeService &#123;</span><br><span class="line">    public void updateEmployeeDepartment(Long empId, Long deptId) &#123;</span><br><span class="line">        // 开启事务（ORM事务管理）</span><br><span class="line">        Transaction tx = session.beginTransaction();</span><br><span class="line">        </span><br><span class="line">        try &#123;</span><br><span class="line">            // 查询员工（自动生成SELECT语句）</span><br><span class="line">            Employee emp = session.get(Employee.class, empId);</span><br><span class="line">            </span><br><span class="line">            // 查询部门</span><br><span class="line">            Department dept = session.get(Department.class, deptId);</span><br><span class="line">            </span><br><span class="line">            // 更新关联（自动处理外键关系）</span><br><span class="line">            emp.setDepartment(dept);</span><br><span class="line">            </span><br><span class="line">            // 提交事务（自动生成UPDATE语句）</span><br><span class="line">            tx.commit();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            tx.rollback();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="5-1-建表规约"><a href="#5-1-建表规约" class="headerlink" title="5.1　建表规约"></a>5.1　建表规约</h3><ol>
+<li><p>表达是与否概念的字段，必须使用is_xxx的方式命名，数据类型是unsigned tinyint（1表示是，0表示否）。</p>
+<p><strong>说明：</strong>任何字段如果为非负数，则必须是unsigned。</p>
+<p><strong>注意：</strong>POJO类中的任何布尔类型的变量，都不要加is前缀，需要在<resultMap>中设置从is_xxx到xxx的映射关系。数据库表示是与否的值，使用tinyint类型，坚持is_xxx的命名方式是为了明确其取值含义与取值范围。</p>
+<p><strong>正例：</strong>表达逻辑删除的字段名is_deleted，1表示删除，0表示未删除。</p>
+</li>
+<li><p>【重要】<strong>表名、字段名必须使用小写字母或数字，禁止出现数字开头，禁止两个下画线中间只出现数字。</strong>数据库字段名的修改代价很大，因为无法进行预发布，所以字段名称需要慎重考虑。</p>
+<p><strong>说明：</strong>MySQL在Windows系统中不区分大小写，但在Linux系统中默认区分大小写。因此，数据库名、表名和字段名，都不允许出现任何大写字母，避免节外生枝。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">正例：aliyun_adminr，dc_config，level3_name</span><br><span class="line">反例：AliyunAdmin，rdcConfig，level_3_name</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>主键索引名为pk_字段名，唯一索引名为uk_字段名，普通索引名则为idx_字段名。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">说明：pk_即primary key，uk_即unique key，idx_即index的简称。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>小数类型为decimal，禁止使用float和double类型。</p>
+<p><strong>说明：</strong>在存储时，float和double类型存在精度损失的问题，很可能在比较值的时候，得到不正确的结果。如果存储的数据范围超过decimal的范围，那么建议将数据拆成整数和小数并分开存储。</p>
+</li>
+<li><p>如果存储的<strong>字符串长度几乎相等，则使用char定长字符串类型</strong>。</p>
+</li>
+<li><p><strong>varchar是可变长字符串，不预先分配存储空间，长度不要超过5000个字符</strong>，如果存储长度大于此值，则应定义字段类型为text，独立出来一张表，用主键来对应，避免影响其他字段的索引效率。</p>
+</li>
+<li><p>【重要】表必备三字段：id、create_time、update_time。</p>
+<p><strong>说明：</strong>其中id必为主键，类型为bigint unsigned、单表时自增、步长为1。create_time和update_time的类型均为date_time。</p>
+</li>
+<li><p>表的命名最好遵循“业务名称_表的作用”原则。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">正例：alipay_task/force_project/trade_config</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>字段允许适当冗余，以提高查询性能，但必须考虑数据一致性。</strong>冗余字段应遵循以下原则。</p>
+<p>1）不是频繁修改的字段。</p>
+<p>2）不是唯一索引的字段。</p>
+<p>3）不是varchar超长字段，更不能是text字段。</p>
+<p><strong>正例：</strong>各业务线经常冗余存储商品名称，避免查询时需要调用基础服务获取。</p>
+</li>
+</ol>
+<h3 id="5-2-索引规约"><a href="#5-2-索引规约" class="headerlink" title="5.2　索引规约"></a>5.2　索引规约</h3><ol>
+<li><p>业务上具有唯一特性的字段，即使是多个字段的组合，也必须建成唯一索引。</p>
+<p><strong>说明：</strong>不要以为唯一索引影响了insert速度，这个速度损耗可以忽略，但会明显提高查找速度；另外，即使在应用层做了非常完善的校验控制，只要没有唯一索引，根据墨菲定律，就必然有脏数据产生。</p>
+</li>
+<li><p>超过三个表禁止join。需要join的字段，数据类型必须绝对一致；当多表关联查询时，保证被关联的字段需要有索引。</p>
+<p><strong>说明：</strong>即使双表join，也要注意表索引、SQL性能。</p>
+</li>
+<li><p>在varchar字段上建立索引时，必须指定索引长度，没必要对全字段建立索引，根据实际文本区分度决定索引长度即可。</p>
+<p><strong>说明：</strong>索引的长度与区分度是一对矛盾体，一般对于字符串类型数据，长度为20的索引，区分度会高达90%以上，可以使用count(distinct left(列名, 索引长度))&#x2F;count(*)的区分度来确定。</p>
+</li>
+<li><p>利用覆盖索引进行查询操作，避免回表。</p>
+<p><strong>说明：</strong>如果想知道一本书的第11章是什么标题，我们有必要翻开第11章对应的那一页吗？只要浏览一下目录就好，这个目录就起到覆盖索引的作用。</p>
+<p><strong>正例：</strong>能够建立索引的种类分为主键索引、唯一索引、普通索引3种，而覆盖索引只是查询的一种效果，用explain的结果，extra列会出现“using index”。</p>
+</li>
+<li><p>利用延迟关联或者子查询优化超多分页场景。</p>
+<p><strong>说明：</strong>MySQL并不是跳过offset行，而是取offset+N行，然后返回放弃前offset行，返回N行。当offset特别大的时候，效率会非常低，要么控制返回的总页数，要么对超过特定阈值的页数进行SQL改写。</p>
+<blockquote>
+<h5 id="问题背景理解"><a href="#问题背景理解" class="headerlink" title="问题背景理解"></a>问题背景理解</h5><p>MySQL的LIMIT分页机制在处理大数据量时存在性能问题，特别是当offset值很大时。这是因为MySQL的执行方式不是”跳过”offset行，而是”先取offset+N行，然后丢弃前offset行”。</p>
+<h5 id="原始分页查询的问题"><a href="#原始分页查询的问题" class="headerlink" title="原始分页查询的问题"></a>原始分页查询的问题</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-- 传统分页查询（offset很大时性能差）</span><br><span class="line">SELECT * FROM large_table ORDER BY create_time DESC LIMIT 100000, 10;</span><br></pre></td></tr></table></figure>
+
+<p>这个查询的执行过程：</p>
+<ol>
+<li>先读取100010行数据（即使你只需要10行）</li>
+<li>然后丢弃前100000行</li>
+<li>最后返回剩下的10行</li>
+</ol>
+<h5 id="优化方案一：延迟关联"><a href="#优化方案一：延迟关联" class="headerlink" title="优化方案一：延迟关联"></a>优化方案一：延迟关联</h5><h6 id="优化原理-先通过索引获取主键ID，然后再关联原表获取完整数据。"><a href="#优化原理-先通过索引获取主键ID，然后再关联原表获取完整数据。" class="headerlink" title="优化原理:先通过索引获取主键ID，然后再关联原表获取完整数据。"></a>优化原理:先通过索引获取主键ID，然后再关联原表获取完整数据。</h6><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-- 优化后的延迟关联查询</span><br><span class="line">SELECT t.* FROM large_table t</span><br><span class="line">INNER JOIN (</span><br><span class="line">    SELECT id FROM large_table</span><br><span class="line">    ORDER BY create_time DESC</span><br><span class="line">    LIMIT 100000, 10</span><br><span class="line">) AS tmp ON t.id = tmp.id;</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行过程</strong>：</p>
+<ol>
+<li>子查询只查询ID（利用覆盖索引）</li>
+<li>外层查询通过ID关联获取完整数据</li>
+<li>大大减少了需要读取的数据量</li>
+</ol>
+<h5 id="优化方案二：子查询优化"><a href="#优化方案二：子查询优化" class="headerlink" title="优化方案二：子查询优化"></a>优化方案二：子查询优化</h5><h6 id="优化原理-利用主键或唯一索引的特性，先定位到起始位置，再获取后续记录。"><a href="#优化原理-利用主键或唯一索引的特性，先定位到起始位置，再获取后续记录。" class="headerlink" title="优化原理:利用主键或唯一索引的特性，先定位到起始位置，再获取后续记录。"></a>优化原理:利用主键或唯一索引的特性，先定位到起始位置，再获取后续记录。</h6><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-- 子查询优化（假设id是自增主键）</span><br><span class="line">SELECT * FROM large_table</span><br><span class="line">WHERE id &gt;= (</span><br><span class="line">    SELECT id FROM large_table</span><br><span class="line">    ORDER BY create_time DESC</span><br><span class="line">    LIMIT 100000, 1</span><br><span class="line">)</span><br><span class="line">ORDER BY create_time DESC</span><br><span class="line">LIMIT 10;</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行过程</strong>：</p>
+<ol>
+<li>子查询快速定位到第100000条记录的ID</li>
+<li>主查询从该ID开始获取10条记录</li>
+<li>避免了扫描和丢弃大量记录</li>
+</ol>
+<h5 id="实际案例对比"><a href="#实际案例对比" class="headerlink" title="实际案例对比"></a>实际案例对比</h5><p>假设有一个1000万条记录的用户表：</p>
+<h6 id="原始查询（性能差）"><a href="#原始查询（性能差）" class="headerlink" title="原始查询（性能差）"></a>原始查询（性能差）</h6><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-- 执行时间：约2.5秒</span><br><span class="line">SELECT * FROM users ORDER BY register_time DESC LIMIT 999990, 10;</span><br></pre></td></tr></table></figure>
+
+<h6 id="优化后的查询（性能好）"><a href="#优化后的查询（性能好）" class="headerlink" title="优化后的查询（性能好）"></a>优化后的查询（性能好）</h6><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-- 执行时间：约0.1秒</span><br><span class="line">SELECT u.* FROM users u</span><br><span class="line">INNER JOIN (</span><br><span class="line">    SELECT user_id FROM users</span><br><span class="line">    ORDER BY register_time DESC</span><br><span class="line">    LIMIT 999990, 10</span><br><span class="line">) AS tmp ON u.user_id = tmp.user_id;</span><br></pre></td></tr></table></figure>
+
+<h6 id="其他优化策略"><a href="#其他优化策略" class="headerlink" title="其他优化策略"></a>其他优化策略</h6><ol>
+<li><p><strong>记录上次查询位置</strong>（适用于连续分页）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-- 记住上一页最后一条记录的register_time和id</span><br><span class="line">SELECT * FROM users </span><br><span class="line">WHERE register_time &lt;= &#x27;2023-05-20 15:30:00&#x27; AND user_id &lt; 12345</span><br><span class="line">ORDER BY register_time DESC, user_id DESC</span><br><span class="line">LIMIT 10;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>使用覆盖索引</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-- 确保排序字段和查询字段都在索引中</span><br><span class="line">ALTER TABLE users ADD INDEX idx_register_time_id (register_time, user_id);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>业务层面限制</strong>：</p>
+<ul>
+<li>限制用户只能查看前100页</li>
+<li>提供更精确的筛选条件减少数据量</li>
+</ul>
+</li>
+</ol>
+<h6 id="为什么这些优化有效？"><a href="#为什么这些优化有效？" class="headerlink" title="为什么这些优化有效？"></a>为什么这些优化有效？</h6><ol>
+<li><strong>减少数据扫描量</strong>：延迟关联和子查询都先通过索引获取少量数据</li>
+<li><strong>避免全表扫描</strong>：利用了索引的有序性</li>
+<li><strong>减少内存消耗</strong>：不需要在内存中存储大量临时数据</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<h3 id="5-3-SQL语句"><a href="#5-3-SQL语句" class="headerlink" title="5.3　SQL语句"></a>5.3　SQL语句</h3><ol>
+<li><p>不要使用count(列名)或count(常量)来替代count(<em>)，count(</em>)是SQL92定义的标准统计行数的语法，与数据库无关，与NULL和非NULL无关。</p>
+<p><strong>说明：</strong>count(*)会统计值为NULL的行，而count(列名)不会统计此列值为NULL的行。</p>
+</li>
+<li><p>count(distinct column) 计算该列除NULL外的不重复行数。注意，count(distinct column1, column2)，如果其中一列全为NULL，那么即使另一列有不同的值，也返回为0。</p>
+</li>
+<li><p>当某一列的值全为NULL时，count(column)的返回结果为0，但sum(column)的返回结果为NULL，因此使用sum()时需注意避免NPE问题。</p>
+<p><strong>正例：</strong>可以使用如下方式避免sum的NPE问题：SELECT IFNULL(SUM (column), 0) FROM table;</p>
+</li>
+<li><p>使用ISNULL()判断是否为NULL值。</p>
+<p><strong>说明：</strong>NULL与任何值的直接比较都为NULL。在SQL语句中，如果在null前换行，则会降低可读性。select * from table where column1 is null and column3 is not null; 而ISNULL(column)是一个整体，简捷易懂。从性能数据上分析，ISNULL(column)的执行效率更高一些。</p>
+</li>
+<li><p>不得使用外键与级联，一切外键概念必须在应用层解决。</p>
+<p><strong>说明：</strong>以学生和成绩的关系为例，学生表中的student_id是主键，成绩表中的student_id为外键。如果更新学生表中的student_id，则同时触发成绩表中的student_id更新，即为级联更新。外键与级联更新适用于单机低并发，不适合分布式、高并发集群；级联更新是强阻塞，存在数据库更新风暴的风险；外键影响数据库的插入速度。</p>
+</li>
+<li><p>对于数据库中表记录的查询和变更，只要涉及多个表，就需要在列名前加表的别名（或表名）进行限定。</p>
+<p><strong>说明：</strong>对多表进行查询记录、更新记录、删除记录时，如果对操作列没有限定表的别名（或表名），并且操作列在多个表中存在，就会抛异常。</p>
+</li>
+<li><p>in操作能避免则避免，若实在避免不了，则需要仔细评估in后面的集合元素数量，控制在1000之内。</p>
+</li>
+<li><p>如果有国际化需要，那么所有的字符存储与表示，均以UTF-8编码，注意字符统计函数的区别。</p>
+<p><strong>说明：</strong>SELECT LENGTH(“轻松工作”)；返回为12。</p>
+<p>SELECT CHARACTER_LENGTH(“轻松工作”)；返回为4。</p>
+<p>如果需要存储表情，那么选择utf8mb4进行存储，注意它与UTF-8编码的区别。</p>
+</li>
+</ol>
+<h3 id="5-4-ORM映射"><a href="#5-4-ORM映射" class="headerlink" title="5.4　ORM映射"></a>5.4　ORM映射</h3><ol>
+<li><p>在表查询中，一律不要使用 * 作为查询的字段列表，需要哪些字段必须明确写明。</p>
+<p><strong>说明：</strong></p>
+<p>1）增加查询分析器解析成本。</p>
+<p>2）增减字段容易与resultMap配置不一致。</p>
+<p>3）多余字段增加网络开销，尤其是text类型的字段。</p>
+</li>
+<li><p>POJO类的布尔属性不能加is，而数据库字段必须加is_，要求在resultMap中进行字段与属性之间的映射。</p>
+<p><strong>说明：</strong>参见POJO类及数据库字段定义规定，在sql.xml中必须增加映射。</p>
+</li>
+<li><p>【重要】不要用resultClass作为返回参数，即使所有类属性名与数据库字段一一对应，也需要定义<resultMap>；反过来，每个表也必然有一个<resultMap>与之对应。</p>
+<p><strong>说明：配置映射关系，使字段与DO类解耦，方便维护。</strong></p>
+</li>
+<li><p>【重要】sql.xml配置参数使用：#{}，#param#，不要使用${}，此种方式容易出现SQL注入。</p>
+</li>
+<li><p>不允许直接将HashMap与Hashtable作为查询结果集的输出。</p>
+<p><strong>反例：</strong>某工程师为避免写一个<resultMap>xxx &lt;&#x2F;result Map&gt;，直接使用HashTable接收数据库返回结果，结果由于数据库版本不一样，出现日常把bigint转成Long值，而线上把bigint解析成BigInteger的现象，导致线上出现问题。</p>
+</li>
+<li><p>@Transactional事务不要滥用。事务会影响数据库的QPS，另外，使用事务的地方需要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿和统计修正等。</p>
+</li>
+</ol>
+<h2 id="第6章-工程结构"><a href="#第6章-工程结构" class="headerlink" title="第6章　工程结构"></a>第6章　工程结构</h2><p>应用分层的百花齐放，导致对于分层与领域模型的理解多样化，非常不利于团队合作。本章主要说明应用工程分层思想、二方库约定及基本的服务器知识。</p>
+<h3 id="6-1-应用分层"><a href="#6-1-应用分层" class="headerlink" title="6.1　应用分层"></a>6.1　应用分层</h3><ol>
+<li><p>根据业务架构实践，结合业界分层规范与流行技术框架分析，推荐分层结构如图6-1所示，默认上层依赖于下层，箭头关系表示可直接依赖，如：开放API层可以依赖于请求处理层（Web层），也可以直接依赖业务逻辑层（Service层），以此类推。</p>
+<img src="/2025/03/20/EP20-alibaba-java-readnote/%E6%8E%A8%E8%8D%90%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84.png" class="" title="推荐分层结构">
+
+<p>1）开放API层：可直接封装Service接口暴露成HSF接口，通过Web封装成HTTP接口、网关控制层等。</p>
+<p>2）终端显示层：各个端的模板渲染并执行显示层。当前主要是velocity渲染、JS渲染、JSP渲染和移动端展示层等。</p>
+<p>3）请求处理层（Web层）：主要转发访问控制，校验各类基本参数，或者简单处理不复用的业务等。</p>
+<p>4）业务逻辑层（Service层）：相对具体的业务逻辑服务层。</p>
+<p>5）通用逻辑层（Manager层）：有如下特征。</p>
+<ul>
+<li>对第三方平台封装的层，预处理返回结果及转化异常信息，适配上层接口；</li>
+<li>对Service层通用能力的下沉，如缓存方案、中间件通用处理；</li>
+<li>与DAO层交互，对DAO的业务通用能力的封装。</li>
+</ul>
+<p>6）数据持久层（DAO层）：与底层MySQL、Oracle、HBase和OB进行数据交互。</p>
+<p>7）第三方服务：包括其他部门RPC服务接口、基础平台、其他公司的HTTP接口，如淘宝开发平台、支付宝付款服务、高德地图服务等。</p>
+<p>8）外部数据接口：外部（应用）数据存储服务提供的接口，多见于数据迁移场景中。</p>
+</li>
+<li><p>（分层异常处理规约）在DAO层，产生的异常类型有很多，无法用细粒度的异常进行catch，使用catch(Exception e)方式，并throw new DAOException(e)，不需要打印日志。因为日志在Manager&#x2F;Service层，一定需要捕获并写到日志文件中去，如果同台服务器再写日志，则会降低性能和浪费存储。当Service层出现异常时，必须将出错日志记录到磁盘，尽可能带上参数信息，相当于保护案发现场。如果Manager层与Service层同机部署，则日志方式与DAO层处理一致；如果是单独部署，则采用与Service一致的处理方式。Web层绝不应该继续往上抛异常，因为已经处于顶层，如果意识到该异常将导致页面无法正常渲染，应该直接跳转到友好错误页面，加上用户容易理解的错误提示信息。开放接口层需要将异常处理成errorCode和errorMessage的方式返回。</p>
+</li>
+<li><p>分层领域模型规约。</p>
+<p>1）DO（Data Object）：与数据库表结构一一对应，通过DAO层向上传输数据源对象。</p>
+<p>2）DTO（Data Transfer Object）：数据传输对象，Service层或Manager层向外传输的对象。</p>
+<p>3）BO（Business Object）：业务对象，可以由Service层输出的封装业务逻辑的对象。</p>
+<p>4）Query：数据查询对象，各层接收上层的查询请求。注意，【强制】如果超过2个参数的查询封装，则禁止使用Map类传输。</p>
+<p>5）VO（View Object）：显示层对象，通常是Web层向模板渲染引擎层传输的对象。</p>
+</li>
+</ol>
+<h3 id="6-2-二方库依赖"><a href="#6-2-二方库依赖" class="headerlink" title="6.2　二方库依赖"></a>6.2　二方库依赖</h3><ol>
+<li><p>定义GAV遵从以下规则：</p>
+<p>1）GroupID格式：com.{公司&#x2F;BU }.业务线.[子业务线]，最多4级。</p>
+<p><strong>说明：</strong>{公司&#x2F;BU}，例如：alibaba&#x2F;taobao&#x2F;tmall&#x2F;aliex press等BU一级；子业务线可选。</p>
+<p>2）ArtifactID格式：产品线名-模块名。语义不重复不遗漏，先到中央仓库进行查证。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">正例：doubao-client/fastjson-api/jstorm-tool</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>二方库版本号命名方式：主版本号.次版本号.修订号。</p>
+<p>1）主版本号：产品方向改变，或者大规模API不兼容，或者架构不兼容升级。</p>
+<p>2）次版本号：保持相对兼容性，增加主要功能特性，影响范围极小的API不兼容修改。</p>
+<p>3）修订号：保持完全兼容性，修复BUG、新增次要功能特性等。</p>
+<p><strong>说明：</strong>注意起始版本号必须为：.0.0，而不是0.0.1。</p>
+<p><strong>反例：</strong>仓库内某二方库版本号从1.0.0.0开始，一直默默“升级”到1.0.0.64，完全失去版本的语义信息。</p>
+</li>
+<li><p>二方库的新增或升级，保持除功能点外的其他jar包仲裁结果不变。如果有改变，则必须明确评估和验证。</p>
+<p><strong>说明：</strong>在升级时，进行dependency:resolve前后信息比对，如果仲裁结果完全不一致，那么通过dependency:tree命令，找出差异点，进行<exclude>排除jar包。</p>
+</li>
+<li><p>二方库里可以定义枚举类型，参数可以使用枚举类型，但是接口返回值不允许使用枚举类型或者包含枚举类型的POJO对象。</p>
+</li>
+<li><p>依赖于一个二方库群时，必须定义一个统一的版本变量，避免版本号不一致。</p>
+<p><strong>说明：</strong>依赖springframework-core、-context、-beans，它们都是同一个版本，可以定义一个变量来保存版本${spring.version}。定义依赖的时候，引用该版本。</p>
+</li>
+<li><p>禁止在子项目的pom依赖中出现相同的GroupId，相同的ArtifactId，但是不同的Version。</p>
+<p><strong>说明：</strong>在本地调试时会使用各子项目指定的版本号，但是当合并成一个war时，只能有一个版本号出现在最后的lib目录中。可能会出现在线下调试时是正确的，发布到线上却出故障的问题。</p>
+</li>
+<li><p>所有pom文件中的依赖声明放在<dependencies>语句块中，所有版本仲裁放在<dependencyManagement>语句块中。</p>
+<p><strong>说明：</strong><dependencyManagement>里只是声明版本，并不实现引入，因此子项目需要显式的声明依赖，version和scope都读取自父pom。而<dependencies>所有声明在主pom的<dependencies>里的依赖都会自动引入，并默认被所有的子项目继承。</p>
+</li>
+</ol>
+<h3 id="6-3-服务器"><a href="#6-3-服务器" class="headerlink" title="6.3　服务器"></a>6.3　服务器</h3><ol>
+<li><p>高并发服务器建议调小TCP协议的time_wait超时时间。</p>
+<p><strong>说明：</strong>操作系统默认240s后，才会关闭处于time_wait状态的连接。在高并发访问场景下，服务器端会因为处于time_wait的连接数过多，而无法建立新的连接，所以需要在服务器上调小此等待值。</p>
+</li>
+<li><p>调大服务器所支持的最大文件句柄数，即fd（全称：FileDescriptor）。</p>
+<p><strong>说明：</strong>主流操作系统的设计是将TCP&#x2F;UDP连接采用与文件一样的方式管理，即一个连接对应一个fd。主流的Linux服务器默认支持最大的fd数量为1024，当并发连接数很大时，很容易因为fd不足而出现”open too many files”错误，导致新的连接无法建立。建议将Linux服务器所支持的最大句柄数调高数倍（与服务器的内存数量相关）。</p>
+</li>
+</ol>
+<h2 id="第7章-设计规约"><a href="#第7章-设计规约" class="headerlink" title="第7章　设计规约"></a>第7章　设计规约</h2><p>诚如序言所讲，程序员是天生的艺术家，软件设计能力就是考验“艺术家”成色的试金石。本章主要说明软件设计过程中UML设计准则及基本的架构理念。</p>
+<ol>
+<li><p>存储方案和底层数据结构的设计获得评审一致通过，并沉淀成为文档。</p>
+<p><strong>说明：</strong>有缺陷的底层数据结构容易导致系统风险上升，可扩展性下降，重构成本也会因历史数据迁移和系统平滑过渡而陡然增加，所以对存储方案和数据结构需要认真地设计和评审。生产环境提交执行后，团队成员需要进行double check。</p>
+<p><strong>正例：</strong>评审内容包括存储介质选型、表结构设计能否满足技术方案、存取性能和存储空间能否满足业务发展、表或字段之间的辩证关系、字段名称、字段类型、索引等；数据结构变更（如在原有表中新增字段）也需要评审通过后再上线。</p>
+</li>
+<li><p>在需求分析阶段，如果与系统交互的<strong>User超过1类</strong>，并且相关的User Case超过5个，那么使用<strong>用例图</strong>来表达结构化需求会更加清晰。</p>
+</li>
+<li><p>如果某个<strong>业务对象的状态超过3个</strong>，那么应使用<strong>状态图</strong>表达并且明确<strong>状态变化的各个触发条件</strong>。</p>
+<p><strong>说明：</strong>状态图的核心是对象状态，首先明确对象有多少种状态，然后明确两两状态之间是否存在直接转换关系，再明确触发状态转换的条件是什么。</p>
+<p><strong>正例：</strong>淘宝订单状态有已下单、待付款、已付款、待发货、已发货、已收货等。比如已下单与已收货这两种状态之间是不可能有直接转换关系的。</p>
+</li>
+<li><p>如果系统中某个功能的<strong>调用链路上的涉及对象超过3个</strong>，则使用<strong>时序图</strong>表达并且明确各调用环节的输入与输出。</p>
+<p><strong>说明：</strong>时序图反映了一系列对象间的交互与协作关系，清晰立体地反映了系统的调用纵深链路。</p>
+</li>
+<li><p>如果系统中<strong>模型类超过5个</strong>，并且存在复杂的依赖关系，则应使用<strong>类图</strong>表达并且明确类之间的关系。</p>
+<p><strong>说明：</strong>类图就像建筑领域的施工图，如果搭平房，可能不需要，但如果建造“蚂蚁Z空间”大楼，则肯定需要详细的施工图。</p>
+</li>
+<li><p>如果系统中<strong>超过2个对象之间存在协作</strong>关系，并且需要表示复杂的处理流程，则使用<strong>活动图</strong>来表示。</p>
+<p><strong>说明：</strong>活动图是流程图的扩展，增加了能够体现协作关系的对象泳道，支持并发表示等。</p>
+</li>
+<li><p>需求分析与系统设计在考虑主干功能的同时，需要充分评估异常流程与业务边界。</p>
+<p><strong>反例：</strong>用户在淘宝付款过程中，银行扣款成功，发送给用户扣款成功短信，但是在支付宝入款时由于断网演练产生异常，淘宝订单页面依然显示未付款，导致用户投诉。</p>
+</li>
+<li><p>类在设计与实现时要符合单一原则。</p>
+<p><strong>说明：</strong>单一原则是最易理解却又最难实现的一条规则，随着系统演进，工程师很多时候会忘记类设计的初衷。</p>
+</li>
+<li><p>谨慎使用继承的方式进行扩展，优先使用聚合或组合的方式来实现。</p>
+<p><strong>说明：</strong>若一定要使用继承，则必须符合里氏代换原则，此原则要求在父类能够出现的地方子类一定能够出现，比如“把钱交出来”中，美元、欧元、人民币等钱的子类都可以出现。</p>
+</li>
+<li><p>避免发生如下误解：敏捷开发&#x3D;讲故事+编码+发布。</p>
+<p><strong>说明：</strong>敏捷开发是快速交付迭代可用的系统，省略多余的设计方案，摒弃传统的审批流程，但在核心或关键模块上，必须进行必要的设计和文档的沉淀。</p>
+<p><strong>反例：</strong>为了确保业务快速发展，敏捷成了某团队产品经理催进度的借口，系统中均是勉强能运行但像面条一样的代码，可维护性和可扩展性极差，一年之后，不得不进行大规模重构，得不偿失。</p>
+</li>
+<li><p><strong>系统设计文档的主要目的是明确需求、理顺逻辑、后期维护，次要目的是指导编码。</strong></p>
+<p><strong>说明：</strong>避免为了设计而设计，系统设计文档应有助于后期的系统维护和重构，所以设计结果需要进行分类归档保存。</p>
+</li>
+<li><p>设计的本质就是识别和表达系统难点。</p>
+<p><strong>说明：</strong>识别和表达完全是两回事，很多人错误地认为只要识别到系统难点在哪里，表达只是自然而然的事情，但是大家在设计评审时经常出现语焉不详，甚至词不达意的情况。准确地表达系统难点需要具备如下能力：表达规则和表达工具的熟练性，抽象思维和总结能力的局限性，基础知识体系的完备性，深入浅出的生动表达力。</p>
+</li>
+<li></li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术学习</category>
+      </categories>
+      <tags>
         <tag>java开发</tag>
       </tags>
   </entry>
