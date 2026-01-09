@@ -94,7 +94,7 @@
 <li>另一个分支则是hexo副分支（自己起的名字，可以更改），这个分支的作用是保存博客的最新版本，在不同的电脑上pull并新建博客后，push到这个分支上，这样随时都可以找到博客的最新版本，该分支上的更改如果不经过<code>hexo deploy</code>，不会影响到master主分支上的内容。</li>
 </ul>
 <p><strong>PS：个人建议之前没有接触过git的同学可以先看一下有关git的基础教程，因为没接触过git的同学瞎用指令会把网站搞崩的，别问我为啥知道…这里推荐廖雪峰的课</strong><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">廖雪峰git教程</a></p>
-<h2 id="2-搭建流程"><a href="#2-搭建流程" class="headerlink" title="2.搭建流程"></a>2.搭建流程</h2><p>1.创建仓库，<a href="https://username.github.io/">https://username.github.io/</a>。其中的<strong>username</strong>要由你自己定义，要和你Github注册的用户名保持一致;<br>2.创建两个分支，master和hexo。这一步不用手动创建，后面有指令会自动创建hexo分支的；<br>3.设置hexo为默认分支。因为我们只需要手动管理这个分支上的网站文件，设置方法为项目右上角setting里的branch选项卡，将其中的默认分支更改为hexo即可；<br>4.在第二台电脑上使用git clone <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#109;">&#x67;&#105;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#109;</a>:username&#x2F;username.github.io.git拷贝仓库；<br>5.在本地的与Github相连的<a href="https://username.github.io/">https://username.github.io/</a>文件夹下右键使用Git Bash依次执行<code>npm install -g hexo-cli </code>安装hexo、<code>hexo init</code>初始化hexo、<code>npm install hexo-deployer-git --save</code>让hexo知道你要把blog部署在哪一个位置。这三条指令完成后当前分支应显示为hexo；<br>6.修改博客站点配置文件<code>_config.yml</code>中的deploy参数，将branch的参数改为master；<br>7.依次执行<code>git add .</code>添加所有文件到缓存区、<code>git commit -m “…”</code>提交缓存区的文件同时增添备注、<code>git push origin hexo</code>将更改的内容push到github的hexo分支进行备份；<br>8.执行<code>hexo g -d</code>生成网站并部署到Github上。<br>经过以上操作之后，我们的master分支用于存放网站的静态文件，hexo分支用于存放网站的原始文件，井水不犯河水，简直太完美了有没有！</p>
+<h2 id="2-搭建流程"><a href="#2-搭建流程" class="headerlink" title="2.搭建流程"></a>2.搭建流程</h2><p>1.创建仓库，<a href="https://username.github.io/">https://username.github.io/</a>。其中的<strong>username</strong>要由你自己定义，要和你Github注册的用户名保持一致;<br>2.创建两个分支，master和hexo。这一步不用手动创建，后面有指令会自动创建hexo分支的；<br>3.设置hexo为默认分支。因为我们只需要手动管理这个分支上的网站文件，设置方法为项目右上角setting里的branch选项卡，将其中的默认分支更改为hexo即可；<br>4.在第二台电脑上使用git clone <a href="mailto:&#103;&#105;&#116;&#64;&#x67;&#105;&#x74;&#104;&#117;&#98;&#x2e;&#x63;&#x6f;&#109;">&#103;&#105;&#116;&#64;&#x67;&#105;&#x74;&#104;&#117;&#98;&#x2e;&#x63;&#x6f;&#109;</a>:username&#x2F;username.github.io.git拷贝仓库；<br>5.在本地的与Github相连的<a href="https://username.github.io/">https://username.github.io/</a>文件夹下右键使用Git Bash依次执行<code>npm install -g hexo-cli </code>安装hexo、<code>hexo init</code>初始化hexo、<code>npm install hexo-deployer-git --save</code>让hexo知道你要把blog部署在哪一个位置。这三条指令完成后当前分支应显示为hexo；<br>6.修改博客站点配置文件<code>_config.yml</code>中的deploy参数，将branch的参数改为master；<br>7.依次执行<code>git add .</code>添加所有文件到缓存区、<code>git commit -m “…”</code>提交缓存区的文件同时增添备注、<code>git push origin hexo</code>将更改的内容push到github的hexo分支进行备份；<br>8.执行<code>hexo g -d</code>生成网站并部署到Github上。<br>经过以上操作之后，我们的master分支用于存放网站的静态文件，hexo分支用于存放网站的原始文件，井水不犯河水，简直太完美了有没有！</p>
 <h3 id="2-1第一个终端的hexo分支"><a href="#2-1第一个终端的hexo分支" class="headerlink" title="2.1第一个终端的hexo分支"></a>2.1第一个终端的hexo分支</h3><p>在一开始创建博客的电脑上，将本地blog文件夹内必要的hexo文件push到username.github.io的hexo分支上，具体操作如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init  //初始化本地仓库</span><br><span class="line">git add source //将必要的文件依次添加，有些文件夹如npm install产生的node_modules由于路径过长不好处理，所以这里没有用`git add .`命令了，而是依次添加必要文件,例如source themes scaffolds _config.yml package.json package-lock.json等。</span><br><span class="line">git commit -m &quot;Blog Source Hexo&quot; //备注这是blog网站最原始的文件</span><br><span class="line">git branch hexo  //新建hexo分支</span><br><span class="line">git checkout hexo  //切换到hexo分支上</span><br><span class="line">git remote add origin git@github.com:yourname/yourname.github.io.git  //将本地与Github项目对接</span><br><span class="line">git push origin hexo  //push到Github项目的hexo分支上</span><br></pre></td></tr></table></figure>
 <h3 id="2-2另一终端完成clone复制以及push更新"><a href="#2-2另一终端完成clone复制以及push更新" class="headerlink" title="2.2另一终端完成clone复制以及push更新"></a>2.2另一终端完成clone复制以及push更新</h3><p>在另一个终端更新博客，只需要将Github的hexo分支上的内容克隆到本地，然后再对其进行更改和push更新，具体操作如下：</p>
@@ -139,6 +139,67 @@
       <tags>
         <tag>算法</tag>
         <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>EP05-剑指offer——2.替换空格</title>
+    <url>/2019/07/27/EP05-jianzhioffer02/</url>
+    <content><![CDATA[<h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><blockquote>
+<p>请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p>
+</blockquote>
+<h3 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;拿到字符串之后，很容易想到有两种方式完成替换。第一种：从头到尾遍历，在原字符串的基础上进行替换。这种方式的缺点在于靠后的字符串会多次移动，因此对于含有O（n）个<strong>空格字符</strong>的字符串而言时间复杂度是O（n2）。第二种：创建一个新的字符串，并在其上进行替换。这种方式需要我们自己分配足够的内存空间。<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本文采用了一种使用<strong>从后向前遍历</strong>实现空格替换的方法，这种方法中所有的字符串只需要移动一次，因此这个算法的时间复杂度为O（n）。总体的算法步骤如下：</p>
+<span id="more"></span>
+<ul>
+<li>先遍历一次字符串，得到字符串中的空格个数，以及插入新字符之前的原字符串长度；</li>
+<li>根据第一步的结果，计算出替换完成后新字符串的长度。新字符串长度 &#x3D; 原字符串长度 + 空格个数*2；</li>
+<li>给定两个指针a和b，a指向原字符串尾，b指向替换之后的字符串尾。向前移动指针a，逐个把它指向的字符复制到b指向的位置，直到碰到空格，a向前一格，b之前插入字符串”%20”，同时b向前移动3格。</li>
+<li>重复第三步，直到a和b指向同一个位置。</li>
+</ul>
+<h3 id="3-举例说明"><a href="#3-举例说明" class="headerlink" title="3.举例说明"></a>3.举例说明</h3><p>以”We are happy”为例，”We are happy”这个字符串的长度为14（包括结尾符号”\n”），里面有两个空格，因此替换之后字符串的长度是18。我们从字符串的尾部开始复制和替换。首先准备两个指针P1和P2，P1指向原始字符串的末尾，P2指向替换之后的字符串末尾。接下来向前移动指针P1，逐个把它指向的字符复制到P2指向的位置，直到碰到第一个空格。碰到第一个空格后，P1向前移动1格，P2位置开始向前插入字符串”%20”，同时P2向前移动3格。</p>
+<img src="/2019/07/27/EP05-jianzhioffer02/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BE%8B%E5%AD%90.jpg" class="" title="字符串例子">
+
+<h3 id="4-代码实现"><a href="#4-代码实现" class="headerlink" title="4.代码实现"></a>4.代码实现</h3><p><strong>c++：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution&#123;</span><br><span class="line">public:</span><br><span class="line">	void replaceSpace(char *string,int length)&#123;</span><br><span class="line">    if(string == NULL || length &lt;= 0)</span><br><span class="line">    	return;</span><br><span class="line">    //循环遍历数组，得到字符串的总长，以及空格的个数</span><br><span class="line">    int originLength = 0;</span><br><span class="line">    int numSpace = 0;</span><br><span class="line">    int i = 0;</span><br><span class="line">    while(string[i] != &#x27;\0&#x27;)</span><br><span class="line">    	&#123;</span><br><span class="line">        ++originLength;</span><br><span class="line"></span><br><span class="line">        	if(string[i] == &#x27; &#x27;)</span><br><span class="line">            	++numSpace;</span><br><span class="line"></span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">    //得到新数组所需的字符串长度</span><br><span class="line">    int newLength = originLength + numSpace*2;//新字符串长度 = 原字符串长度 + 空格个数*2；</span><br><span class="line">    if(newLength &gt;length)</span><br><span class="line">    	return;</span><br><span class="line"></span><br><span class="line">	////检索到空格，就将空格替换为‘%’‘2’‘0’</span><br><span class="line">    int p1 = originLength;</span><br><span class="line">    int p2 = newLength;</span><br><span class="line">    while(p1 &gt;= 0 &amp;&amp; p2 &gt; p1 )&#123;</span><br><span class="line">    	if(string[p1] == &#x27; &#x27;)</span><br><span class="line">        &#123;</span><br><span class="line">        	string[p2--] = &#x27;0&#x27;;</span><br><span class="line">            string[p2--] = &#x27;2&#x27;;</span><br><span class="line">            string[p2--] = &#x27;%&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            string[p2--] = string[p1];</span><br><span class="line">        &#125;</span><br><span class="line">        --p1;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>python2.7:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line">class Solution:</span><br><span class="line">    # string指代 源字符串</span><br><span class="line">    def replaceSpace(self, string):</span><br><span class="line">        # write code here</span><br><span class="line">        return string.replace(&#x27; &#x27;, &#x27;%20&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -252,67 +313,6 @@
       </categories>
       <tags>
         <tag>经典算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>EP05-剑指offer——2.替换空格</title>
-    <url>/2019/07/27/EP05-jianzhioffer02/</url>
-    <content><![CDATA[<h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><blockquote>
-<p>请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。</p>
-</blockquote>
-<h3 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;拿到字符串之后，很容易想到有两种方式完成替换。第一种：从头到尾遍历，在原字符串的基础上进行替换。这种方式的缺点在于靠后的字符串会多次移动，因此对于含有O（n）个<strong>空格字符</strong>的字符串而言时间复杂度是O（n2）。第二种：创建一个新的字符串，并在其上进行替换。这种方式需要我们自己分配足够的内存空间。<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;本文采用了一种使用<strong>从后向前遍历</strong>实现空格替换的方法，这种方法中所有的字符串只需要移动一次，因此这个算法的时间复杂度为O（n）。总体的算法步骤如下：</p>
-<span id="more"></span>
-<ul>
-<li>先遍历一次字符串，得到字符串中的空格个数，以及插入新字符之前的原字符串长度；</li>
-<li>根据第一步的结果，计算出替换完成后新字符串的长度。新字符串长度 &#x3D; 原字符串长度 + 空格个数*2；</li>
-<li>给定两个指针a和b，a指向原字符串尾，b指向替换之后的字符串尾。向前移动指针a，逐个把它指向的字符复制到b指向的位置，直到碰到空格，a向前一格，b之前插入字符串”%20”，同时b向前移动3格。</li>
-<li>重复第三步，直到a和b指向同一个位置。</li>
-</ul>
-<h3 id="3-举例说明"><a href="#3-举例说明" class="headerlink" title="3.举例说明"></a>3.举例说明</h3><p>以”We are happy”为例，”We are happy”这个字符串的长度为14（包括结尾符号”\n”），里面有两个空格，因此替换之后字符串的长度是18。我们从字符串的尾部开始复制和替换。首先准备两个指针P1和P2，P1指向原始字符串的末尾，P2指向替换之后的字符串末尾。接下来向前移动指针P1，逐个把它指向的字符复制到P2指向的位置，直到碰到第一个空格。碰到第一个空格后，P1向前移动1格，P2位置开始向前插入字符串”%20”，同时P2向前移动3格。</p>
-<img src="/2019/07/27/EP05-jianzhioffer02/%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BE%8B%E5%AD%90.jpg" class="" title="字符串例子">
-
-<h3 id="4-代码实现"><a href="#4-代码实现" class="headerlink" title="4.代码实现"></a>4.代码实现</h3><p><strong>c++：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution&#123;</span><br><span class="line">public:</span><br><span class="line">	void replaceSpace(char *string,int length)&#123;</span><br><span class="line">    if(string == NULL || length &lt;= 0)</span><br><span class="line">    	return;</span><br><span class="line">    //循环遍历数组，得到字符串的总长，以及空格的个数</span><br><span class="line">    int originLength = 0;</span><br><span class="line">    int numSpace = 0;</span><br><span class="line">    int i = 0;</span><br><span class="line">    while(string[i] != &#x27;\0&#x27;)</span><br><span class="line">    	&#123;</span><br><span class="line">        ++originLength;</span><br><span class="line"></span><br><span class="line">        	if(string[i] == &#x27; &#x27;)</span><br><span class="line">            	++numSpace;</span><br><span class="line"></span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">    //得到新数组所需的字符串长度</span><br><span class="line">    int newLength = originLength + numSpace*2;//新字符串长度 = 原字符串长度 + 空格个数*2；</span><br><span class="line">    if(newLength &gt;length)</span><br><span class="line">    	return;</span><br><span class="line"></span><br><span class="line">	////检索到空格，就将空格替换为‘%’‘2’‘0’</span><br><span class="line">    int p1 = originLength;</span><br><span class="line">    int p2 = newLength;</span><br><span class="line">    while(p1 &gt;= 0 &amp;&amp; p2 &gt; p1 )&#123;</span><br><span class="line">    	if(string[p1] == &#x27; &#x27;)</span><br><span class="line">        &#123;</span><br><span class="line">        	string[p2--] = &#x27;0&#x27;;</span><br><span class="line">            string[p2--] = &#x27;2&#x27;;</span><br><span class="line">            string[p2--] = &#x27;%&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            string[p2--] = string[p1];</span><br><span class="line">        &#125;</span><br><span class="line">        --p1;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>python2.7:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line">class Solution:</span><br><span class="line">    # string指代 源字符串</span><br><span class="line">    def replaceSpace(self, string):</span><br><span class="line">        # write code here</span><br><span class="line">        return string.replace(&#x27; &#x27;, &#x27;%20&#x27;)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>剑指offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -549,31 +549,6 @@
       </tags>
   </entry>
   <entry>
-    <title>EP12-剑指offer——7.裴波那契数列</title>
-    <url>/2019/08/10/EP12-jianzhioffer07/</url>
-    <content><![CDATA[<h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><blockquote>
-<p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。（n&lt;&#x3D;39）<br>  斐波那契数列公式为：</p>
-</blockquote>
-<img src="/2019/08/10/EP12-jianzhioffer07/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E5%85%AC%E5%BC%8F.jpg" class="" title="斐波那契数列公式">
-
-<h3 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h3><p>我们可以以求解f（10）为例来分析递归的求解过程。想要求得f（10），我们要先知道f（9）和f（8）。同样的，要求得f（9），需要先知道f（8）和f（7）。。。我们可以使用树形结构来表示这种依赖关系，如下图所示。</p>
-<span id="more"></span>
-<img src="/2019/08/10/EP12-jianzhioffer07/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84.jpg" class="" title="斐波那契树形结构">
-
-<p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;不难发现在这棵树中有许多的节点都是重复的，而且重复的节点数会随着n的增大而急剧增加，这意味着计算量会随着n的增大而急剧增大。事实上用递归方法计算的时间复杂度是以n的指数方式递增的。改进上述方法并不难，只要想办法避免重复计算就可以了，比如可以将已经得到的数列中间项保存起来，如果下次需要计算的话先查找一下，已经计算过的就不用重复再计算了。<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;更简单的办法是从下往上计算，即使用简单的循环方法来实现。</p>
-<h3 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h3><p><strong>C++：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">   public:</span><br><span class="line">       int Fibonacci(int n) &#123;</span><br><span class="line">           if(n &lt;= 0)&#123;</span><br><span class="line">               return 0;</span><br><span class="line">           &#125;</span><br><span class="line">           if(n ==1 )&#123;</span><br><span class="line">               return 1;</span><br><span class="line">           &#125;</span><br><span class="line">           int first = 0,second = 1,third = 0;</span><br><span class="line">           for(int i = 2;i &lt;= n;i++)&#123;</span><br><span class="line">               third = first + second;</span><br><span class="line">               first = second;</span><br><span class="line">               second = third;</span><br><span class="line">           &#125;</span><br><span class="line">           return third;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>Python2.7：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">       def Fibonacci(self, n):</span><br><span class="line">           # write code here</span><br><span class="line">           if n &lt;= 1:</span><br><span class="line">               return n</span><br><span class="line">           first, second, third = 0, 1, 0</span><br><span class="line">           for i in range(2, n+1):</span><br><span class="line">               third = first + second</span><br><span class="line">               first = second</span><br><span class="line">               second = third</span><br><span class="line">           return third</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>剑指offer</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>递归</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>EP13-后端管理系统部署操作手册(Linux CentOS7.5)</title>
     <url>/2023/02/28/EP13-website-build-notes/</url>
     <content><![CDATA[<p>兄弟分行做了一个客户信息管理系统，架构是后台管理系统+小程序的配置。后台管理系统即一个网站的部署，小程序使用了低码平台开发，可以远程推送在手机上测试。本文档主要用于网站部署过程的记录。</p>
@@ -714,6 +689,31 @@
       </categories>
       <tags>
         <tag>服务器部署</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>EP12-剑指offer——7.裴波那契数列</title>
+    <url>/2019/08/10/EP12-jianzhioffer07/</url>
+    <content><![CDATA[<h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><blockquote>
+<p>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项。（n&lt;&#x3D;39）<br>  斐波那契数列公式为：</p>
+</blockquote>
+<img src="/2019/08/10/EP12-jianzhioffer07/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E5%85%AC%E5%BC%8F.jpg" class="" title="斐波那契数列公式">
+
+<h3 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h3><p>我们可以以求解f（10）为例来分析递归的求解过程。想要求得f（10），我们要先知道f（9）和f（8）。同样的，要求得f（9），需要先知道f（8）和f（7）。。。我们可以使用树形结构来表示这种依赖关系，如下图所示。</p>
+<span id="more"></span>
+<img src="/2019/08/10/EP12-jianzhioffer07/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84.jpg" class="" title="斐波那契树形结构">
+
+<p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;不难发现在这棵树中有许多的节点都是重复的，而且重复的节点数会随着n的增大而急剧增加，这意味着计算量会随着n的增大而急剧增大。事实上用递归方法计算的时间复杂度是以n的指数方式递增的。改进上述方法并不难，只要想办法避免重复计算就可以了，比如可以将已经得到的数列中间项保存起来，如果下次需要计算的话先查找一下，已经计算过的就不用重复再计算了。<br>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;更简单的办法是从下往上计算，即使用简单的循环方法来实现。</p>
+<h3 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h3><p><strong>C++：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">   public:</span><br><span class="line">       int Fibonacci(int n) &#123;</span><br><span class="line">           if(n &lt;= 0)&#123;</span><br><span class="line">               return 0;</span><br><span class="line">           &#125;</span><br><span class="line">           if(n ==1 )&#123;</span><br><span class="line">               return 1;</span><br><span class="line">           &#125;</span><br><span class="line">           int first = 0,second = 1,third = 0;</span><br><span class="line">           for(int i = 2;i &lt;= n;i++)&#123;</span><br><span class="line">               third = first + second;</span><br><span class="line">               first = second;</span><br><span class="line">               second = third;</span><br><span class="line">           &#125;</span><br><span class="line">           return third;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>Python2.7：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">       def Fibonacci(self, n):</span><br><span class="line">           # write code here</span><br><span class="line">           if n &lt;= 1:</span><br><span class="line">               return n</span><br><span class="line">           first, second, third = 0, 1, 0</span><br><span class="line">           for i in range(2, n+1):</span><br><span class="line">               third = first + second</span><br><span class="line">               first = second</span><br><span class="line">               second = third</span><br><span class="line">           return third</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>递归</tag>
       </tags>
   </entry>
   <entry>
@@ -907,6 +907,52 @@
       </tags>
   </entry>
   <entry>
+    <title>EP19-正则表达式基础知识点</title>
+    <url>/2025/03/19/EP19-regular-expressions-basic-knowledge/</url>
+    <content><![CDATA[<p>正则表达式是用于匹配、查找和操作文本的强大工具，通过定义特定模式来描述文本规则。</p>
+<h2 id="一、基础语法"><a href="#一、基础语法" class="headerlink" title="一、基础语法"></a>一、基础语法</h2><h3 id="（一）字符匹配"><a href="#（一）字符匹配" class="headerlink" title="（一）字符匹配"></a>（一）字符匹配</h3><ol>
+<li><p><strong>普通字符</strong>：直接匹配对应字符本身。例如，正则表达式 <code>abc</code> 能匹配字符串 “abc”，因为它精确匹配了这三个连续的字符。</p>
+</li>
+<li><p><strong>元字符</strong>：具有特殊含义的字符。例如，<code>.</code> 匹配除换行符 <code>\n</code> 之外的任意单个字符。正则表达式 <code>a.c</code> 可以匹配 “abc”、“a1c”、“a c” 等，只要中间字符是单个任意字符（除 <code>\n</code> 外）。</p>
+<span id="more"></span></li>
+</ol>
+<h3 id="（二）字符类"><a href="#（二）字符类" class="headerlink" title="（二）字符类"></a>（二）字符类</h3><ol>
+<li>**方括号 <code>[]</code>**：定义一个字符集合，匹配其中任意一个字符。例如，<code>[abc]</code> 可以匹配 “a”、“b” 或 “c”。还能使用范围表示，如 <code>[a - z]</code> 匹配任意小写字母，<code>[0 - 9]</code> 匹配任意数字。</li>
+<li>**否定字符类 <code>[^]</code>**：匹配不在方括号内的任意一个字符。例如，<code>[^abc]</code> 可以匹配除 “a”、“b”、“c” 之外的任何字符。</li>
+</ol>
+<h3 id="（三）数量限定符"><a href="#（三）数量限定符" class="headerlink" title="（三）数量限定符"></a>（三）数量限定符</h3><ol>
+<li>**<code>\*</code>**：匹配前面的元素零次或多次。例如，<code>a*</code> 可以匹配空字符串，也可以匹配 “a”、“aa”、“aaa” 等任意多个 “a” 组成的字符串。</li>
+<li>**<code>+</code>**：匹配前面的元素一次或多次。例如，<code>a+</code> 至少匹配一个 “a”，能匹配 “a”、“aa”、“aaa” 等，但不能匹配空字符串。</li>
+<li>**<code>?</code>**：匹配前面的元素零次或一次。例如，<code>a?</code> 可以匹配空字符串或 “a”。</li>
+<li>**<code>&#123;n&#125;</code>**：匹配前面的元素恰好 <code>n</code> 次。例如，<code>a&#123;3&#125;</code> 只能匹配 “aaa”。</li>
+<li>**<code>&#123;n,&#125;</code>**：匹配前面的元素至少 <code>n</code> 次。例如，<code>a&#123;3,&#125;</code> 能匹配 “aaa”、“aaaa”、“aaaaa” 等。</li>
+<li>**<code>&#123;n,m&#125;</code>**：匹配前面的元素至少 <code>n</code> 次，最多 <code>m</code> 次。例如，<code>a&#123;2,4&#125;</code> 可以匹配 “aa”、“aaa”、“aaaa”。</li>
+</ol>
+<h2 id="二、边界匹配"><a href="#二、边界匹配" class="headerlink" title="二、边界匹配"></a>二、边界匹配</h2><ol>
+<li>**<code>^</code>**：匹配字符串的开头。例如，<code>^abc</code> 只会匹配以 “abc” 开头的字符串，如 “abcdef”，而不会匹配 “defabc”。</li>
+<li>**<code>$</code>**：匹配字符串的结尾。例如，<code>abc$</code> 只会匹配以 “abc” 结尾的字符串，如 “defabc”，而不会匹配 “abcdef”。</li>
+<li>**<code>\b</code>**：匹配单词边界，即单词和非单词字符的分界处。例如，<code>\bcat\b</code> 可以匹配 “the cat is here” 中的 “cat”，但不会匹配 “category” 中的 “cat”。</li>
+</ol>
+<h2 id="三、分组与捕获"><a href="#三、分组与捕获" class="headerlink" title="三、分组与捕获"></a>三、分组与捕获</h2><ol>
+<li>**分组 <code>()</code>**：将多个字符作为一个整体进行操作。例如，<code>(ab)+</code> 表示 “ab” 整体出现一次或多次，可以匹配 “ab”、“abab”、“ababab” 等。</li>
+<li><strong>捕获组</strong>：括号内的表达式会被捕获，可以在后续通过索引（从 1 开始）来引用。例如，对于正则表达式 <code>(a)(b)</code>，在匹配 “ab” 后，<code>group(1)</code> 会返回 “a”，<code>group(2)</code> 会返回 “b”。</li>
+</ol>
+<h2 id="四、示例分析"><a href="#四、示例分析" class="headerlink" title="四、示例分析"></a>四、示例分析</h2><p>假设要从字符串 “USD:352677,33.00” 中提取出 “USD” 和 “352677,33.00” 两部分，使用正则表达式 <code>([A-Z]&#123;3&#125;):(\\d&#123;1,3&#125;(,\\d&#123;3&#125;)*\\.\\d&#123;2&#125;)</code>。</p>
+<ol>
+<li>**<code>([A-Z]&#123;3&#125;)</code>**：这是第一个捕获组，<code>[A-Z]</code> 表示所有大写字母的字符类，<code>&#123;3&#125;</code> 限定前面的字符类要出现 3 次，所以它会匹配到 “USD” 这样的三位大写字母组合，通过 <code>group(1)</code> 可获取 “USD”。</li>
+<li>**<code>:</code>**：匹配字符串中的冒号。</li>
+<li>**<code>(\\d&#123;1,3&#125;(,\\d&#123;3&#125;)\*\\.\\d&#123;2&#125;)</code>**：这是第二个捕获组，<code>\\d&#123;1,3&#125;</code> 匹配金额整数部分开头的 1 到 3 位数字，<code>(,\\d&#123;3&#125;)*</code> 匹配可能存在的千分位分隔符及后续 3 位数字，<code>*</code> 表示可以有零个或多个这样的组合，<code>\\.\\d&#123;2&#125;</code> 匹配小数点及后面两位数字。整体匹配 “352677,33.00” 这样格式的金额，通过 <code>group(2)</code> 可获取该金额字符串。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术学习</category>
+      </categories>
+      <tags>
+        <tag>正则表达式</tag>
+        <tag>java开发</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>EP18-菜鸟教程-Java教程-学习笔记</title>
     <url>/2024/10/16/EP18-cainiao-java-learning/</url>
     <content><![CDATA[<p>此文档仅基于个人经验和感受出发，为菜鸟驿站-java教程的学习笔记。</p>
@@ -1030,52 +1076,6 @@
       </categories>
       <tags>
         <tag>Java学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>EP19-正则表达式基础知识点</title>
-    <url>/2025/03/19/EP19-regular-expressions-basic-knowledge/</url>
-    <content><![CDATA[<p>正则表达式是用于匹配、查找和操作文本的强大工具，通过定义特定模式来描述文本规则。</p>
-<h2 id="一、基础语法"><a href="#一、基础语法" class="headerlink" title="一、基础语法"></a>一、基础语法</h2><h3 id="（一）字符匹配"><a href="#（一）字符匹配" class="headerlink" title="（一）字符匹配"></a>（一）字符匹配</h3><ol>
-<li><p><strong>普通字符</strong>：直接匹配对应字符本身。例如，正则表达式 <code>abc</code> 能匹配字符串 “abc”，因为它精确匹配了这三个连续的字符。</p>
-</li>
-<li><p><strong>元字符</strong>：具有特殊含义的字符。例如，<code>.</code> 匹配除换行符 <code>\n</code> 之外的任意单个字符。正则表达式 <code>a.c</code> 可以匹配 “abc”、“a1c”、“a c” 等，只要中间字符是单个任意字符（除 <code>\n</code> 外）。</p>
-<span id="more"></span></li>
-</ol>
-<h3 id="（二）字符类"><a href="#（二）字符类" class="headerlink" title="（二）字符类"></a>（二）字符类</h3><ol>
-<li>**方括号 <code>[]</code>**：定义一个字符集合，匹配其中任意一个字符。例如，<code>[abc]</code> 可以匹配 “a”、“b” 或 “c”。还能使用范围表示，如 <code>[a - z]</code> 匹配任意小写字母，<code>[0 - 9]</code> 匹配任意数字。</li>
-<li>**否定字符类 <code>[^]</code>**：匹配不在方括号内的任意一个字符。例如，<code>[^abc]</code> 可以匹配除 “a”、“b”、“c” 之外的任何字符。</li>
-</ol>
-<h3 id="（三）数量限定符"><a href="#（三）数量限定符" class="headerlink" title="（三）数量限定符"></a>（三）数量限定符</h3><ol>
-<li>**<code>\*</code>**：匹配前面的元素零次或多次。例如，<code>a*</code> 可以匹配空字符串，也可以匹配 “a”、“aa”、“aaa” 等任意多个 “a” 组成的字符串。</li>
-<li>**<code>+</code>**：匹配前面的元素一次或多次。例如，<code>a+</code> 至少匹配一个 “a”，能匹配 “a”、“aa”、“aaa” 等，但不能匹配空字符串。</li>
-<li>**<code>?</code>**：匹配前面的元素零次或一次。例如，<code>a?</code> 可以匹配空字符串或 “a”。</li>
-<li>**<code>&#123;n&#125;</code>**：匹配前面的元素恰好 <code>n</code> 次。例如，<code>a&#123;3&#125;</code> 只能匹配 “aaa”。</li>
-<li>**<code>&#123;n,&#125;</code>**：匹配前面的元素至少 <code>n</code> 次。例如，<code>a&#123;3,&#125;</code> 能匹配 “aaa”、“aaaa”、“aaaaa” 等。</li>
-<li>**<code>&#123;n,m&#125;</code>**：匹配前面的元素至少 <code>n</code> 次，最多 <code>m</code> 次。例如，<code>a&#123;2,4&#125;</code> 可以匹配 “aa”、“aaa”、“aaaa”。</li>
-</ol>
-<h2 id="二、边界匹配"><a href="#二、边界匹配" class="headerlink" title="二、边界匹配"></a>二、边界匹配</h2><ol>
-<li>**<code>^</code>**：匹配字符串的开头。例如，<code>^abc</code> 只会匹配以 “abc” 开头的字符串，如 “abcdef”，而不会匹配 “defabc”。</li>
-<li>**<code>$</code>**：匹配字符串的结尾。例如，<code>abc$</code> 只会匹配以 “abc” 结尾的字符串，如 “defabc”，而不会匹配 “abcdef”。</li>
-<li>**<code>\b</code>**：匹配单词边界，即单词和非单词字符的分界处。例如，<code>\bcat\b</code> 可以匹配 “the cat is here” 中的 “cat”，但不会匹配 “category” 中的 “cat”。</li>
-</ol>
-<h2 id="三、分组与捕获"><a href="#三、分组与捕获" class="headerlink" title="三、分组与捕获"></a>三、分组与捕获</h2><ol>
-<li>**分组 <code>()</code>**：将多个字符作为一个整体进行操作。例如，<code>(ab)+</code> 表示 “ab” 整体出现一次或多次，可以匹配 “ab”、“abab”、“ababab” 等。</li>
-<li><strong>捕获组</strong>：括号内的表达式会被捕获，可以在后续通过索引（从 1 开始）来引用。例如，对于正则表达式 <code>(a)(b)</code>，在匹配 “ab” 后，<code>group(1)</code> 会返回 “a”，<code>group(2)</code> 会返回 “b”。</li>
-</ol>
-<h2 id="四、示例分析"><a href="#四、示例分析" class="headerlink" title="四、示例分析"></a>四、示例分析</h2><p>假设要从字符串 “USD:352677,33.00” 中提取出 “USD” 和 “352677,33.00” 两部分，使用正则表达式 <code>([A-Z]&#123;3&#125;):(\\d&#123;1,3&#125;(,\\d&#123;3&#125;)*\\.\\d&#123;2&#125;)</code>。</p>
-<ol>
-<li>**<code>([A-Z]&#123;3&#125;)</code>**：这是第一个捕获组，<code>[A-Z]</code> 表示所有大写字母的字符类，<code>&#123;3&#125;</code> 限定前面的字符类要出现 3 次，所以它会匹配到 “USD” 这样的三位大写字母组合，通过 <code>group(1)</code> 可获取 “USD”。</li>
-<li>**<code>:</code>**：匹配字符串中的冒号。</li>
-<li>**<code>(\\d&#123;1,3&#125;(,\\d&#123;3&#125;)\*\\.\\d&#123;2&#125;)</code>**：这是第二个捕获组，<code>\\d&#123;1,3&#125;</code> 匹配金额整数部分开头的 1 到 3 位数字，<code>(,\\d&#123;3&#125;)*</code> 匹配可能存在的千分位分隔符及后续 3 位数字，<code>*</code> 表示可以有零个或多个这样的组合，<code>\\.\\d&#123;2&#125;</code> 匹配小数点及后面两位数字。整体匹配 “352677,33.00” 这样格式的金额，通过 <code>group(2)</code> 可获取该金额字符串。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术学习</category>
-      </categories>
-      <tags>
-        <tag>正则表达式</tag>
-        <tag>java开发</tag>
       </tags>
   </entry>
   <entry>
